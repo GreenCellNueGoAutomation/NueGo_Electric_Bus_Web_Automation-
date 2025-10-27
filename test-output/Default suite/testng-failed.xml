@@ -8,7 +8,6 @@
           <include name="setUp"/>
           <include name="testFilters"/>
           <include name="testSeatSelectionAndBooking"/>
-          <include name="testHomePageActions"/>
         </methods>
       </class> <!-- nuego_automation_project.NuegoBookingTest -->
     </classes>
