@@ -6,8 +6,8 @@
       <class name="nuego_automation_project.NuegoBookingTest">
         <methods>
           <include name="setUp"/>
-          <include name="testFilters"/>
           <include name="testSeatSelectionAndBooking"/>
+          <include name="testReviewBookingPage"/>
         </methods>
       </class> <!-- nuego_automation_project.NuegoBookingTest -->
     </classes>
