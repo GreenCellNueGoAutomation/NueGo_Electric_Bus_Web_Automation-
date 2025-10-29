@@ -1,108 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="3" failed="2" skipped="0">
+<testng-results ignored="0" total="6" passed="4" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-28T13:34:00 IST" name="Default suite" finished-at="2025-10-28T13:35:32 IST" duration-ms="92602">
+  <suite started-at="2025-10-29T16:34:25 IST" name="Default suite" finished-at="2025-10-29T16:36:10 IST" duration-ms="104678">
     <groups>
     </groups>
-    <test started-at="2025-10-28T13:34:00 IST" name="Default test" finished-at="2025-10-28T13:35:32 IST" duration-ms="92602">
+    <test started-at="2025-10-29T16:34:25 IST" name="Default test" finished-at="2025-10-29T16:36:10 IST" duration-ms="104678">
       <class name="nuego_automation_project.NuegoBookingTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@3e0e1046]" started-at="2025-10-28T13:34:00 IST" name="setUp" finished-at="2025-10-28T13:34:01 IST" duration-ms="1859" status="PASS">
+        <test-method is-config="true" signature="startReport()[pri:0, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:34:25 IST" name="startReport" finished-at="2025-10-29T16:34:25 IST" duration-ms="157" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startReport -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:34:25 IST" name="setUp" finished-at="2025-10-29T16:34:27 IST" duration-ms="1926" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@3e0e1046]" started-at="2025-10-28T13:34:01 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-10-28T13:34:07 IST" duration-ms="5779" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testLogin -->
-        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@3e0e1046]" started-at="2025-10-28T13:34:07 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-10-28T13:34:21 IST" duration-ms="13935" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testHomePageActions -->
-        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@3e0e1046]" started-at="2025-10-28T13:34:21 IST" name="testFilters" description="Apply filters: Timer, Boarding &amp; Dropping points" finished-at="2025-10-28T13:34:32 IST" duration-ms="10757" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testFilters -->
-        <test-method signature="testSeatSelectionAndBooking()[pri:4, instance:nuego_automation_project.NuegoBookingTest@3e0e1046]" started-at="2025-10-28T13:34:32 IST" name="testSeatSelectionAndBooking" description="Select seat and move to payment page" finished-at="2025-10-28T13:35:11 IST" duration-ms="39439" status="FAIL">
-          <exception class="org.openqa.selenium.TimeoutException">
+        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:34:27 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-10-29T16:34:47 IST" duration-ms="20286" status="FAIL">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Expected condition failed: waiting for presence of element located by: By.xpath: //div[5]//div[1]//div[1]//img[1] (tried for 30 second(s) with 500 milliseconds interval)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //div[5]//div[1]//div[1]//img[1] (tried for 30 second(s) with 500 milliseconds interval)
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-at nuego_automation_project.SelectSeatPoints.selectSeats(SelectSeatPoints.java:33)
-at nuego_automation_project.SelectSeatPoints.selectSeats(SelectSeatPoints.java:26)
-at nuego_automation_project.NuegoBookingTest.testSeatSelectionAndBooking(NuegoBookingTest.java:88)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:739)
-at org.testng.TestRunner.run(TestRunner.java:614)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[5]//div[1]//div[1]//img[1]"}
-  (Session info: chrome=141.0.7390.123)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+              <![CDATA[Expected condition failed: waiting for url to contain "home". Current url: "https://greencell-nuego-web.web.app/" (tried for 15 second(s) with 500 milliseconds interval)
 Build info: version: '4.21.0', revision: '79ed462ef4'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [71f2442e49be06c4be46818ae7b1e064, findElement {using=xpath, value=//div[5]//div[1]//div[1]//img[1]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58006}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58006/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 71f2442e49be06c4be46818ae7b1e064
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:171)
-at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:168)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-... 29 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSeatSelectionAndBooking -->
-        <test-method signature="testReviewBookingPage()[pri:5, instance:nuego_automation_project.NuegoBookingTest@3e0e1046]" started-at="2025-10-28T13:35:11 IST" name="testReviewBookingPage" description="Complete review booking flow (Coupon + Wallet + Proceed)" finished-at="2025-10-28T13:35:32 IST" duration-ms="20621" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Review Booking flow failed: Expected condition failed: waiting for presence of element located by: By.xpath: //p[normalize-space()='Review Booking'] (tried for 20 second(s) with 500 milliseconds interval)]]>
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57518}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57518/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8a1ea443551ca363283c568da7b6913d]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Review Booking flow failed: Expected condition failed: waiting for presence of element located by: By.xpath: //p[normalize-space()='Review Booking'] (tried for 20 second(s) with 500 milliseconds interval)
+              <![CDATA[java.lang.AssertionError: Expected condition failed: waiting for url to contain "home". Current url: "https://greencell-nuego-web.web.app/" (tried for 15 second(s) with 500 milliseconds interval)
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57518}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57518/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8a1ea443551ca363283c568da7b6913d
 at org.testng.Assert.fail(Assert.java:111)
-at nuego_automation_project.NuegoBookingTest.testReviewBookingPage(NuegoBookingTest.java:125)
+at nuego_automation_project.NuegoBookingTest.testLogin(NuegoBookingTest.java:93)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -134,7 +65,154 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
+        </test-method> <!-- testLogin -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:34:48 IST" name="getResult" finished-at="2025-10-29T16:34:48 IST" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testLogin status=FAILURE method=NuegoBookingTest.testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@37313c65] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:34:48 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-10-29T16:35:01 IST" duration-ms="13570" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testHomePageActions -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:35:01 IST" name="getResult" finished-at="2025-10-29T16:35:01 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testHomePageActions status=SUCCESS method=NuegoBookingTest.testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@37313c65] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:35:01 IST" name="testFilters" description="Apply filters: Timer, Boarding &amp; Dropping points" finished-at="2025-10-29T16:35:12 IST" duration-ms="10812" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testFilters -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:35:12 IST" name="getResult" finished-at="2025-10-29T16:35:12 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testFilters status=SUCCESS method=NuegoBookingTest.testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@37313c65] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method signature="testSeatSelectionAndBooking()[pri:4, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:35:12 IST" name="testSeatSelectionAndBooking" description="Select seat and move to payment page" finished-at="2025-10-29T16:35:31 IST" duration-ms="19049" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSeatSelectionAndBooking -->
+        <test-method signature="testReviewBookingPage()[pri:5, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:35:31 IST" name="testReviewBookingPage" description="Complete review booking flow (Coupon + Wallet + Proceed)" finished-at="2025-10-29T16:35:59 IST" duration-ms="28414" status="PASS">
+          <reporter-output>
+          </reporter-output>
         </test-method> <!-- testReviewBookingPage -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:35:31 IST" name="getResult" finished-at="2025-10-29T16:35:31 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testSeatSelectionAndBooking status=SUCCESS method=NuegoBookingTest.testSeatSelectionAndBooking()[pri:4, instance:nuego_automation_project.NuegoBookingTest@37313c65] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:35:59 IST" name="getResult" finished-at="2025-10-29T16:35:59 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testReviewBookingPage status=SUCCESS method=NuegoBookingTest.testReviewBookingPage()[pri:5, instance:nuego_automation_project.NuegoBookingTest@37313c65] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method signature="testPaymentModePage()[pri:6, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:35:59 IST" name="testPaymentModePage" description="Perform actions on Payment Mode Page (Steps 1–6)" finished-at="2025-10-29T16:36:10 IST" duration-ms="10048" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"css selector","selector":"#\31 000404"}
+  (Session info: chrome=141.0.7390.123)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [8a1ea443551ca363283c568da7b6913d, findElement {value=1000404, using=id}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57518}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57518/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8a1ea443551ca363283c568da7b6913d]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: no such element: Unable to locate element: {"method":"css selector","selector":"#\31 000404"}
+  (Session info: chrome=141.0.7390.123)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [8a1ea443551ca363283c568da7b6913d, findElement {value=1000404, using=id}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57518}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57518/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8a1ea443551ca363283c568da7b6913d
+at org.testng.Assert.fail(Assert.java:111)
+at nuego_automation_project.NuegoBookingTest.testPaymentModePage(NuegoBookingTest.java:196)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPaymentModePage -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:36:10 IST" name="getResult" finished-at="2025-10-29T16:36:10 IST" duration-ms="16" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testPaymentModePage status=FAILURE method=NuegoBookingTest.testPaymentModePage()[pri:6, instance:nuego_automation_project.NuegoBookingTest@37313c65] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:36:10 IST" name="tearDown" finished-at="2025-10-29T16:36:10 IST" duration-ms="319" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="endReport()[pri:0, instance:nuego_automation_project.NuegoBookingTest@37313c65]" started-at="2025-10-29T16:36:10 IST" name="endReport" finished-at="2025-10-29T16:36:10 IST" duration-ms="262" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endReport -->
       </class> <!-- nuego_automation_project.NuegoBookingTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
