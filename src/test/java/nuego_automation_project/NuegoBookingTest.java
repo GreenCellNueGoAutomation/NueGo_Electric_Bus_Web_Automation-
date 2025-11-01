@@ -15,7 +15,10 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 // ✅ Allure Metadata for the suite
 @Epic("NueGo Web Automation")
@@ -38,27 +41,37 @@ public class NuegoBookingTest {
     private static ExtentTest test;
 
     @BeforeSuite(alwaysRun = true)
-    public void startReport() {
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("test-output/ExtentReport.html");
+    public void initializeReports() {
+        // Create folder with timestamp
+        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+        String reportPath = "test-output/ExtentReport_" + timestamp + ".html";
+
+        ExtentSparkReporter sparkReporter = new ExtentSparkReporter(reportPath);
+
+        // 🎨 Beautiful dark theme customization
         sparkReporter.config().setTheme(Theme.DARK);
-        sparkReporter.config().setDocumentTitle("NueGo Web Automation Report");
-        sparkReporter.config().setReportName("NueGo Booking Flow Test Results");
+        sparkReporter.config().setDocumentTitle("🚀 NueGo Automation Test Report");
+        sparkReporter.config().setReportName("NueGo Web Automation - Regression Results");
+        sparkReporter.config().setEncoding("utf-8");
+        sparkReporter.config().setCss(
+            ".badge-primary { background-color: #00bfa5; } " +
+            ".nav-wrapper { background-color: #212121; } " +
+            ".card { border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); } " +
+            "body { background-color: #121212; color: #e0e0e0; font-family: 'Segoe UI'; }"
+        );
 
         extent = new ExtentReports();
         extent.attachReporter(sparkReporter);
         extent.setSystemInfo("Tester", "Sumedh Sonawane");
         extent.setSystemInfo("Environment", "QA");
         extent.setSystemInfo("Browser", "Chrome");
+        extent.setSystemInfo("Project", "NueGo Web Automation");
 
-        System.out.println("📘 Extent Report initialized successfully");
-    }
-
-    // ✅ Initialize Allure Listener
-    @BeforeSuite(alwaysRun = true)
-    public void setupAllureListener() {
+        // ✅ Initialize Allure Listener
         org.testng.TestNG testng = new org.testng.TestNG();
         testng.addListener(new AllureTestNg());
-        System.out.println("✅ Allure TestNG listener initialized successfully");
+
+        System.out.println("📘 Extent and Allure Reports initialized successfully.");
     }
 
     @BeforeClass(alwaysRun = true)
@@ -175,7 +188,6 @@ public class NuegoBookingTest {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
-    // ✅ Helper method: attach screenshot directly in Allure for failed steps
     public void attachScreenshotToAllure() {
         try {
             byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
@@ -208,6 +220,6 @@ public class NuegoBookingTest {
     @AfterSuite(alwaysRun = true)
     public void endReport() {
         extent.flush();
-        System.out.println("📊 Extent Report generated at: test-output/ExtentReport.html");
+        System.out.println("📊 Extent Report generated successfully!");
     }
 }

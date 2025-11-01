@@ -1,0 +1,1 @@
+Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@aria-label='Please enter OTP character 1']' (tried for 30 second(s) with 500 milliseconds interval)

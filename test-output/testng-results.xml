@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="3" passed="0" failed="1" skipped="2">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-01T18:49:01 IST" name="Default suite" finished-at="2025-11-01T18:49:56 IST" duration-ms="55218">
+  <suite started-at="2025-11-01T19:55:25 IST" name="Default suite" finished-at="2025-11-01T19:56:43 IST" duration-ms="77838">
     <groups>
     </groups>
-    <test started-at="2025-11-01T18:49:01 IST" name="Default test" finished-at="2025-11-01T18:49:56 IST" duration-ms="55218">
+    <test started-at="2025-11-01T19:55:25 IST" name="Default test" finished-at="2025-11-01T19:56:43 IST" duration-ms="77838">
       <class name="nuego_automation_project.NuegoBookingTest">
-        <test-method is-config="true" signature="startReport()[pri:0, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T18:49:01 IST" name="startReport" finished-at="2025-11-01T18:49:01 IST" duration-ms="333" status="PASS">
+        <test-method is-config="true" signature="initializeReports()[pri:0, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T19:55:25 IST" name="initializeReports" finished-at="2025-11-01T19:55:25 IST" duration-ms="343" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- startReport -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T18:49:01 IST" name="setUp" finished-at="2025-11-01T18:49:05 IST" duration-ms="4204" status="PASS">
+        </test-method> <!-- initializeReports -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T19:55:25 IST" name="setUp" finished-at="2025-11-01T19:55:31 IST" duration-ms="6061" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T18:49:05 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-11-01T18:49:55 IST" duration-ms="49863" status="FAIL">
+        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T19:55:31 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-11-01T19:56:42 IST" duration-ms="70222" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@aria-label='Please enter OTP character 1']' (tried for 30 second(s) with 500 milliseconds interval)]]>
@@ -23,7 +23,7 @@
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@aria-label='Please enter OTP character 1']' (tried for 30 second(s) with 500 milliseconds interval)
 at org.testng.Assert.fail(Assert.java:111)
-at nuego_automation_project.NuegoBookingTest.testLogin(NuegoBookingTest.java:103)
+at nuego_automation_project.NuegoBookingTest.testLogin(NuegoBookingTest.java:127)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -56,7 +56,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLogin -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T18:49:55 IST" name="getResult" finished-at="2025-11-01T18:49:56 IST" duration-ms="248" status="PASS">
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T19:56:42 IST" name="getResult" finished-at="2025-11-01T19:56:42 IST" duration-ms="287" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -67,7 +67,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T18:49:56 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-11-01T18:49:56 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="1" status="SKIP">
+        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T19:56:42 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-11-01T19:56:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@7d322cad depends on not successfully finished methods 
@@ -101,7 +101,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testHomePageActions -->
-        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T18:49:56 IST" name="testFilters" description="Apply filters: Timer, Boarding &amp; Dropping points" finished-at="2025-11-01T18:49:56 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="0" status="SKIP">
+        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T19:56:42 IST" name="testFilters" description="Apply filters: Timer, Boarding &amp; Dropping points" finished-at="2025-11-01T19:56:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@7d322cad depends on not successfully finished methods 
@@ -135,11 +135,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFilters -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T18:49:56 IST" name="tearDown" finished-at="2025-11-01T18:49:56 IST" duration-ms="612" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T19:56:42 IST" name="tearDown" finished-at="2025-11-01T19:56:43 IST" duration-ms="856" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="endReport()[pri:0, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T18:49:57 IST" name="endReport" finished-at="2025-11-01T18:49:57 IST" duration-ms="498" status="PASS">
+        <test-method is-config="true" signature="endReport()[pri:0, instance:nuego_automation_project.NuegoBookingTest@7d322cad]" started-at="2025-11-01T19:56:43 IST" name="endReport" finished-at="2025-11-01T19:56:44 IST" duration-ms="633" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->

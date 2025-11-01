@@ -10,7 +10,7 @@
           <include name="setUp"/>
           <include name="endReport"/>
           <include name="testFilters"/>
-          <include name="startReport"/>
+          <include name="initializeReports"/>
           <include name="getResult"/>
           <include name="testHomePageActions"/>
         </methods>
