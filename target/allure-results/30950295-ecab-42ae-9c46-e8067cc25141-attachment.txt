@@ -1,1 +1,0 @@
-Expected condition failed: waiting for presence of element located by: By.xpath: //input[@placeholder='From'] (tried for 20 second(s) with 500 milliseconds interval)

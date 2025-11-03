@@ -1,0 +1,6 @@
+utils\ExtentReportManager.class
+nuego_automation_project\NuegoBookingTest.class
+utils\AllureListener.class
+utils\BaseTest.class
+utils\ExtentListener.class
+utils\HasWebDriver.class

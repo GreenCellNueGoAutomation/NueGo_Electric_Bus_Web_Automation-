@@ -1,1 +1,0 @@
-Expected condition failed: waiting for at least one condition to be valid: url to contain "home". Current url: "https://greencell-nuego-web.web.app/" || presence of element located by: By.xpath: //input[@placeholder='From'] (tried for 20 second(s) with 500 milliseconds interval)
