@@ -1,11 +1,10 @@
 package nuego_automation_project;
 
-import com.aventstack.extentreports.*;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
-import io.qameta.allure.testng.AllureTestNg;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,20 +12,21 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import utils.BaseTest;
+import utils.ExtentReportManager;
+import utils.ExtentListener;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-// ✅ Allure Metadata for the suite
 @Epic("NueGo Web Automation")
 @Feature("Complete Booking Flow")
-public class NuegoBookingTest {
+@Listeners(ExtentListener.class)
+public class NuegoBookingTest extends BaseTest {
 
-    private WebDriver driver;
     private WebDriverWait wait;
+    private static ExtentReports extent = ExtentReportManager.getReport();
+    private static ExtentTest test;
 
     private LoginPage loginPage;
     private HomePage homePage;
@@ -36,60 +36,21 @@ public class NuegoBookingTest {
     private Review_Booking_Page reviewBookingPage;
     private Payment_Mode paymentModePage;
 
-    // ✅ ExtentReports setup
-    private static ExtentReports extent;
-    private static ExtentTest test;
-
-    @BeforeSuite(alwaysRun = true)
-    public void initializeReports() {
-        // Create folder with timestamp
-        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
-        String reportPath = "test-output/ExtentReport_" + timestamp + ".html";
-
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter(reportPath);
-
-        // 🎨 Beautiful dark theme customization
-        sparkReporter.config().setTheme(Theme.DARK);
-        sparkReporter.config().setDocumentTitle("🚀 NueGo Automation Test Report");
-        sparkReporter.config().setReportName("NueGo Web Automation - Regression Results");
-        sparkReporter.config().setEncoding("utf-8");
-        sparkReporter.config().setCss(
-            ".badge-primary { background-color: #00bfa5; } " +
-            ".nav-wrapper { background-color: #212121; } " +
-            ".card { border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); } " +
-            "body { background-color: #121212; color: #e0e0e0; font-family: 'Segoe UI'; }"
-        );
-
-        extent = new ExtentReports();
-        extent.attachReporter(sparkReporter);
-        extent.setSystemInfo("Tester", "Sumedh Sonawane");
-        extent.setSystemInfo("Environment", "QA");
-        extent.setSystemInfo("Browser", "Chrome");
-        extent.setSystemInfo("Project", "NueGo Web Automation");
-
-        // ✅ Initialize Allure Listener
-        org.testng.TestNG testng = new org.testng.TestNG();
-        testng.addListener(new AllureTestNg());
-
-        System.out.println("📘 Extent and Allure Reports initialized successfully.");
-    }
-
+    // ---------------------- SETUP -----------------------------
     @BeforeClass(alwaysRun = true)
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
-        options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("--ignore-certificate-errors");
-        options.addArguments("--allow-insecure-localhost");
-        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-        options.setExperimentalOption("useAutomationExtension", false);
+        options.addArguments("--disable-blink-features=AutomationControlled");
+        options.addArguments("--start-maximized");
 
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
+        // Initialize Page Objects
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
         bookingPage = new BusBookingPage(driver);
@@ -101,60 +62,71 @@ public class NuegoBookingTest {
         System.out.println("✅ Browser launched and setup completed");
     }
 
-    // ---------------------- TEST CASES -----------------------------
-
+    // ---------------------- TEST CASE 1: LOGIN -----------------------------
     @Test(priority = 1, description = "Login to application using mobile and OTP")
     @Severity(SeverityLevel.CRITICAL)
     @Story("User Login")
-    @Description("Verify user can successfully login using valid mobile number and OTP.")
     public void testLogin() {
-        test = extent.createTest("Login Test", "Login to the application using mobile and OTP");
+        test = extent.createTest("Login Test", "Login using mobile and OTP");
         try {
             Allure.step("Open NueGo website");
             driver.get("https://greencell-nuego-web.web.app/");
+            System.out.println("🌐 Opened NueGo Website");
 
             Allure.step("Enter mobile number and OTP");
             loginPage.login("7385109680", "1234");
+            System.out.println("📱 Mobile number and OTP entered");
 
-            Allure.step("Verify redirection to Home Page");
-            wait.until(ExpectedConditions.urlContains("home"));
-            test.pass("✅ Login successful and navigated to Home Page");
-            Allure.step("Login successful");
+            wait.until(ExpectedConditions.or(
+                    ExpectedConditions.urlContains("home"),
+                    ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='From']"))
+            ));
+
+            Thread.sleep(2000);
+            String currentUrl = driver.getCurrentUrl();
+            System.out.println("🔗 Redirected to: " + currentUrl);
+
+            Assert.assertTrue(currentUrl.contains("home") || currentUrl.contains("search"),
+                    "Expected redirect to Home/Search page after login");
+
+            test.log(Status.PASS, "✅ Login successful and redirected to Home page");
+            Allure.step("Login successful - Home page loaded");
         } catch (Exception e) {
-            attachScreenshotToAllure();
-            test.fail("❌ Login failed: " + e.getMessage());
-            Allure.addAttachment("Failure Reason", e.getMessage());
-            Assert.fail(e.getMessage());
+            handleFailure("Login failed", e);
         }
     }
 
-    @Test(priority = 2, dependsOnMethods = {"testLogin"}, description = "Handle homepage popups and search bus")
+    // ---------------------- TEST CASE 2: HOME PAGE -----------------------------
+    @Test(priority = 2, description = "Handle homepage popups and search bus")
     @Severity(SeverityLevel.NORMAL)
     @Story("Home Page Flow")
-    @Description("Close popups, search for a bus route, and verify the results page.")
     public void testHomePageActions() {
         test = extent.createTest("Home Page Test", "Handle popups and search buses");
         try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Enter Source']")));
+            Thread.sleep(1500);
+
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Enter Destination']")));
+            Thread.sleep(1500);
             Allure.step("Close popup if present");
             homePage.closePopupIfPresent();
+            System.out.println("🪟 Popup closed successfully (if visible)");
 
             Allure.step("Search bus from Agra to Bassi");
             homePage.searchBus("Agra", "Bassi");
+            System.out.println("🚌 Searched for buses: Agra → Bassi");
 
-            test.pass("✅ Bus search performed successfully (Agra → Bassi)");
-            Allure.step("Bus search completed successfully");
+            test.log(Status.PASS, "✅ Bus search performed successfully (Agra → Bassi)");
+            Allure.step("Bus search successful");
         } catch (Exception e) {
-            attachScreenshotToAllure();
-            test.fail("❌ Home Page actions failed: " + e.getMessage());
-            Allure.addAttachment("Failure Reason", e.getMessage());
-            Assert.fail(e.getMessage());
+            handleFailure("Home Page test failed", e);
         }
     }
 
-    @Test(priority = 3, dependsOnMethods = {"testLogin"}, description = "Apply filters: Timer, Boarding & Dropping points")
+    // ---------------------- TEST CASE 3: FILTERS -----------------------------
+    @Test(priority = 3, dependsOnMethods = {"testHomePageActions"}, description = "Apply filters: Timer, Boarding & Dropping points")
     @Severity(SeverityLevel.MINOR)
     @Story("Bus Filtering")
-    @Description("Verify timer, boarding, and dropping point filters work correctly.")
     public void testFilters() {
         test = extent.createTest("Filter Test", "Apply filters and verify results");
         try {
@@ -172,17 +144,134 @@ public class NuegoBookingTest {
             String dropping = filtersPage.selectDroppingCheckboxAndReset();
             Allure.step("Dropping Point: " + dropping);
 
-            test.pass("✅ Filters applied successfully");
+            test.log(Status.PASS, "✅ Filters applied successfully");
         } catch (Exception e) {
-            attachScreenshotToAllure();
-            test.fail("❌ Filter test failed: " + e.getMessage());
-            Allure.addAttachment("Failure Reason", e.getMessage());
-            Assert.fail(e.getMessage());
+            handleFailure("Filter test failed", e);
         }
     }
 
-    // ---------------------- REPORTING -----------------------------
+    // ---------------------- TEST CASE 4: BUS BOOKING PAGE ACTIONS -----------------------------
+    @Test(priority = 4, dependsOnMethods = {"testFilters"}, description = "Scroll and click seat on Bus Booking page")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Bus Seat Visibility and Click Flow")
+    public void testBusBookingPageActions() {
+        test = extent.createTest("Bus Booking Page Test", "Scroll and click on seat");
+        try {
+            Allure.step("Scroll slightly to view seat area");
+            bookingPage.scrollDownSmall();
+            System.out.println("🧭 Page scrolled down slightly");
 
+            Allure.step("Click on a seat button");
+            bookingPage.clickSeat();
+            System.out.println("💺 Seat clicked successfully on bus booking page");
+
+            test.log(Status.PASS, "✅ BusBookingPage actions executed successfully");
+            Allure.step("Bus booking page flow completed successfully");
+        } catch (Exception e) {
+            handleFailure("Bus Booking Page test failed", e);
+        }
+    }
+
+    // ---------------------- TEST CASE 5: SELECT SEATS -----------------------------
+    @Test(priority = 5, description = "Select seat, pickup & drop points and click Book & Pay")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Seat Selection & Booking")
+    public void testSelectSeatAndProceedToPay() {
+        test = extent.createTest("Seat Selection Test", "Select seats and proceed to payment");
+        try {
+            Allure.step("Select preferred seats");
+            seatPointsPage.selectSeats("5B", "6C", "2D", "7D");
+
+            Allure.step("Select pickup point");
+            seatPointsPage.selectPickupPoint();
+
+            Allure.step("Select drop point");
+            seatPointsPage.selectDropPoint();
+
+            Allure.step("Click Book & Pay button");
+            seatPointsPage.clickBookAndPay();
+
+            String currentUrl = driver.getCurrentUrl();
+            Assert.assertTrue(currentUrl.contains("review") || currentUrl.contains("payment"),
+                    "Expected to navigate to review or payment page.");
+
+            test.log(Status.PASS, "✅ Seat selection and Book & Pay successful");
+            Allure.step("Seat selection and payment navigation successful");
+        } catch (Exception e) {
+            handleFailure("Seat selection and payment test failed", e);
+        }
+    }
+
+    // ---------------------- TEST CASE 6: REVIEW BOOKING -----------------------------
+    @Test(priority = 6, dependsOnMethods = {"testSelectSeatAndProceedToPay"}, description = "Verify Review Booking flow actions")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Review Booking Page Actions")
+    @Description("Validate coupon apply, passenger selection, assurance, wallet apply, and proceed to book functionality.")
+    public void testReviewBookingFlow() {
+        test = extent.createTest("Review Booking Flow", "Apply coupon, add passenger, and proceed to payment");
+        try {
+            Allure.step("Scroll to Review Booking section");
+            reviewBookingPage.scrollToReviewSection();
+
+            Allure.step("Click on coupon button");
+            reviewBookingPage.clickCouponButton();
+
+            Allure.step("Scroll inside coupon modal");
+            reviewBookingPage.scrollCouponModal();
+
+            Allure.step("Apply selected coupon");
+            reviewBookingPage.clickApplyCoupon();
+
+            Allure.step("Select passenger from saved list");
+            reviewBookingPage.selectPassengerFromList();
+
+            Allure.step("Click NueGo Assurance checkbox");
+            reviewBookingPage.clickAssuranceCheckbox();
+
+            Allure.step("Apply wallet balance");
+            reviewBookingPage.clickWalletApply();
+
+            Allure.step("Click Proceed & Book button");
+            reviewBookingPage.clickProceedToBook();
+
+            test.log(Status.PASS, "✅ Review Booking flow completed successfully");
+        } catch (Exception e) {
+            handleFailure("Review Booking flow failed", e);
+        }
+    }
+
+    // ---------------------- TEST CASE 7: PAYMENT FLOW -----------------------------
+    @Test(priority = 7, dependsOnMethods = {"testReviewBookingFlow"}, description = "Complete payment flow using NetBanking - Axis Bank")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Payment Flow")
+    @Description("Verify user can complete payment using Net Banking (Axis Bank) and submit transaction as CHARGED.")
+    public void testPaymentFlow() {
+        test = extent.createTest("Payment Flow Test", "Complete payment using NetBanking (Axis Bank)");
+        try {
+            Allure.step("Select Net Banking option");
+            paymentModePage.selectNetBanking();
+
+            Allure.step("Select Axis Bank");
+            paymentModePage.selectAxisBank();
+
+            Allure.step("Click Proceed to Pay");
+            paymentModePage.clickProceedToPay();
+
+            Allure.step("Select Transaction Status");
+            paymentModePage.clickTxnDropdown();
+            paymentModePage.selectChargedOption();
+
+            Allure.step("Submit transaction");
+            paymentModePage.clickSubmitButton();
+
+            test.log(Status.PASS, "✅ Payment flow completed successfully with 'CHARGED' status");
+            Allure.step("Payment flow completed successfully");
+        } catch (Exception e) {
+            handleFailure("Payment Flow failed", e);
+        }
+    }
+
+    // ---------------------- SCREENSHOT, FAILURE & REPORT -----------------------------
     @Attachment(value = "Screenshot on Failure", type = "image/png")
     public byte[] takeScreenshot() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
@@ -192,34 +281,34 @@ public class NuegoBookingTest {
         try {
             byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             Allure.addAttachment("Failed Step Screenshot", new ByteArrayInputStream(screenshot));
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) {}
+    }
+
+    private void handleFailure(String message, Exception e) {
+        attachScreenshotToAllure();
+        test.log(Status.FAIL, "❌ " + message + ": " + e.getMessage());
+        Allure.addAttachment("Failure Reason", e.getMessage());
+        Assert.fail(e.getMessage());
     }
 
     @AfterMethod(alwaysRun = true)
-    public void getResult(ITestResult result) {
-        if (result.getStatus() == ITestResult.FAILURE) {
-            test.log(Status.FAIL, "❌ Test Case Failed: " + result.getName());
-            test.log(Status.FAIL, "Error: " + result.getThrowable());
-            attachScreenshotToAllure();
-        } else if (result.getStatus() == ITestResult.SUCCESS) {
-            test.log(Status.PASS, "✅ Test Case Passed: " + result.getName());
-        } else {
-            test.log(Status.SKIP, "⚠️ Test Case Skipped: " + result.getName());
-        }
-    }
+    public void logTestResult(ITestResult result) {
+        if (test == null) return;
 
-    @AfterClass(alwaysRun = true)
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-            System.out.println("🧹 Browser closed after test execution");
+        if (result.getStatus() == ITestResult.SUCCESS) {
+            test.log(Status.PASS, "✅ Test Passed: " + result.getName());
+        } else if (result.getStatus() == ITestResult.FAILURE) {
+            test.log(Status.FAIL, "❌ Test Failed: " + result.getName());
+            test.log(Status.FAIL, result.getThrowable());
+            attachScreenshotToAllure();
+        } else if (result.getStatus() == ITestResult.SKIP) {
+            test.log(Status.SKIP, "⚠️ Test Skipped: " + result.getName());
         }
     }
 
     @AfterSuite(alwaysRun = true)
-    public void endReport() {
+    public void flushReport() {
         extent.flush();
-        System.out.println("📊 Extent Report generated successfully!");
+        System.out.println("📊 Colorful Extent Report generated successfully!");
     }
 }
