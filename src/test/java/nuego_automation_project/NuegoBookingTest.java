@@ -89,7 +89,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- TEST CASE 2: HOME PAGE -----------------------------
-    @Test(priority = 2, description = "Handle homepage popups and search bus")
+    @Test(priority = 2, dependsOnMethods = {"testLogin"}, description = "Handle homepage popups and search bus")
     @Severity(SeverityLevel.NORMAL)
     @Story("Home Page Flow")
     public void testHomePageActions() {
@@ -141,7 +141,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- TEST CASE 5: SELECT SEATS -----------------------------
-    @Test(priority = 5, description = "Select seat, pickup & drop points and click Book & Pay")
+    @Test(priority = 5, dependsOnMethods = {"testBusBookingPageActions"}, description = "Select seat, pickup & drop points and click Book & Pay")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Seat Selection & Booking")
     public void testSelectSeatAndProceedToPay() {
@@ -166,7 +166,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- TEST CASE 6: REVIEW BOOKING -----------------------------
-    @Test(priority = 6, description = "Verify Review Booking flow actions")
+    @Test(priority = 6, dependsOnMethods = {"testSelectSeatAndProceedToPay"}, description = "Verify Review Booking flow actions")
     @Severity(SeverityLevel.CRITICAL)
     public void testReviewBookingFlow() {
         test = extent.createTest("Review Booking Flow", "Full booking flow on review page");

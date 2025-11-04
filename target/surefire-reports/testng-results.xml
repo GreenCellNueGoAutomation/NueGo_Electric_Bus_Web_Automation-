@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="7" passed="1" failed="4" skipped="2">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-04T17:22:12 IST" name="NueGo Automation Suite" finished-at="2025-11-04T17:26:52 IST" duration-ms="279936">
+  <suite started-at="2025-11-04T17:47:21 IST" name="NueGo Automation Suite" finished-at="2025-11-04T17:50:33 IST" duration-ms="191901">
     <groups>
     </groups>
-    <test started-at="2025-11-04T17:22:12 IST" name="NueGo Functional Tests" finished-at="2025-11-04T17:26:52 IST" duration-ms="279936">
+    <test started-at="2025-11-04T17:47:21 IST" name="NueGo Functional Tests" finished-at="2025-11-04T17:50:33 IST" duration-ms="191901">
       <class name="nuego_automation_project.NuegoBookingTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:22:12 IST" name="setUp" finished-at="2025-11-04T17:22:17 IST" duration-ms="4756" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:47:22 IST" name="setUp" finished-at="2025-11-04T17:47:27 IST" duration-ms="5036" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:22:17 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-11-04T17:23:47 IST" duration-ms="89277" status="FAIL">
+        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:47:27 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-11-04T17:48:13 IST" duration-ms="46217" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Login failed: Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@aria-label='Please enter OTP character 1']' (tried for 30 second(s) with 500 milliseconds interval)]]>
@@ -19,7 +19,7 @@
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: Login failed: Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@aria-label='Please enter OTP character 1']' (tried for 30 second(s) with 500 milliseconds interval)
 at org.testng.Assert.fail(Assert.java:111)
-at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:216)
+at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
 at nuego_automation_project.NuegoBookingTest.testLogin(NuegoBookingTest.java:87)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -59,31 +59,31 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLogin -->
-        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:23:47 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-11-04T17:24:41 IST" duration-ms="54280" status="FAIL">
+        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:48:13 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-11-04T17:48:27 IST" duration-ms="13954" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Home Page test failed: Failed to search bus: element click intercepted: Element <p>...</p> is not clickable at point (517, 272). Other element would receive the click: <div class="col-6   auth-display-img-wrap blue-light-F2FAF9-bg position-relative" style="background-image: url(&quot;https://cdn.nuego.co.in/greencell/assets/images/login_form_Img.png&quot;);"></div>
+              <![CDATA[Home Page test failed: Failed to search bus: element click intercepted: Element <p>...</p> is not clickable at point (218, 324). Other element would receive the click: <div class="col-6   auth-display-img-wrap blue-light-F2FAF9-bg position-relative" style="background-image: url(&quot;https://cdn.nuego.co.in/greencell/assets/images/login_form_Img.png&quot;);"></div>
   (Session info: chrome=141.0.7390.123)
 Build info: version: '4.21.0', revision: '79ed462ef4'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [b1dc4e126aab61eb118514c935ef5c9d, clickElement {id=f.5929EB3300DB85E615F2ACA6CD007885.d.1508C0BD2A9FB5ED51EBD68258A860E0.e.12}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55220}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55220/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (b1dc4e126aab61eb118514c935ef5c9d)] -> xpath: //p[normalize-space()='Seater']]
-Session ID: b1dc4e126aab61eb118514c935ef5c9d]]>
+Command: [033b3e73f4ed7f5a66669c80a1c1148d, clickElement {id=f.B32BA2A9A5F4B904E98263DD6FF709DD.d.EDE434D19035C55CCE85DA6F64C67AB9.e.18}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64936}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64936/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (033b3e73f4ed7f5a66669c80a1c1148d)] -> xpath: //p[normalize-space()='Seater']]
+Session ID: 033b3e73f4ed7f5a66669c80a1c1148d]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Home Page test failed: Failed to search bus: element click intercepted: Element <p>...</p> is not clickable at point (517, 272). Other element would receive the click: <div class="col-6   auth-display-img-wrap blue-light-F2FAF9-bg position-relative" style="background-image: url(&quot;https://cdn.nuego.co.in/greencell/assets/images/login_form_Img.png&quot;);"></div>
+              <![CDATA[java.lang.AssertionError: Home Page test failed: Failed to search bus: element click intercepted: Element <p>...</p> is not clickable at point (218, 324). Other element would receive the click: <div class="col-6   auth-display-img-wrap blue-light-F2FAF9-bg position-relative" style="background-image: url(&quot;https://cdn.nuego.co.in/greencell/assets/images/login_form_Img.png&quot;);"></div>
   (Session info: chrome=141.0.7390.123)
 Build info: version: '4.21.0', revision: '79ed462ef4'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [b1dc4e126aab61eb118514c935ef5c9d, clickElement {id=f.5929EB3300DB85E615F2ACA6CD007885.d.1508C0BD2A9FB5ED51EBD68258A860E0.e.12}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55220}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55220/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (b1dc4e126aab61eb118514c935ef5c9d)] -> xpath: //p[normalize-space()='Seater']]
-Session ID: b1dc4e126aab61eb118514c935ef5c9d
+Command: [033b3e73f4ed7f5a66669c80a1c1148d, clickElement {id=f.B32BA2A9A5F4B904E98263DD6FF709DD.d.EDE434D19035C55CCE85DA6F64C67AB9.e.18}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64936}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64936/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (033b3e73f4ed7f5a66669c80a1c1148d)] -> xpath: //p[normalize-space()='Seater']]
+Session ID: 033b3e73f4ed7f5a66669c80a1c1148d
 at org.testng.Assert.fail(Assert.java:111)
-at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:216)
+at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
 at nuego_automation_project.NuegoBookingTest.testHomePageActions(NuegoBookingTest.java:104)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -123,7 +123,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testHomePageActions -->
-        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:24:41 IST" name="testFilters" description="Apply filters" finished-at="2025-11-04T17:24:41 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testHomePageActions" duration-ms="0" status="SKIP">
+        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:48:27 IST" name="testFilters" description="Apply filters" finished-at="2025-11-04T17:48:27 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testHomePageActions" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@48e92c5c depends on not successfully finished methods 
@@ -161,7 +161,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFilters -->
-        <test-method signature="testBusBookingPageActions()[pri:4, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:24:41 IST" name="testBusBookingPageActions" description="Scroll and click seat on Bus Booking page" finished-at="2025-11-04T17:24:41 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testFilters" duration-ms="0" status="SKIP">
+        <test-method signature="testBusBookingPageActions()[pri:4, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:48:27 IST" name="testBusBookingPageActions" description="Scroll and click seat on Bus Booking page" finished-at="2025-11-04T17:48:27 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testFilters" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@48e92c5c depends on not successfully finished methods 
@@ -199,7 +199,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testBusBookingPageActions -->
-        <test-method signature="testSelectSeatAndProceedToPay()[pri:5, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:24:41 IST" name="testSelectSeatAndProceedToPay" description="Select seat, pickup &amp; drop points and click Book &amp; Pay" finished-at="2025-11-04T17:25:13 IST" duration-ms="31242" status="FAIL">
+        <test-method signature="testSelectSeatAndProceedToPay()[pri:5, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:48:27 IST" name="testSelectSeatAndProceedToPay" description="Select seat, pickup &amp; drop points and click Book &amp; Pay" finished-at="2025-11-04T17:48:58 IST" duration-ms="31226" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Seat selection and payment test failed: Expected condition failed: waiting for presence of element located by: By.cssSelector: div[id*='seat'] (tried for 25 second(s) with 500 milliseconds interval)]]>
@@ -207,8 +207,8 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: Seat selection and payment test failed: Expected condition failed: waiting for presence of element located by: By.cssSelector: div[id*='seat'] (tried for 25 second(s) with 500 milliseconds interval)
 at org.testng.Assert.fail(Assert.java:111)
-at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:216)
-at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:165)
+at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
+at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:164)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -247,11 +247,11 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSelectSeatAndProceedToPay -->
-        <test-method signature="testReviewBookingFlow()[pri:6, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:25:13 IST" name="testReviewBookingFlow" description="Verify Review Booking flow actions" finished-at="2025-11-04T17:25:49 IST" duration-ms="36013" status="PASS">
+        <test-method signature="testReviewBookingFlow()[pri:6, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:48:59 IST" name="testReviewBookingFlow" description="Verify Review Booking flow actions" finished-at="2025-11-04T17:49:30 IST" duration-ms="31132" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testReviewBookingFlow -->
-        <test-method signature="testPaymentFlow()[pri:7, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:25:49 IST" name="testPaymentFlow" description="Complete payment flow using NetBanking - Axis Bank" finished-at="2025-11-04T17:26:52 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testReviewBookingFlow" duration-ms="62823" status="FAIL">
+        <test-method signature="testPaymentFlow()[pri:7, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:49:30 IST" name="testPaymentFlow" description="Complete payment flow using NetBanking - Axis Bank" finished-at="2025-11-04T17:50:33 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testReviewBookingFlow" duration-ms="62813" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Timeout: Element not clickable → By.xpath: //div[@id='1000120']//article[@role='none'][normalize-space()='NetBanking']]]>
@@ -260,7 +260,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
               <![CDATA[java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //div[@id='1000120']//article[@role='none'][normalize-space()='NetBanking']
 at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
 at nuego_automation_project.Payment_Mode.selectNetBanking(Payment_Mode.java:35)
-at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:188)
+at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:187)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -299,7 +299,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPaymentFlow -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:26:52 IST" name="tearDown" finished-at="2025-11-04T17:26:52 IST" duration-ms="598" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@48e92c5c]" started-at="2025-11-04T17:50:33 IST" name="tearDown" finished-at="2025-11-04T17:50:33 IST" duration-ms="703" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
