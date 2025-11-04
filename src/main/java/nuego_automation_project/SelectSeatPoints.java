@@ -44,7 +44,7 @@ public class SelectSeatPoints {
                     seatsSelected++;
                     pause(1200);
 
-                    if (seatsSelected >= 2) break; // Select only 2 seats
+                    if (seatsSelected >= 1) break; // ✅ Select only ONE seat
                 } else {
                     System.out.println("⚠️ Seat " + seatNumber + " is already booked, trying next...");
                 }
@@ -55,9 +55,9 @@ public class SelectSeatPoints {
         }
 
         // If not enough seats selected, pick from available automatically
-        if (seatsSelected < 2) {
-            System.out.println("🔁 Not enough preferred seats available. Selecting from remaining available seats...");
-            selectAnyAvailableSeats(2 - seatsSelected);
+        if (seatsSelected < 1) {
+            System.out.println("🔁 Preferred seat not available. Selecting one available seat automatically...");
+            selectAnyAvailableSeats(1 - seatsSelected); // ✅ Only 1 needed
         }
     }
 
@@ -87,12 +87,12 @@ public class SelectSeatPoints {
                 count++;
                 System.out.println("✅ Auto-selected available seat #" + count);
                 pause(1000);
-                if (count >= neededSeats) break;
+                if (count >= neededSeats) break; // ✅ Stop after selecting 1
             } catch (Exception ignored) {}
         }
 
         if (count < neededSeats) {
-            System.out.println("❌ Unable to select enough seats automatically.");
+            System.out.println("❌ Unable to select a seat automatically.");
         }
     }
 

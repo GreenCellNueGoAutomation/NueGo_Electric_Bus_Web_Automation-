@@ -5,11 +5,9 @@
     <classes>
       <class name="nuego_automation_project.NuegoBookingTest">
         <methods>
-          <include name="setUp"/>
-          <include name="flushReport"/>
           <include name="tearDown"/>
+          <include name="setUp"/>
           <include name="testPaymentFlow"/>
-          <include name="logTestResult"/>
           <include name="testSelectSeatAndProceedToPay"/>
           <include name="testReviewBookingFlow"/>
         </methods>

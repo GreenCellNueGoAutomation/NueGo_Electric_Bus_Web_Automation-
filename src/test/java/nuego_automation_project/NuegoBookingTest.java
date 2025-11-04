@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.BaseTest;
 import utils.ExtentReportManager;
@@ -77,8 +76,6 @@ public class NuegoBookingTest extends BaseTest {
             loginPage.login("7385109680", "1234");
             System.out.println("📱 Mobile number and OTP entered");
 
-            
-           
             test.log(Status.PASS, "✅ Login successful and redirected to Home page");
             Allure.step("Login successful - Home page loaded");
         } catch (Exception e) {
@@ -98,6 +95,7 @@ public class NuegoBookingTest extends BaseTest {
 
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Enter Destination']")));
             Thread.sleep(1500);
+
             Allure.step("Close popup if present");
             homePage.closePopupIfPresent();
             System.out.println("🪟 Popup closed successfully (if visible)");
@@ -193,38 +191,18 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- TEST CASE 6: REVIEW BOOKING -----------------------------
-    @Test(priority = 6,  description = "Verify Review Booking flow actions")
+    @Test(priority = 6, description = "Verify Review Booking full flow actions (coupon + passenger + wallet + proceed)")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Review Booking Page Actions")
-    @Description("Validate coupon apply, passenger selection, assurance, wallet apply, and proceed to book functionality.")
+    @Description("Execute complete Review Booking sequence including coupon apply, passenger selection, assurance, wallet apply, and proceed to booking.")
     public void testReviewBookingFlow() {
-        test = extent.createTest("Review Booking Flow", "Apply coupon, add passenger, and proceed to payment");
+        test = extent.createTest("Review Booking Flow", "Full booking flow on review page");
         try {
-            Allure.step("Scroll to Review Booking section");
-            reviewBookingPage.scrollToReviewSection();
+            Allure.step("Execute full review booking flow sequence");
+            reviewBookingPage.clickApplyCoupon();  // ✅ Handles all steps internally
 
-            Allure.step("Click on coupon button");
-            reviewBookingPage.clickCouponButton();
-
-            Allure.step("Scroll inside coupon modal");
-            reviewBookingPage.scrollCouponModal();
-
-            Allure.step("Apply selected coupon");
-            reviewBookingPage.clickApplyCoupon();
-
-            Allure.step("Select passenger from saved list");
-            reviewBookingPage.selectPassengerFromList();
-
-            Allure.step("Click NueGo Assurance checkbox");
-            reviewBookingPage.clickAssuranceCheckbox();
-
-            Allure.step("Apply wallet balance");
-            reviewBookingPage.clickWalletApply();
-
-            Allure.step("Click Proceed & Book button");
-            reviewBookingPage.clickProceedToBook();
-
-            test.log(Status.PASS, "✅ Review Booking flow completed successfully");
+            test.log(Status.PASS, "✅ Review Booking full flow completed successfully");
+            Allure.step("Review Booking flow executed successfully");
         } catch (Exception e) {
             handleFailure("Review Booking flow failed", e);
         }
@@ -261,44 +239,40 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    // ---------------------- SCREENSHOT, FAILURE & REPORT -----------------------------
+    // ---------------------- SCREENSHOT & FAILURE HANDLER -----------------------------
     @Attachment(value = "Screenshot on Failure", type = "image/png")
     public byte[] takeScreenshot() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
-    public void attachScreenshotToAllure() {
+    @Step("Handle failure and capture screenshot")
+    public void handleFailure(String message, Exception e) {
         try {
-            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            Allure.addAttachment("Failed Step Screenshot", new ByteArrayInputStream(screenshot));
-        } catch (Exception ignored) {}
-    }
+            if (test != null) {
+                test.log(Status.FAIL, message + " ❌");
+                test.log(Status.FAIL, e.getMessage());
+            }
 
-    private void handleFailure(String message, Exception e) {
-        attachScreenshotToAllure();
-        test.log(Status.FAIL, "❌ " + message + ": " + e.getMessage());
-        Allure.addAttachment("Failure Reason", e.getMessage());
-        Assert.fail(e.getMessage());
-    }
+            System.out.println("❌ " + message + ": " + e.getMessage());
 
-    @AfterMethod(alwaysRun = true)
-    public void logTestResult(ITestResult result) {
-        if (test == null) return;
+            // Attach screenshot in Allure
+            Allure.addAttachment("Failure Screenshot", new ByteArrayInputStream(takeScreenshot()));
 
-        if (result.getStatus() == ITestResult.SUCCESS) {
-            test.log(Status.PASS, "✅ Test Passed: " + result.getName());
-        } else if (result.getStatus() == ITestResult.FAILURE) {
-            test.log(Status.FAIL, "❌ Test Failed: " + result.getName());
-            test.log(Status.FAIL, result.getThrowable());
-            attachScreenshotToAllure();
-        } else if (result.getStatus() == ITestResult.SKIP) {
-            test.log(Status.SKIP, "⚠️ Test Skipped: " + result.getName());
+            // Mark test as failed
+            Assert.fail(message + ": " + e.getMessage());
+        } catch (Exception ex) {
+            System.out.println("⚠️ Error while handling failure: " + ex.getMessage());
         }
     }
 
-    @AfterSuite(alwaysRun = true)
-    public void flushReport() {
+    // ---------------------- CLEANUP -----------------------------
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+            System.out.println("🧹 Browser closed successfully");
+        }
         extent.flush();
-        System.out.println("📊 Colorful Extent Report generated successfully!");
+        System.out.println("📊 Extent report flushed successfully");
     }
 }

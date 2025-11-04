@@ -9,14 +9,14 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">4</td><td class="num attn">1</td><td class="num">0</td><td class="num attn">2</td><td class="num">110,243</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">166,108</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">nuego_automation_project.NuegoBookingTest</td><td><a href="#m0">testReviewBookingFlow</a></td><td rowspan="1">1762168472232</td><td rowspan="1">57699</td></tr><tr class="failedeven"><td><a href="#m1">testSelectSeatAndProceedToPay</a></td><td rowspan="1">1762168461161</td><td rowspan="1">10821</td></tr><tr><th colspan="4">Default test &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">nuego_automation_project.NuegoBookingTest</td><td><a href="#m2">testPaymentFlow</a></td><td rowspan="1">1762168530152</td><td rowspan="1">0</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="4">nuego_automation_project.NuegoBookingTest</td><td><a href="#m3">testBusBookingPageActions</a></td><td rowspan="1">1762168452907</td><td rowspan="1">8254</td></tr><tr class="passedeven"><td><a href="#m4">testFilters</a></td><td rowspan="1">1762168441942</td><td rowspan="1">10948</td></tr><tr class="passedeven"><td><a href="#m5">testHomePageActions</a></td><td rowspan="1">1762168425264</td><td rowspan="1">16666</td></tr><tr class="passedeven"><td><a href="#m6">testLogin</a></td><td rowspan="1">1762168422152</td><td rowspan="1">2981</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">nuego_automation_project.NuegoBookingTest</td><td><a href="#m0">testPaymentFlow</a></td><td rowspan="1">1762241451760</td><td rowspan="1">70025</td></tr><tr class="failedeven"><td><a href="#m1">testSelectSeatAndProceedToPay</a></td><td rowspan="1">1762241402528</td><td rowspan="1">8824</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">nuego_automation_project.NuegoBookingTest</td><td><a href="#m2">testBusBookingPageActions</a></td><td rowspan="1">1762241394313</td><td rowspan="1">8212</td></tr><tr class="passedeven"><td><a href="#m3">testFilters</a></td><td rowspan="1">1762241382002</td><td rowspan="1">12301</td></tr><tr class="passedeven"><td><a href="#m4">testHomePageActions</a></td><td rowspan="1">1762241365271</td><td rowspan="1">16724</td></tr><tr class="passedeven"><td><a href="#m5">testLogin</a></td><td rowspan="1">1762241358208</td><td rowspan="1">6905</td></tr><tr class="passedeven"><td><a href="#m6">testReviewBookingFlow</a></td><td rowspan="1">1762241411476</td><td rowspan="1">40273</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">nuego_automation_project.NuegoBookingTest#testReviewBookingFlow</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Expected condition failed: waiting for presence of element located by: By.xpath: //p[contains(@class,&apos;black-1E1E26-color&apos;) and normalize-space(text())=&apos;Rutuja&apos;] (tried for 25 second(s) with 500 milliseconds interval)
-	at org.testng.Assert.fail(Assert.java:111)
-	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:281)
-	at nuego_automation_project.NuegoBookingTest.testReviewBookingFlow(NuegoBookingTest.java:229)
+<h2>Default test</h2><h3 id="m0">nuego_automation_project.NuegoBookingTest#testPaymentFlow</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //div[@id=&apos;207&apos;]//article[@role=&apos;none&apos;][normalize-space()=&apos;Proceed to Pay&apos;]
+	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
+	at nuego_automation_project.Payment_Mode.clickProceedToPay(Payment_Mode.java:51)
+	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:226)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -48,7 +48,7 @@
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1578)
 	at org.testng.Assert.assertTrue(Assert.java:57)
-	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:185)
+	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:183)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -76,31 +76,10 @@
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">nuego_automation_project.NuegoBookingTest#testPaymentFlow</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testPaymentFlow() on instance nuego_automation_project.NuegoBookingTest@1199fe66 depends on not successfully finished methods 
-[nuego_automation_project.NuegoBookingTest.testReviewBookingFlow() on instance nuego_automation_project.NuegoBookingTest@1199fe66]
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">nuego_automation_project.NuegoBookingTest#testBusBookingPageActions</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">nuego_automation_project.NuegoBookingTest#testFilters</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">nuego_automation_project.NuegoBookingTest#testHomePageActions</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m6">nuego_automation_project.NuegoBookingTest#testLogin</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">nuego_automation_project.NuegoBookingTest#testBusBookingPageActions</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">nuego_automation_project.NuegoBookingTest#testFilters</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">nuego_automation_project.NuegoBookingTest#testHomePageActions</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">nuego_automation_project.NuegoBookingTest#testLogin</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">nuego_automation_project.NuegoBookingTest#testReviewBookingFlow</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
