@@ -1,1 +1,0 @@
-Expected condition failed: waiting for presence of element located by: By.xpath: //p[contains(@class,'black-1E1E26-color') and normalize-space(text())='Rutuja'] (tried for 25 second(s) with 500 milliseconds interval)
