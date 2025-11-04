@@ -44,13 +44,13 @@ public class NuegoBookingTest extends BaseTest {
         options.addArguments("--disable-notifications");
         options.addArguments("--ignore-certificate-errors");
         options.addArguments("--disable-blink-features=AutomationControlled");
-
-        // ✅ Jenkins-safe setup
-        options.addArguments("--headless=new");          // Headless for Jenkins
-        options.addArguments("--no-sandbox");             // Needed for CI/CD
-        options.addArguments("--disable-dev-shm-usage");  // Prevent shared memory issues
-        options.addArguments("--window-size=1920,1080");  // Ensure seat map fully visible
+        options.addArguments("--no-sandbox");             // ✅ Jenkins compatibility
+        options.addArguments("--disable-dev-shm-usage");  // ✅ Prevent memory issues
+        options.addArguments("--window-size=1920,1080");
         options.addArguments("--remote-allow-origins=*");
+
+        // ✅ Always run visible browser, even in Jenkins
+        System.out.println("🚀 Running Chrome in VISIBLE mode (Jenkins + Local)");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -66,7 +66,7 @@ public class NuegoBookingTest extends BaseTest {
         reviewBookingPage = new Review_Booking_Page(driver);
         paymentModePage = new Payment_Mode(driver);
 
-        System.out.println("✅ Browser launched (headless) and setup completed");
+        System.out.println("✅ Browser launched successfully (Visible Mode)");
     }
 
     // ---------------------- TEST CASE 1: LOGIN -----------------------------
@@ -147,7 +147,6 @@ public class NuegoBookingTest extends BaseTest {
     public void testSelectSeatAndProceedToPay() {
         test = extent.createTest("Seat Selection Test", "Select seats and proceed to payment");
         try {
-            // ✅ Extra wait for seat map rendering (important for Jenkins)
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[id*='seat']")));
             Thread.sleep(1500);
 

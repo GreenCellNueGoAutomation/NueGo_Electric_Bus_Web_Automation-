@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>? NueGo Automation Report</title>
+<title>🚀 NueGo Automation Report</title>
 <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
 <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
 <link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ce8b10435bcbae260c334c0d0c6b61d2c19b6168/spark/css/spark-style.css" rel="stylesheet" />
@@ -32,10 +32,10 @@
 </ul>
 <ul class="nav-right">
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">NueGo Web Regression Suite - Build #149</span></a>
+<a href="#"><span class="badge badge-primary">NueGo Web Regression Suite - Build #20251104_172759</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Nov 4, 2025 03:04:58 PM</span></a>
+<a href="#"><span class="badge badge-primary">Nov 4, 2025 05:27:59 PM</span></a>
 </li>
 </ul>
 </div>
@@ -81,25 +81,25 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="fail" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">testLogin</p>
             <p class="text-sm">
-              <span>3:05:01 PM</span> / <span>00:00:07:293</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>5:28:03 PM</span> / <span>00:00:45:618</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testLogin</h5>
-<span class='badge badge-success'>11.04.2025 3:05:01 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:05:08 PM</span>
-<span class='badge badge-default'>00:00:07:293</span>
+<h5 class="test-status text-fail">testLogin</h5>
+<span class='badge badge-success'>11.04.2025 5:28:03 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:28:49 PM</span>
+<span class='badge badge-default'>00:00:45:618</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -111,10 +111,52 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:05:08 PM</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:28:49 PM</td>
         <td>
-          ? Test Passed Successfully
+          ❌ Test Failed: Login failed: Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@aria-label='Please enter OTP character 1']' (tried for 30 second(s) with 500 milliseconds interval)
+    <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testLogin_20251104_172848.png' src="C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testLogin_20251104_172848.png">
+    
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:28:49 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Login failed: Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@aria-label='Please enter OTP character 1']' (tried for 30 second(s) with 500 milliseconds interval)
+	at org.testng.Assert.fail(Assert.java:111)
+	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:216)
+	at nuego_automation_project.NuegoBookingTest.testLogin(NuegoBookingTest.java:87)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</textarea>
+          
         </td>
       </tr>
   </tbody>
@@ -122,25 +164,25 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="2"
+        <li class="test-item"  status="fail" test-id="2"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">Login Test</p>
             <p class="text-sm">
-              <span>3:05:01 PM</span> / <span>00:00:07:164</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>5:28:03 PM</span> / <span>00:00:44:995</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Login Test</h5>
-<span class='badge badge-success'>11.04.2025 3:05:01 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:05:08 PM</span>
-<span class='badge badge-default'>00:00:07:164</span>
+<h5 class="test-status text-fail">Login Test</h5>
+<span class='badge badge-success'>11.04.2025 5:28:03 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:28:48 PM</span>
+<span class='badge badge-default'>00:00:44:995</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -153,10 +195,17 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:05:08 PM</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:28:48 PM</td>
         <td>
-          ? Login successful and redirected to Home page
+          Login failed ❌
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:28:48 PM</td>
+        <td>
+          Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@aria-label='Please enter OTP character 1']' (tried for 30 second(s) with 500 milliseconds interval)
         </td>
       </tr>
   </tbody>
@@ -164,25 +213,25 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="3"
+        <li class="test-item"  status="fail" test-id="3"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">testHomePageActions</p>
             <p class="text-sm">
-              <span>3:05:08 PM</span> / <span>00:00:16:622</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>5:28:49 PM</span> / <span>00:00:14:394</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testHomePageActions</h5>
-<span class='badge badge-success'>11.04.2025 3:05:08 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:05:25 PM</span>
-<span class='badge badge-default'>00:00:16:622</span>
+<h5 class="test-status text-fail">testHomePageActions</h5>
+<span class='badge badge-success'>11.04.2025 5:28:49 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:29:03 PM</span>
+<span class='badge badge-default'>00:00:14:394</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -194,10 +243,68 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:05:25 PM</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:29:03 PM</td>
         <td>
-          ? Test Passed Successfully
+          ❌ Test Failed: Home Page test failed: Failed to search bus: element click intercepted: Element <p>...</p> is not clickable at point (517, 272). Other element would receive the click: <div class="col-6   auth-display-img-wrap blue-light-F2FAF9-bg position-relative" style="background-image: url(&quot;https://cdn.nuego.co.in/greencell/assets/images/login_form_Img.png&quot;);"></div>
+  (Session info: chrome=141.0.7390.123)
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [654afe04bf42cd8b42ccd0f8eaf6ae0a, clickElement {id=f.6002B1EE5D848BE1C72169EFAF5322E7.d.CC61CC343DB5CB4106670DB3D4D35093.e.25}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55600}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55600/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (654afe04bf42cd8b42ccd0f8eaf6ae0a)] -> xpath: //p[normalize-space()='Seater']]
+Session ID: 654afe04bf42cd8b42ccd0f8eaf6ae0a
+    <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testHomePageActions_20251104_172903.png' src="C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testHomePageActions_20251104_172903.png">
+    
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:29:03 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: Home Page test failed: Failed to search bus: element click intercepted: Element <p>...</p> is not clickable at point (517, 272). Other element would receive the click: <div class="col-6   auth-display-img-wrap blue-light-F2FAF9-bg position-relative" style="background-image: url(&quot;https://cdn.nuego.co.in/greencell/assets/images/login_form_Img.png&quot;);"></div>
+  (Session info: chrome=141.0.7390.123)
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [654afe04bf42cd8b42ccd0f8eaf6ae0a, clickElement {id=f.6002B1EE5D848BE1C72169EFAF5322E7.d.CC61CC343DB5CB4106670DB3D4D35093.e.25}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55600}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55600/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (654afe04bf42cd8b42ccd0f8eaf6ae0a)] -> xpath: //p[normalize-space()='Seater']]
+Session ID: 654afe04bf42cd8b42ccd0f8eaf6ae0a
+	at org.testng.Assert.fail(Assert.java:111)
+	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:216)
+	at nuego_automation_project.NuegoBookingTest.testHomePageActions(NuegoBookingTest.java:104)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</textarea>
+          
         </td>
       </tr>
   </tbody>
@@ -205,25 +312,25 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="4"
+        <li class="test-item"  status="fail" test-id="4"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">Home Page Test</p>
             <p class="text-sm">
-              <span>3:05:09 PM</span> / <span>00:00:16:614</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>5:28:49 PM</span> / <span>00:00:13:890</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Home Page Test</h5>
-<span class='badge badge-success'>11.04.2025 3:05:09 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:05:25 PM</span>
-<span class='badge badge-default'>00:00:16:614</span>
+<h5 class="test-status text-fail">Home Page Test</h5>
+<span class='badge badge-success'>11.04.2025 5:28:49 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:29:03 PM</span>
+<span class='badge badge-default'>00:00:13:890</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -236,10 +343,25 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:05:25 PM</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:29:03 PM</td>
         <td>
-          ? Bus search performed successfully (Agra ? Bassi)
+          Home Page test failed ❌
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:29:03 PM</td>
+        <td>
+          Failed to search bus: element click intercepted: Element <p>...</p> is not clickable at point (517, 272). Other element would receive the click: <div class="col-6   auth-display-img-wrap blue-light-F2FAF9-bg position-relative" style="background-image: url(&quot;https://cdn.nuego.co.in/greencell/assets/images/login_form_Img.png&quot;);"></div>
+  (Session info: chrome=141.0.7390.123)
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [654afe04bf42cd8b42ccd0f8eaf6ae0a, clickElement {id=f.6002B1EE5D848BE1C72169EFAF5322E7.d.CC61CC343DB5CB4106670DB3D4D35093.e.25}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55600}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55600/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (654afe04bf42cd8b42ccd0f8eaf6ae0a)] -> xpath: //p[normalize-space()='Seater']]
+Session ID: 654afe04bf42cd8b42ccd0f8eaf6ae0a
         </td>
       </tr>
   </tbody>
@@ -247,25 +369,25 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="fail" test-id="5"
+        <li class="test-item"  status="skip" test-id="5"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">testFilters</p>
             <p class="text-sm">
-              <span>3:05:25 PM</span> / <span>00:00:20:769</span>
-              <span class="badge fail-bg log float-right">Fail</span>
+              <span>5:29:03 PM</span> / <span>00:00:00:015</span>
+              <span class="badge skip-bg log float-right">Skip</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">testFilters</h5>
-<span class='badge badge-success'>11.04.2025 3:05:25 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:05:46 PM</span>
-<span class='badge badge-default'>00:00:20:769</span>
+<h5 class="test-status text-skip">testFilters</h5>
+<span class='badge badge-success'>11.04.2025 5:29:03 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:29:03 PM</span>
+<span class='badge badge-default'>00:00:00:015</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -277,38 +399,110 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:05:46 PM</td>
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>5:29:03 PM</td>
         <td>
-          ? Test Failed: Filter test failed: Expected condition failed: waiting for visibility of element located by By.xpath: //div[6]//img[1] (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.21.0', revision: '79ed462ef4'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58422}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58422/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: f649be70f12e6680f9c7a383bbd0ae1c
+          ⚠️ Test Skipped: java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@5d5f10b2 depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@5d5f10b2]
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="6"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">testBusBookingPageActions</p>
+            <p class="text-sm">
+              <span>5:29:03 PM</span> / <span>00:00:00:015</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">testBusBookingPageActions</h5>
+<span class='badge badge-success'>11.04.2025 5:29:03 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:29:03 PM</span>
+<span class='badge badge-default'>00:00:00:015</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>5:29:03 PM</td>
+        <td>
+          ⚠️ Test Skipped: java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@5d5f10b2 depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@5d5f10b2]
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="7"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">testSelectSeatAndProceedToPay</p>
+            <p class="text-sm">
+              <span>5:29:03 PM</span> / <span>00:00:31:594</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">testSelectSeatAndProceedToPay</h5>
+<span class='badge badge-success'>11.04.2025 5:29:03 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:29:35 PM</span>
+<span class='badge badge-default'>00:00:31:594</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:29:35 PM</td>
+        <td>
+          ❌ Test Failed: Seat selection and payment test failed: Expected condition failed: waiting for presence of element located by: By.cssSelector: div[id*='seat'] (tried for 25 second(s) with 500 milliseconds interval)
     <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testFilters_20251104_150546.png' src="C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testFilters_20251104_150546.png">
+<img data-featherlight='C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testSelectSeatAndProceedToPay_20251104_172934.png' src="C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testSelectSeatAndProceedToPay_20251104_172934.png">
     
     </div></div>
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:05:46 PM</td>
+        <td>5:29:35 PM</td>
         <td>
-          <textarea readonly class="code-block">java.lang.AssertionError: Filter test failed: Expected condition failed: waiting for visibility of element located by By.xpath: //div[6]//img[1] (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.21.0', revision: '79ed462ef4'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58422}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58422/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: f649be70f12e6680f9c7a383bbd0ae1c
+          <textarea readonly class="code-block">java.lang.AssertionError: Seat selection and payment test failed: Expected condition failed: waiting for presence of element located by: By.cssSelector: div[id*='seat'] (tried for 25 second(s) with 500 milliseconds interval)
 	at org.testng.Assert.fail(Assert.java:111)
-	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:262)
-	at nuego_automation_project.NuegoBookingTest.testFilters(NuegoBookingTest.java:137)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:216)
+	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:165)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
 	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
@@ -317,7 +511,7 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
 	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at org.testng.TestRunner.privateRun(TestRunner.java:739)
 	at org.testng.TestRunner.run(TestRunner.java:614)
 	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
@@ -330,111 +524,11 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
 	at org.testng.TestNG.runSuites(TestNG.java:1112)
 	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </textarea>
           
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="fail" test-id="6"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">Filter Test</p>
-            <p class="text-sm">
-              <span>3:05:25 PM</span> / <span>00:00:20:612</span>
-              <span class="badge fail-bg log float-right">Fail</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-fail">Filter Test</h5>
-<span class='badge badge-success'>11.04.2025 3:05:25 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:05:46 PM</span>
-<span class='badge badge-default'>00:00:20:612</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-<div class="m-t-10 m-l-5">Apply filters and verify results</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:05:46 PM</td>
-        <td>
-          Filter test failed ?
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:05:46 PM</td>
-        <td>
-          Expected condition failed: waiting for visibility of element located by By.xpath: //div[6]//img[1] (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.21.0', revision: '79ed462ef4'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58422}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58422/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: f649be70f12e6680f9c7a383bbd0ae1c
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="skip" test-id="7"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testBusBookingPageActions</p>
-            <p class="text-sm">
-              <span>3:05:46 PM</span> / <span>00:00:00:009</span>
-              <span class="badge skip-bg log float-right">Skip</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-skip">testBusBookingPageActions</h5>
-<span class='badge badge-success'>11.04.2025 3:05:46 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:05:46 PM</span>
-<span class='badge badge-default'>00:00:00:009</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log skip-bg">Skip</span></td>
-        <td>3:05:46 PM</td>
-        <td>
-          ?? Test Skipped: java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
-[nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@34f22f9d]
         </td>
       </tr>
   </tbody>
@@ -447,98 +541,9 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testSelectSeatAndProceedToPay</p>
-            <p class="text-sm">
-              <span>3:05:46 PM</span> / <span>00:02:48:269</span>
-              <span class="badge fail-bg log float-right">Fail</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-fail">testSelectSeatAndProceedToPay</h5>
-<span class='badge badge-success'>11.04.2025 3:05:46 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:08:34 PM</span>
-<span class='badge badge-default'>00:02:48:269</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:08:34 PM</td>
-        <td>
-          ? Test Failed: Seat selection and payment test failed: Expected condition failed: waiting for presence of element located by: By.xpath: //div[normalize-space()='Eidgah Bus Stan...'] (tried for 30 second(s) with 500 milliseconds interval)
-    <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testSelectSeatAndProceedToPay_20251104_150834.png' src="C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testSelectSeatAndProceedToPay_20251104_150834.png">
-    
-    </div></div>
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:08:34 PM</td>
-        <td>
-          <textarea readonly class="code-block">java.lang.AssertionError: Seat selection and payment test failed: Expected condition failed: waiting for presence of element located by: By.xpath: //div[normalize-space()='Eidgah Bus Stan...'] (tried for 30 second(s) with 500 milliseconds interval)
-	at org.testng.Assert.fail(Assert.java:111)
-	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:262)
-	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:189)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-</textarea>
-          
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="fail" test-id="9"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
             <p class="name">Seat Selection Test</p>
             <p class="text-sm">
-              <span>3:05:46 PM</span> / <span>00:02:48:122</span>
+              <span>5:29:03 PM</span> / <span>00:00:31:145</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -547,10 +552,10 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-fail">Seat Selection Test</h5>
-<span class='badge badge-success'>11.04.2025 3:05:46 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:08:34 PM</span>
-<span class='badge badge-default'>00:02:48:122</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
+<span class='badge badge-success'>11.04.2025 5:29:03 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:29:34 PM</span>
+<span class='badge badge-default'>00:00:31:145</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
 <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
@@ -563,16 +568,57 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
   <tbody>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:08:34 PM</td>
+        <td>5:29:34 PM</td>
         <td>
-          Seat selection and payment test failed ?
+          Seat selection and payment test failed ❌
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:08:34 PM</td>
+        <td>5:29:34 PM</td>
         <td>
-          Expected condition failed: waiting for presence of element located by: By.xpath: //div[normalize-space()='Eidgah Bus Stan...'] (tried for 30 second(s) with 500 milliseconds interval)
+          Expected condition failed: waiting for presence of element located by: By.cssSelector: div[id*='seat'] (tried for 25 second(s) with 500 milliseconds interval)
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="9"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">testReviewBookingFlow</p>
+            <p class="text-sm">
+              <span>5:29:35 PM</span> / <span>00:00:31:196</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">testReviewBookingFlow</h5>
+<span class='badge badge-success'>11.04.2025 5:29:35 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:30:06 PM</span>
+<span class='badge badge-default'>00:00:31:196</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:30:06 PM</td>
+        <td>
+          ✅ Test Passed Successfully
         </td>
       </tr>
   </tbody>
@@ -585,50 +631,9 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testReviewBookingFlow</p>
-            <p class="text-sm">
-              <span>3:08:34 PM</span> / <span>00:00:31:173</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testReviewBookingFlow</h5>
-<span class='badge badge-success'>11.04.2025 3:08:34 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:09:05 PM</span>
-<span class='badge badge-default'>00:00:31:173</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:09:05 PM</td>
-        <td>
-          ? Test Passed Successfully
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="11"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
             <p class="name">Review Booking Flow</p>
             <p class="text-sm">
-              <span>3:08:34 PM</span> / <span>00:00:31:166</span>
+              <span>5:29:35 PM</span> / <span>00:00:31:185</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -637,10 +642,10 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">Review Booking Flow</h5>
-<span class='badge badge-success'>11.04.2025 3:08:34 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:09:05 PM</span>
-<span class='badge badge-default'>00:00:31:166</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
+<span class='badge badge-success'>11.04.2025 5:29:35 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:30:06 PM</span>
+<span class='badge badge-default'>00:00:31:185</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
 <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
@@ -653,9 +658,9 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
   <tbody>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:09:05 PM</td>
+        <td>5:30:06 PM</td>
         <td>
-          ? Review Booking full flow completed successfully
+          ✅ Review Booking full flow completed successfully
         </td>
       </tr>
   </tbody>
@@ -663,14 +668,14 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 </div>
           </div>
         </li>
-        <li class="test-item"  status="fail" test-id="12"
+        <li class="test-item"  status="fail" test-id="11"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">testPaymentFlow</p>
             <p class="text-sm">
-              <span>3:09:05 PM</span> / <span>00:01:02:948</span>
+              <span>5:30:06 PM</span> / <span>00:01:03:110</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -679,10 +684,10 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-fail">testPaymentFlow</h5>
-<span class='badge badge-success'>11.04.2025 3:09:05 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:10:08 PM</span>
-<span class='badge badge-default'>00:01:02:948</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
+<span class='badge badge-success'>11.04.2025 5:30:06 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:31:09 PM</span>
+<span class='badge badge-default'>00:01:03:110</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
 <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
@@ -694,27 +699,25 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
   <tbody>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:10:08 PM</td>
+        <td>5:31:09 PM</td>
         <td>
-          ? Test Failed: Timeout: Element not clickable ? By.xpath: //div[@id='1000120']//article[@role='none'][normalize-space()='NetBanking']
+          ❌ Test Failed: Timeout: Element not clickable → By.xpath: //div[@id='1000120']//article[@role='none'][normalize-space()='NetBanking']
     <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testPaymentFlow_20251104_151008.png' src="C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testPaymentFlow_20251104_151008.png">
+<img data-featherlight='C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testPaymentFlow_20251104_173109.png' src="C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation/target/screenshots/testPaymentFlow_20251104_173109.png">
     
     </div></div>
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:10:08 PM</td>
+        <td>5:31:09 PM</td>
         <td>
-          <textarea readonly class="code-block">java.lang.AssertionError: Timeout: Element not clickable ? By.xpath: //div[@id='1000120']//article[@role='none'][normalize-space()='NetBanking']
+          <textarea readonly class="code-block">java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //div[@id='1000120']//article[@role='none'][normalize-space()='NetBanking']
 	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
 	at nuego_automation_project.Payment_Mode.selectNetBanking(Payment_Mode.java:35)
-	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:220)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:188)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
 	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
@@ -723,7 +726,7 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
 	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at org.testng.TestRunner.privateRun(TestRunner.java:739)
 	at org.testng.TestRunner.run(TestRunner.java:614)
 	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
@@ -736,13 +739,9 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
 	at org.testng.TestNG.runSuites(TestNG.java:1112)
 	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </textarea>
           
         </td>
@@ -752,14 +751,14 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="13"
+        <li class="test-item"  status="pass" test-id="12"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">Payment Flow Test</p>
             <p class="text-sm">
-              <span>3:09:05 PM</span> / <span>00:00:00:000</span>
+              <span>5:30:06 PM</span> / <span>00:00:00:000</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -768,10 +767,10 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">Payment Flow Test</h5>
-<span class='badge badge-success'>11.04.2025 3:09:05 PM</span>
-<span class='badge badge-danger'>11.04.2025 3:09:05 PM</span>
+<span class='badge badge-success'>11.04.2025 5:30:06 PM</span>
+<span class='badge badge-danger'>11.04.2025 5:30:06 PM</span>
 <span class='badge badge-default'>00:00:00:000</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=13</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
 <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
@@ -800,15 +799,15 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>3</span>
+<span class='badge log badge-danger'>4</span>
 </span>
 <p class="name">java.lang.AssertionError</p>
-<p class="duration text-sm">3 tests</p>
+<p class="duration text-sm">4 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>java.lang.AssertionError</h4>
-<span status="fail" class='badge log badge-danger'>3 failed</span>
+<span status="fail" class='badge log badge-danger'>4 failed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -821,23 +820,30 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>15:05:25 PM</td>
+<td>17:28:03 PM</td>
 <td>
-<a href="#" class="linked" test-id='5' id='5'>testFilters</a>
+<a href="#" class="linked" test-id='1' id='1'>testLogin</a>
 </td>
 </tr>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>15:05:46 PM</td>
+<td>17:28:49 PM</td>
 <td>
-<a href="#" class="linked" test-id='8' id='8'>testSelectSeatAndProceedToPay</a>
+<a href="#" class="linked" test-id='3' id='3'>testHomePageActions</a>
 </td>
 </tr>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>15:09:05 PM</td>
+<td>17:29:03 PM</td>
 <td>
-<a href="#" class="linked" test-id='12' id='12'>testPaymentFlow</a>
+<a href="#" class="linked" test-id='7' id='7'>testSelectSeatAndProceedToPay</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:30:06 PM</td>
+<td>
+<a href="#" class="linked" test-id='11' id='11'>testPaymentFlow</a>
 </td>
 </tr>
 </tbody>
@@ -857,25 +863,25 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Nov 4, 2025 03:04:58 PM</h3>
+<h3>Nov 4, 2025 05:27:59 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Nov 4, 2025 03:10:09 PM</h3>
+<h3>Nov 4, 2025 05:31:10 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>7</h3>
+<h3>3</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>5</h3>
+<h3>7</h3>
 </div></div>
 </div>
 </div>
@@ -891,13 +897,13 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='53%'>
-<b>7</b> tests passed
+<div><small data-tooltip='25%'>
+<b>3</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='38%'><b>5</b> tests failed,
-<b>1</b> skipped, <b data-tooltip='0%'>0</b> others
+<small data-tooltip='58%'><b>7</b> tests failed,
+<b>2</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
 </div>
@@ -914,10 +920,10 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='35%'><b>6</b> events passed</small></div>
+<div><small data-tooltip='11%'><b>2</b> events passed</small></div>
 <div>
-<small data-tooltip='58%'><b>10</b> events failed,
-<b data-tooltip='%'>1</b> others
+<small data-tooltip='77%'><b>14</b> events failed,
+<b data-tooltip='%'>2</b> others
 </small>
 </div>
 </div>
@@ -933,7 +939,7 @@ Session ID: f649be70f12e6680f9c7a383bbd0ae1c
 </div></div>
 <script>
 var timeline = {
-"testLogin":7.293,"Login Test":7.164,"testHomePageActions":16.622,"Home Page Test":16.614,"testFilters":20.769,"Filter Test":20.612,"testBusBookingPageActions":0.009,"testSelectSeatAndProceedToPay":168.269,"Seat Selection Test":168.122,"testReviewBookingFlow":31.173,"Review Booking Flow":31.166,"testPaymentFlow":62.948,"Payment Flow Test":0
+"testLogin":45.618,"Login Test":44.995,"testHomePageActions":14.394,"Home Page Test":13.89,"testFilters":0.015,"testBusBookingPageActions":0.015,"testSelectSeatAndProceedToPay":31.594,"Seat Selection Test":31.145,"testReviewBookingFlow":31.196,"Review Booking Flow":31.185,"testPaymentFlow":63.11,"Payment Flow Test":0
 };
 </script>
 <div class="row">
@@ -957,7 +963,7 @@ var timeline = {
 </tr>
 <tr>
 <td>Build Number</td>
-<td>149</td>
+<td>20251104_172759</td>
 </tr>
 </tbody>
 </table></div>
@@ -968,10 +974,10 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 7,
-failParent: 5,
+passParent: 3,
+failParent: 7,
 warningParent: 0,
-skipParent: 1,
+skipParent: 2,
 childCount: 5,
 passChild: 0,
 failChild: 0,
@@ -985,10 +991,10 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 6,
-failEvents: 10,
+passEvents: 2,
+failEvents: 14,
 warningEvents: 0,
-skipEvents: 1,
+skipEvents: 2,
 infoEvents: 0
 };
 </script>        </div>
