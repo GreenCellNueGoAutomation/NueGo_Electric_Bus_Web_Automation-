@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-NueGo_Automation_Suite" class="navigator-link">
+              <span class="suite-name border-failed">NueGo Automation Suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-NueGo_Automation_Suite" class="navigator-link ">
+                    <span>C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation\testng.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-NueGo_Automation_Suite" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-NueGo_Automation_Suite" class="navigator-link ">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-NueGo_Automation_Suite" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-NueGo_Automation_Suite" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-NueGo_Automation_Suite" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-NueGo_Automation_Suite" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">7 methods, 3 failed,  1 skipped,  3 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-NueGo_Automation_Suite" class="hide-methods failed suite-NueGo_Automation_Suite"> (hide)</a> <!-- hide-methods failed suite-NueGo_Automation_Suite -->
+                      <a href="#" panel-name="suite-NueGo_Automation_Suite" class="show-methods failed suite-NueGo_Automation_Suite"> (show)</a> <!-- show-methods failed suite-NueGo_Automation_Suite -->
+                    </span>
+                    <div class="method-list-content failed suite-NueGo_Automation_Suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NueGo_Automation_Suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testFilters">testFilters</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NueGo_Automation_Suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testPaymentFlow">testPaymentFlow</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NueGo_Automation_Suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testSelectSeatAndProceedToPay">testSelectSeatAndProceedToPay</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-NueGo_Automation_Suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title skipped">Skipped methods</span>
+                    <span class="show-or-hide-methods skipped">
+                      <a href="#" panel-name="suite-NueGo_Automation_Suite" class="hide-methods skipped suite-NueGo_Automation_Suite"> (hide)</a> <!-- hide-methods skipped suite-NueGo_Automation_Suite -->
+                      <a href="#" panel-name="suite-NueGo_Automation_Suite" class="show-methods skipped suite-NueGo_Automation_Suite"> (show)</a> <!-- show-methods skipped suite-NueGo_Automation_Suite -->
+                    </span>
+                    <div class="method-list-content skipped suite-NueGo_Automation_Suite">
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-NueGo_Automation_Suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testBusBookingPageActions">testBusBookingPageActions</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content skipped suite-NueGo_Automation_Suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-NueGo_Automation_Suite" class="hide-methods passed suite-NueGo_Automation_Suite"> (hide)</a> <!-- hide-methods passed suite-NueGo_Automation_Suite -->
+                      <a href="#" panel-name="suite-NueGo_Automation_Suite" class="show-methods passed suite-NueGo_Automation_Suite"> (show)</a> <!-- show-methods passed suite-NueGo_Automation_Suite -->
+                    </span>
+                    <div class="method-list-content passed suite-NueGo_Automation_Suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NueGo_Automation_Suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testHomePageActions">testHomePageActions</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NueGo_Automation_Suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testLogin">testLogin</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NueGo_Automation_Suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testReviewBookingFlow">testReviewBookingFlow</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-NueGo_Automation_Suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-NueGo_Automation_Suite" class="panel NueGo_Automation_Suite">
+          <div class="suite-NueGo_Automation_Suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">nuego_automation_project.NuegoBookingTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testFilters">
+                  </a> <!-- testFilters -->
+                  <span class="method-name">testFilters</span>
+                  <div class="stack-trace">java.lang.AssertionError: Filter test failed: Expected condition failed: waiting for visibility of element located by By.xpath: //div[6]//img[1] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.12&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58422}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58422/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: f649be70f12e6680f9c7a383bbd0ae1c
+	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:262)
+	at nuego_automation_project.NuegoBookingTest.testFilters(NuegoBookingTest.java:137)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 32 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Apply filters: Timer, Boarding & Dropping points)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testPaymentFlow">
+                  </a> <!-- testPaymentFlow -->
+                  <span class="method-name">testPaymentFlow</span>
+                  <div class="stack-trace">java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //div[@id=&apos;1000120&apos;]//article[@role=&apos;none&apos;][normalize-space()=&apos;NetBanking&apos;]
+	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
+	at nuego_automation_project.Payment_Mode.selectNetBanking(Payment_Mode.java:35)
+	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:220)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Complete payment flow using NetBanking - Axis Bank)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testSelectSeatAndProceedToPay">
+                  </a> <!-- testSelectSeatAndProceedToPay -->
+                  <span class="method-name">testSelectSeatAndProceedToPay</span>
+                  <div class="stack-trace">java.lang.AssertionError: Seat selection and payment test failed: Expected condition failed: waiting for presence of element located by: By.xpath: //div[normalize-space()=&apos;Eidgah Bus Stan...&apos;] (tried for 30 second(s) with 500 milliseconds interval)
+	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:262)
+	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:189)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 32 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Select seat, pickup & drop points and click Book & Pay)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-NueGo_Automation_Suite-class-failed -->
+          <div class="suite-NueGo_Automation_Suite-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">nuego_automation_project.NuegoBookingTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testBusBookingPageActions">
+                  </a> <!-- testBusBookingPageActions -->
+                  <span class="method-name">testBusBookingPageActions</span>
+                  <div class="stack-trace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@34f22f9d]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 22 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Scroll and click seat on Bus Booking page)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-NueGo_Automation_Suite-class-skipped -->
+          <div class="suite-NueGo_Automation_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">nuego_automation_project.NuegoBookingTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testHomePageActions">
+                  </a> <!-- testHomePageActions -->
+                  <span class="method-name">testHomePageActions</span>
+                  <em>
+(Handle homepage popups and search bus)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testLogin">
+                  </a> <!-- testLogin -->
+                  <span class="method-name">testLogin</span>
+                  <em>
+(Login to application using mobile and OTP)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testReviewBookingFlow">
+                  </a> <!-- testReviewBookingFlow -->
+                  <span class="method-name">testReviewBookingFlow</span>
+                  <em>
+(Verify Review Booking full flow actions (coupon + passenger + wallet + proceed))                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-NueGo_Automation_Suite-class-passed -->
+        </div> <!-- panel NueGo_Automation_Suite -->
+        <div panel-name="test-xml-NueGo_Automation_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation\testng.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;NueGo Automation Suite&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;NueGo Functional Tests&quot; verbose=&quot;0&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;nuego_automation_project.NuegoBookingTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- NueGo Functional Tests --&gt;
+&lt;/suite&gt; &lt;!-- NueGo Automation Suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-NueGo_Automation_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for NueGo Automation Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">NueGo Functional Tests (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-NueGo_Automation_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for NueGo Automation Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-NueGo_Automation_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for NueGo Automation Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_NueGo_Automation_Suite');
+function tableData_NueGo_Automation_Suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(7);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'testSelectSeatAndProceedToPay')
+data.setCell(0, 2, 'nuego_automation_project.NuegoBookingTest')
+data.setCell(0, 3, 168182);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'testPaymentFlow')
+data.setCell(1, 2, 'nuego_automation_project.NuegoBookingTest')
+data.setCell(1, 3, 62857);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'testReviewBookingFlow')
+data.setCell(2, 2, 'nuego_automation_project.NuegoBookingTest')
+data.setCell(2, 3, 31169);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'testFilters')
+data.setCell(3, 2, 'nuego_automation_project.NuegoBookingTest')
+data.setCell(3, 3, 20683);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'testHomePageActions')
+data.setCell(4, 2, 'nuego_automation_project.NuegoBookingTest')
+data.setCell(4, 3, 16618);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'testLogin')
+data.setCell(5, 2, 'nuego_automation_project.NuegoBookingTest')
+data.setCell(5, 3, 7222);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'testBusBookingPageActions')
+data.setCell(6, 2, 'nuego_automation_project.NuegoBookingTest')
+data.setCell(6, 3, 0);
+window.suiteTableData['NueGo_Automation_Suite']= { tableData: data, tableDiv: 'times-div-NueGo_Automation_Suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 5 minutes</span>
+              <div id="times-div-NueGo_Automation_Suite">
+              </div> <!-- times-div-NueGo_Automation_Suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-NueGo_Automation_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for NueGo Automation Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-NueGo_Automation_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-NueGo_Automation_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">nuego_automation_project.NuegoBookingTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <span class="method-name">testLogin</span>
+                <span class="method-start">2494 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testHomePageActions</span>
+                <span class="method-start">9793 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">testFilters</span>
+                <span class="method-start">26417 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testBusBookingPageActions</span>
+                <span class="method-start">47188 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">testSelectSeatAndProceedToPay</span>
+                <span class="method-start">47197 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testReviewBookingFlow</span>
+                <span class="method-start">215469 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">testPaymentFlow</span>
+                <span class="method-start">246644 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">309593 ms</span>
+              </div> <!-- configuration-class after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>
