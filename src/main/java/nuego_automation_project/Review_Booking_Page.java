@@ -18,24 +18,27 @@ public class Review_Booking_Page {
     // ---------------- Coupon Flow + Complete Sequence ---------------- //
     public void clickApplyCoupon() {
         try {
+            // ✅ Handle Discount Alert Popup if present before proceeding
+            handleDiscountPopup();
+
             // ✅ Scroll to Review Booking section first
             scrollToReviewSection();
 
-            // ✅ Click on Coupon
+            // ✅ Click on Coupon icon
             By couponLocator = By.xpath("//div[contains(@class,'coupon-dashed-box')]//img[contains(@alt,'alt')]");
             safeClick(couponLocator, "Clicked on Coupon icon");
 
-            // ✅ Wait for modal to open and scroll inside modal
+            // ✅ Wait for coupon modal to open and scroll inside it
             WebElement modalBody = wait.until(ExpectedConditions.presenceOfElementLocated(
                     By.xpath("//div[contains(@class,'modal-body')]")));
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollTop = arguments[0].scrollHeight;", modalBody);
             System.out.println("✅ Scrolled inside coupon modal");
 
-            // ✅ Apply the coupon
-            By applyLocator = By.xpath("//body/div[@id='root']/div[@class='booking-layout']/div[@class='auth-modal']/div[@class='review-payment']/div[@class='coupon-list-modal']/div[@role='dialog']/div[@role='document']/div[@class='modal-content']/div[@class='modal-body']/div[@class='content-section p-3']/div[@class='coupon-list-component p-3']/div[@class='listing']/div[2]/div[2]/div[1]/p[1]");
+            // ✅ Apply the coupon (use dynamic locator if needed)
+            By applyLocator = By.xpath("//body/div[@id='root']/div[@class='booking-layout']/div[@class='auth-modal']/div[@class='review-payment']/div[@class='coupon-list-modal']/div[@role='dialog']/div[@role='document']/div[@class='modal-content']/div[@class='modal-body']/div[@class='content-section p-3']/div[@class='coupon-list-component p-3']/div[@class='listing']/div[3]/div[2]/div[1]/p[1]");
             safeClick(applyLocator, "Clicked Apply Coupon");
 
-            // ✅ Wait for coupon success or fallback
+            // ✅ Wait for coupon success message or fallback
             try {
                 By successMsg = By.xpath("//p[contains(text(),'Coupon Applied Successfully') or contains(text(),'applied successfully')]");
                 wait.until(ExpectedConditions.visibilityOfElementLocated(successMsg));
@@ -62,6 +65,28 @@ public class Review_Booking_Page {
 
         } catch (Exception e) {
             System.out.println("❌ Error in full booking sequence: " + e.getMessage());
+        }
+    }
+
+    // ---------------- Handle Popups (like Discount Alert!) ---------------- //
+    public void handleDiscountPopup() {
+        try {
+            WebDriverWait popupWait = new WebDriverWait(driver, Duration.ofSeconds(6));
+            WebElement popup = popupWait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//div[contains(text(),'Discount Alert!')]")));
+
+            if (popup.isDisplayed()) {
+                System.out.println("💡 Discount Alert popup detected!");
+
+                // Prefer "No, Thanks" to continue flow
+                By noThanks = By.xpath("//button[contains(text(),'No, Thanks')]");
+                safeClick(noThanks, "Clicked 'No, Thanks' on Discount Alert popup");
+                sleep(1000);
+            }
+        } catch (TimeoutException te) {
+            System.out.println("ℹ️ No Discount Alert popup appeared.");
+        } catch (Exception e) {
+            System.out.println("⚠️ Issue handling Discount Alert popup: " + e.getMessage());
         }
     }
 
@@ -105,8 +130,38 @@ public class Review_Booking_Page {
             safeClick(proceedLocator, "Clicked Proceed & Book");
             sleep(1000);
             System.out.println("✅ Proceed to Book clicked successfully");
+
+            // ✅ Handle popup if it appears after clicking Proceed
+            handleBookingPopupIfPresent();
+
         } catch (Exception e) {
-            System.out.println("⚠️ Unable to click Proceed & Book: " + e.getMessage());
+            System.out.println("❌ Unable to click Proceed & Book: " + e.getMessage());
+        }
+    }
+
+    // ---------------- Handle the “Thank” Popup after Proceed ---------------- //
+    public void handleBookingPopupIfPresent() {
+        try {
+            By popupLocator = By.xpath("//div[@class='no-switch-btn cursor-pointer open-600w-16s-24h']");
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+            WebElement popup = shortWait.until(ExpectedConditions.visibilityOfElementLocated(popupLocator));
+            String popupText = popup.getText().trim();
+            System.out.println("📢 Popup detected: " + popupText);
+
+            popup.click();
+            System.out.println("✅ Clicked popup (‘Thank’) button");
+
+            // Re-click Proceed & Book after popup
+            By proceedLocator = By.xpath("//button[@class='teal-22BBB0-bg cursor-pointer white-color submit-button text-center open-600w-16s-24h py-3']");
+            waitAndScrollToElement(proceedLocator);
+            safeClick(proceedLocator, "Clicked Proceed & Book again after popup");
+            System.out.println("🎯 Popup handled and re-clicked Proceed & Book");
+
+        } catch (TimeoutException te) {
+            System.out.println("ℹ️ No extra popup appeared after Proceed & Book");
+        } catch (Exception e) {
+            System.out.println("⚠️ Error while handling post-proceed popup: " + e.getMessage());
         }
     }
 
@@ -121,7 +176,7 @@ public class Review_Booking_Page {
             try {
                 WebElement element = driver.findElement(locator);
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-                System.out.println("⚠️ JS clicked - " + logMessage);
+                System.out.println("⚡ JS clicked - " + logMessage);
             } catch (Exception ignored) {
                 System.out.println("❌ Failed to click element: " + logMessage);
             }

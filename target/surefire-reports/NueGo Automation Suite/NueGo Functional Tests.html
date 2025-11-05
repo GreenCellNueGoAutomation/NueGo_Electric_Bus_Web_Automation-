@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>NueGo Functional Tests</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/4/2</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/6</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Nov 04 17:47:21 IST 2025</td>
+<td>Started on:</td><td>Tue Nov 04 17:55:31 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>191 seconds (191901 ms)</td>
+<tr><td>Total time:</td><td>52 seconds (52427 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,75 +76,13 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='nuego_automation_project.NuegoBookingTest.testHomePageActions()'><b>testHomePageActions</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Handle homepage popups and search bus</td>
-<td><div><pre>java.lang.AssertionError: Home Page test failed: Failed to search bus: element click intercepted: Element &lt;p&gt;...&lt;/p&gt; is not clickable at point (218, 324). Other element would receive the click: &lt;div class=&quot;col-6   auth-display-img-wrap blue-light-F2FAF9-bg position-relative&quot; style=&quot;background-image: url(&amp;quot;https://cdn.nuego.co.in/greencell/assets/images/login_form_Img.png&amp;quot;);&quot;&gt;&lt;/div&gt;
-  (Session info: chrome=141.0.7390.123)
-Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.12&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [033b3e73f4ed7f5a66669c80a1c1148d, clickElement {id=f.B32BA2A9A5F4B904E98263DD6FF709DD.d.EDE434D19035C55CCE85DA6F64C67AB9.e.18}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64936}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64936/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (033b3e73f4ed7f5a66669c80a1c1148d)] -&gt; xpath: //p[normalize-space()=&apos;Seater&apos;]]
-Session ID: 033b3e73f4ed7f5a66669c80a1c1148d
-	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
-	at nuego_automation_project.NuegoBookingTest.testHomePageActions(NuegoBookingTest.java:104)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2115597658", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2115597658'><pre>java.lang.AssertionError: Home Page test failed: Failed to search bus: element click intercepted: Element &lt;p&gt;...&lt;/p&gt; is not clickable at point (218, 324). Other element would receive the click: &lt;div class=&quot;col-6   auth-display-img-wrap blue-light-F2FAF9-bg position-relative&quot; style=&quot;background-image: url(&amp;quot;https://cdn.nuego.co.in/greencell/assets/images/login_form_Img.png&amp;quot;);&quot;&gt;&lt;/div&gt;
-  (Session info: chrome=141.0.7390.123)
-Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.12&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [033b3e73f4ed7f5a66669c80a1c1148d, clickElement {id=f.B32BA2A9A5F4B904E98263DD6FF709DD.d.EDE434D19035C55CCE85DA6F64C67AB9.e.18}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64936}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64936/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (033b3e73f4ed7f5a66669c80a1c1148d)] -&gt; xpath: //p[normalize-space()=&apos;Seater&apos;]]
-Session ID: 033b3e73f4ed7f5a66669c80a1c1148d
-	at org.testng.Assert.fail(Assert.java:111)
-	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
-	at nuego_automation_project.NuegoBookingTest.testHomePageActions(NuegoBookingTest.java:104)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-</pre></div></td>
-<td>13</td>
-<td>nuego_automation_project.NuegoBookingTest@48e92c5c</td></tr>
-<tr>
 <td title='nuego_automation_project.NuegoBookingTest.testLogin()'><b>testLogin</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Login to application using mobile and OTP</td>
 <td><div><pre>java.lang.AssertionError: Login failed: Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //input[@aria-label=&apos;Please enter OTP character 1&apos;]&apos; (tried for 30 second(s) with 500 milliseconds interval)
 	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
 	at nuego_automation_project.NuegoBookingTest.testLogin(NuegoBookingTest.java:87)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace975354582", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace975354582'><pre>java.lang.AssertionError: Login failed: Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //input[@aria-label=&apos;Please enter OTP character 1&apos;]&apos; (tried for 30 second(s) with 500 milliseconds interval)
+... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace271614685", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace271614685'><pre>java.lang.AssertionError: Login failed: Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //input[@aria-label=&apos;Please enter OTP character 1&apos;]&apos; (tried for 30 second(s) with 500 milliseconds interval)
 	at org.testng.Assert.fail(Assert.java:111)
 	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
 	at nuego_automation_project.NuegoBookingTest.testLogin(NuegoBookingTest.java:87)
@@ -182,114 +120,7 @@ Session ID: 033b3e73f4ed7f5a66669c80a1c1148d
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 </pre></div></td>
 <td>46</td>
-<td>nuego_automation_project.NuegoBookingTest@48e92c5c</td></tr>
-<tr>
-<td title='nuego_automation_project.NuegoBookingTest.testPaymentFlow()'><b>testPaymentFlow</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Complete payment flow using NetBanking - Axis Bank</td>
-<td><div><pre>java.lang.AssertionError: Timeout: Element not clickable ? By.xpath: //div[@id=&apos;1000120&apos;]//article[@role=&apos;none&apos;][normalize-space()=&apos;NetBanking&apos;]
-	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
-	at nuego_automation_project.Payment_Mode.selectNetBanking(Payment_Mode.java:35)
-	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:187)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1380583278", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1380583278'><pre>java.lang.AssertionError: Timeout: Element not clickable ? By.xpath: //div[@id=&apos;1000120&apos;]//article[@role=&apos;none&apos;][normalize-space()=&apos;NetBanking&apos;]
-	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
-	at nuego_automation_project.Payment_Mode.selectNetBanking(Payment_Mode.java:35)
-	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:187)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-</pre></div></td>
-<td>62</td>
-<td>nuego_automation_project.NuegoBookingTest@48e92c5c</td></tr>
-<tr>
-<td title='nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay()'><b>testSelectSeatAndProceedToPay</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Select seat, pickup & drop points and click Book & Pay</td>
-<td><div><pre>java.lang.AssertionError: Seat selection and payment test failed: Expected condition failed: waiting for presence of element located by: By.cssSelector: div[id*=&apos;seat&apos;] (tried for 25 second(s) with 500 milliseconds interval)
-	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
-	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:164)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace576222471", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace576222471'><pre>java.lang.AssertionError: Seat selection and payment test failed: Expected condition failed: waiting for presence of element located by: By.cssSelector: div[id*=&apos;seat&apos;] (tried for 25 second(s) with 500 milliseconds interval)
-	at org.testng.Assert.fail(Assert.java:111)
-	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
-	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:164)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-</pre></div></td>
-<td>31</td>
-<td>nuego_automation_project.NuegoBookingTest@48e92c5c</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td><b>Attribute(s)</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='nuego_automation_project.NuegoBookingTest.testReviewBookingFlow()'><b>testReviewBookingFlow</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Verify Review Booking flow actions</td>
-<td></td>
-<td>31</td>
-<td>nuego_automation_project.NuegoBookingTest@48e92c5c</td></tr>
+<td>nuego_automation_project.NuegoBookingTest@7d1cfb8b</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-skipped'>
 <tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
@@ -300,13 +131,13 @@ Session ID: 033b3e73f4ed7f5a66669c80a1c1148d
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='nuego_automation_project.NuegoBookingTest.testFilters()'><b>testFilters</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Apply filters</td>
-<td><div><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@48e92c5c depends on not successfully finished methods 
-[nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@48e92c5c]
+<td title='nuego_automation_project.NuegoBookingTest.testHomePageActions()'><b>testHomePageActions</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Handle homepage popups and search bus</td>
+<td><div><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testLogin() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1658534033", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1658534033'><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@48e92c5c depends on not successfully finished methods 
-[nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@48e92c5c]
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace610189734", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace610189734'><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testLogin() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
 	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
@@ -332,15 +163,117 @@ Session ID: 033b3e73f4ed7f5a66669c80a1c1148d
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 </pre></div></td>
 <td>0</td>
-<td>nuego_automation_project.NuegoBookingTest@48e92c5c</td></tr>
+<td>nuego_automation_project.NuegoBookingTest@7d1cfb8b</td></tr>
+<tr>
+<td title='nuego_automation_project.NuegoBookingTest.testPaymentFlow()'><b>testPaymentFlow</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Complete payment flow using NetBanking - Axis Bank</td>
+<td><div><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testPaymentFlow() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testReviewBookingFlow() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace162144258", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace162144258'><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testPaymentFlow() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testReviewBookingFlow() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+</pre></div></td>
+<td>0</td>
+<td>nuego_automation_project.NuegoBookingTest@7d1cfb8b</td></tr>
+<tr>
+<td title='nuego_automation_project.NuegoBookingTest.testReviewBookingFlow()'><b>testReviewBookingFlow</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Verify Review Booking flow actions</td>
+<td><div><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testReviewBookingFlow() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1828559444", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1828559444'><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testReviewBookingFlow() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+</pre></div></td>
+<td>0</td>
+<td>nuego_automation_project.NuegoBookingTest@7d1cfb8b</td></tr>
+<tr>
+<td title='nuego_automation_project.NuegoBookingTest.testFilters()'><b>testFilters</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Apply filters</td>
+<td><div><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1369885738", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1369885738'><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+</pre></div></td>
+<td>0</td>
+<td>nuego_automation_project.NuegoBookingTest@7d1cfb8b</td></tr>
 <tr>
 <td title='nuego_automation_project.NuegoBookingTest.testBusBookingPageActions()'><b>testBusBookingPageActions</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Scroll and click seat on Bus Booking page</td>
-<td><div><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@48e92c5c depends on not successfully finished methods 
-[nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@48e92c5c]
+<td><div><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1766122814", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1766122814'><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@48e92c5c depends on not successfully finished methods 
-[nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@48e92c5c]
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace555943503", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace555943503'><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
 	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
@@ -366,7 +299,41 @@ Session ID: 033b3e73f4ed7f5a66669c80a1c1148d
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 </pre></div></td>
 <td>0</td>
-<td>nuego_automation_project.NuegoBookingTest@48e92c5c</td></tr>
+<td>nuego_automation_project.NuegoBookingTest@7d1cfb8b</td></tr>
+<tr>
+<td title='nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay()'><b>testSelectSeatAndProceedToPay</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Select seat, pickup & drop points and click Book & Pay</td>
+<td><div><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace684407333", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace684407333'><pre>java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+</pre></div></td>
+<td>0</td>
+<td>nuego_automation_project.NuegoBookingTest@7d1cfb8b</td></tr>
 </table><p>
 </body>
 </html>

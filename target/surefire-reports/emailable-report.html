@@ -9,47 +9,38 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">NueGo Automation Suite</th></tr>
-<tr><td><a href="#t0">NueGo Functional Tests</a></td><td class="num">1</td><td class="num attn">2</td><td class="num">0</td><td class="num attn">4</td><td class="num">191,901</td><td></td><td></td></tr>
+<tr><td><a href="#t0">NueGo Functional Tests</a></td><td class="num">0</td><td class="num attn">6</td><td class="num">0</td><td class="num attn">1</td><td class="num">52,427</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">NueGo Automation Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">NueGo Functional Tests &#8212; failed</th></tr><tr class="failedeven"><td rowspan="4">nuego_automation_project.NuegoBookingTest</td><td><a href="#m0">testHomePageActions</a></td><td rowspan="1">1762258693666</td><td rowspan="1">13954</td></tr><tr class="failedeven"><td><a href="#m1">testLogin</a></td><td rowspan="1">1762258647087</td><td rowspan="1">46217</td></tr><tr class="failedeven"><td><a href="#m2">testPaymentFlow</a></td><td rowspan="1">1762258770230</td><td rowspan="1">62813</td></tr><tr class="failedeven"><td><a href="#m3">testSelectSeatAndProceedToPay</a></td><td rowspan="1">1762258707762</td><td rowspan="1">31226</td></tr><tr><th colspan="4">NueGo Functional Tests &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="2">nuego_automation_project.NuegoBookingTest</td><td><a href="#m4">testBusBookingPageActions</a></td><td rowspan="1">1762258707755</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m5">testFilters</a></td><td rowspan="1">1762258707746</td><td rowspan="1">0</td></tr><tr><th colspan="4">NueGo Functional Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">nuego_automation_project.NuegoBookingTest</td><td><a href="#m6">testReviewBookingFlow</a></td><td rowspan="1">1762258739092</td><td rowspan="1">31132</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">NueGo Automation Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">NueGo Functional Tests &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">nuego_automation_project.NuegoBookingTest</td><td><a href="#m0">testLogin</a></td><td rowspan="1">1762259136521</td><td rowspan="1">46497</td></tr><tr><th colspan="4">NueGo Functional Tests &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="6">nuego_automation_project.NuegoBookingTest</td><td><a href="#m1">testBusBookingPageActions</a></td><td rowspan="1">1762259183287</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m2">testFilters</a></td><td rowspan="1">1762259183279</td><td rowspan="1">1</td></tr><tr class="skippedeven"><td><a href="#m3">testHomePageActions</a></td><td rowspan="1">1762259183270</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m4">testPaymentFlow</a></td><td rowspan="1">1762259183314</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m5">testReviewBookingFlow</a></td><td rowspan="1">1762259183305</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m6">testSelectSeatAndProceedToPay</a></td><td rowspan="1">1762259183296</td><td rowspan="1">0</td></tr></tbody>
 </table>
-<h2>NueGo Functional Tests</h2><h3 id="m0">nuego_automation_project.NuegoBookingTest#testHomePageActions</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Home Page test failed: Failed to search bus: element click intercepted: Element &lt;p&gt;...&lt;/p&gt; is not clickable at point (218, 324). Other element would receive the click: &lt;div class=&quot;col-6   auth-display-img-wrap blue-light-F2FAF9-bg position-relative&quot; style=&quot;background-image: url(&amp;quot;https://cdn.nuego.co.in/greencell/assets/images/login_form_Img.png&amp;quot;);&quot;&gt;&lt;/div&gt;
-  (Session info: chrome=141.0.7390.123)
-Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.12&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [033b3e73f4ed7f5a66669c80a1c1148d, clickElement {id=f.B32BA2A9A5F4B904E98263DD6FF709DD.d.EDE434D19035C55CCE85DA6F64C67AB9.e.18}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.123, chrome: {chromedriverVersion: 141.0.7390.122 (b477534e7e1..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64936}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64936/devtoo..., se:cdpVersion: 141.0.7390.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (033b3e73f4ed7f5a66669c80a1c1148d)] -&gt; xpath: //p[normalize-space()=&apos;Seater&apos;]]
-Session ID: 033b3e73f4ed7f5a66669c80a1c1148d
-	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
-	at nuego_automation_project.NuegoBookingTest.testHomePageActions(NuegoBookingTest.java:104)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">nuego_automation_project.NuegoBookingTest#testLogin</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Login failed: Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //input[@aria-label=&apos;Please enter OTP character 1&apos;]&apos; (tried for 30 second(s) with 500 milliseconds interval)
+<h2>NueGo Functional Tests</h2><h3 id="m0">nuego_automation_project.NuegoBookingTest#testLogin</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Login failed: Login failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //input[@aria-label=&apos;Please enter OTP character 1&apos;]&apos; (tried for 30 second(s) with 500 milliseconds interval)
 	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
 	at nuego_automation_project.NuegoBookingTest.testLogin(NuegoBookingTest.java:87)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 ... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">nuego_automation_project.NuegoBookingTest#testPaymentFlow</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //div[@id=&apos;1000120&apos;]//article[@role=&apos;none&apos;][normalize-space()=&apos;NetBanking&apos;]
-	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
-	at nuego_automation_project.Payment_Mode.selectNetBanking(Payment_Mode.java:35)
-	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:187)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 31 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">nuego_automation_project.NuegoBookingTest#testSelectSeatAndProceedToPay</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Seat selection and payment test failed: Expected condition failed: waiting for presence of element located by: By.cssSelector: div[id*=&apos;seat&apos;] (tried for 25 second(s) with 500 milliseconds interval)
-	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:215)
-	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:164)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">nuego_automation_project.NuegoBookingTest#testBusBookingPageActions</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@48e92c5c depends on not successfully finished methods 
-[nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@48e92c5c]
+<h3 id="m1">nuego_automation_project.NuegoBookingTest#testBusBookingPageActions</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 ... Removed 22 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">nuego_automation_project.NuegoBookingTest#testFilters</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@48e92c5c depends on not successfully finished methods 
-[nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@48e92c5c]
+<h3 id="m2">nuego_automation_project.NuegoBookingTest#testFilters</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 ... Removed 22 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m6">nuego_automation_project.NuegoBookingTest#testReviewBookingFlow</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">nuego_automation_project.NuegoBookingTest#testHomePageActions</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testLogin() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 22 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">nuego_automation_project.NuegoBookingTest#testPaymentFlow</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testPaymentFlow() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testReviewBookingFlow() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 22 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">nuego_automation_project.NuegoBookingTest#testReviewBookingFlow</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testReviewBookingFlow() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 22 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">nuego_automation_project.NuegoBookingTest#testSelectSeatAndProceedToPay</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@7d1cfb8b]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 22 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
