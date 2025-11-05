@@ -48,13 +48,28 @@ public class NuegoBookingTest extends BaseTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--start-maximized");
 
-        System.out.println("🚀 Running Chrome in VISIBLE mode (Jenkins + Local)");
+        // 🧩 Detect Jenkins environment for full resolution
+        String jenkinsEnv = System.getenv("JENKINS_HOME");
+        if (jenkinsEnv != null) {
+            System.out.println("🧠 Detected Jenkins environment — using headless full HD mode");
+            options.addArguments("--headless=new");
+            options.addArguments("--window-size=1920,1080");
+        } else {
+            System.out.println("💻 Local execution — starting Chrome in visible maximized mode");
+            options.addArguments("--start-maximized");
+        }
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
+
+        // Ensure full window size
+        try {
+            driver.manage().window().maximize();
+        } catch (Exception e) {
+            System.out.println("⚠️ Maximize failed, setting manual resolution.");
+            driver.manage().window().setSize(new Dimension(1920, 1080));
+        }
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
@@ -66,7 +81,8 @@ public class NuegoBookingTest extends BaseTest {
         reviewBookingPage = new Review_Booking_Page(driver);
         paymentModePage = new Payment_Mode(driver);
 
-        System.out.println("✅ Browser launched successfully (Visible Mode)");
+        System.out.println("✅ Browser launched successfully (" +
+                (jenkinsEnv != null ? "Jenkins Headless Mode" : "Visible Mode") + ")");
     }
 
     // ---------------------- TEST CASE 1: LOGIN -----------------------------
@@ -121,7 +137,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- TEST CASE 4: BUS BOOKING -----------------------------
-    @Test(priority = 4, dependsOnMethods = {"testFilters"}, description = "Scroll and click seat on Bus Booking page")
+    @Test(priority = 4, description = "Scroll and click seat on Bus Booking page")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Bus Seat Visibility and Click Flow")
     public void testBusBookingPageActions() {
@@ -154,7 +170,6 @@ public class NuegoBookingTest extends BaseTest {
             reviewBookingPage.handleDiscountPopup();
 
             WebDriverWait pageWait = new WebDriverWait(driver, Duration.ofSeconds(15));
-            boolean isOnPaymentPage = false;
             try {
                 pageWait.until(ExpectedConditions.or(
                         ExpectedConditions.urlContains("review"),

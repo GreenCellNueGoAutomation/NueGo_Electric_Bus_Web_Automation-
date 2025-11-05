@@ -7,7 +7,9 @@
         <methods>
           <include name="tearDown"/>
           <include name="setUp"/>
+          <include name="testPaymentFlow"/>
           <include name="testSelectSeatAndProceedToPay"/>
+          <include name="testReviewBookingFlow"/>
         </methods>
       </class> <!-- nuego_automation_project.NuegoBookingTest -->
     </classes>
