@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>5/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Nov 05 16:34:55 IST 2025</td>
+<td>Started on:</td><td>Wed Nov 05 17:30:24 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>234 seconds (234430 ms)</td>
+<tr><td>Total time:</td><td>180 seconds (180611 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -81,7 +81,7 @@ function toggleAllBoxes() {
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1578)
 	at org.testng.Assert.assertTrue(Assert.java:57)
-	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:171)
+	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:186)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -108,12 +108,12 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1474529475", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1474529475'><pre>java.lang.AssertionError: Expected to navigate to review or payment page. expected [true] but found [false]
+</pre></div><a href='#' onClick='toggleBox("stack-trace2062888647", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2062888647'><pre>java.lang.AssertionError: Expected to navigate to review or payment page. expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1578)
 	at org.testng.Assert.assertTrue(Assert.java:57)
-	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:171)
+	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:186)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -141,14 +141,14 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>82</td>
+<td>19</td>
 <td>nuego_automation_project.NuegoBookingTest@7642df8f</td></tr>
 <tr>
 <td title='nuego_automation_project.NuegoBookingTest.testPaymentFlow()'><b>testPaymentFlow</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Complete payment flow using NetBanking - Axis Bank</td>
-<td><div><pre>java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //div[@id=&apos;1000120&apos;]//article[@role=&apos;none&apos;][normalize-space()=&apos;NetBanking&apos;]
+<td><div><pre>java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //article[@role=&apos;none&apos; and normalize-space()=&apos;Proceed to Pay&apos;]
 	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
-	at nuego_automation_project.Payment_Mode.selectNetBanking(Payment_Mode.java:35)
-	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:201)
+	at nuego_automation_project.Payment_Mode.clickProceedToPay(Payment_Mode.java:51)
+	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:218)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -175,11 +175,11 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace673684041", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace673684041'><pre>java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //div[@id=&apos;1000120&apos;]//article[@role=&apos;none&apos;][normalize-space()=&apos;NetBanking&apos;]
+</pre></div><a href='#' onClick='toggleBox("stack-trace956315623", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace956315623'><pre>java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //article[@role=&apos;none&apos; and normalize-space()=&apos;Proceed to Pay&apos;]
 	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
-	at nuego_automation_project.Payment_Mode.selectNetBanking(Payment_Mode.java:35)
-	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:201)
+	at nuego_automation_project.Payment_Mode.clickProceedToPay(Payment_Mode.java:51)
+	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:218)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -207,7 +207,7 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>62</td>
+<td>69</td>
 <td>nuego_automation_project.NuegoBookingTest@7642df8f</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
@@ -219,19 +219,9 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='nuego_automation_project.NuegoBookingTest.testBusBookingPageActions()'><b>testBusBookingPageActions</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Scroll and click seat on Bus Booking page</td>
-<td></td>
-<td>8</td>
-<td>nuego_automation_project.NuegoBookingTest@7642df8f</td></tr>
-<tr>
 <td title='nuego_automation_project.NuegoBookingTest.testFilters()'><b>testFilters</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Apply filters</td>
 <td></td>
-<td>12</td>
-<td>nuego_automation_project.NuegoBookingTest@7642df8f</td></tr>
-<tr>
-<td title='nuego_automation_project.NuegoBookingTest.testReviewBookingFlow()'><b>testReviewBookingFlow</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Verify Review Booking flow actions</td>
-<td></td>
-<td>49</td>
+<td>11</td>
 <td>nuego_automation_project.NuegoBookingTest@7642df8f</td></tr>
 <tr>
 <td title='nuego_automation_project.NuegoBookingTest.testHomePageActions()'><b>testHomePageActions</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Handle homepage popups and search bus</td>
@@ -239,9 +229,19 @@ function toggleAllBoxes() {
 <td>13</td>
 <td>nuego_automation_project.NuegoBookingTest@7642df8f</td></tr>
 <tr>
+<td title='nuego_automation_project.NuegoBookingTest.testBusBookingPageActions()'><b>testBusBookingPageActions</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Scroll and click seat on Bus Booking page</td>
+<td></td>
+<td>8</td>
+<td>nuego_automation_project.NuegoBookingTest@7642df8f</td></tr>
+<tr>
 <td title='nuego_automation_project.NuegoBookingTest.testLogin()'><b>testLogin</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Login to application using mobile and OTP</td>
 <td></td>
-<td>3</td>
+<td>4</td>
+<td>nuego_automation_project.NuegoBookingTest@7642df8f</td></tr>
+<tr>
+<td title='nuego_automation_project.NuegoBookingTest.testReviewBookingFlow()'><b>testReviewBookingFlow</b><br>Test class: nuego_automation_project.NuegoBookingTest<br>Test method: Verify Review Booking flow actions</td>
+<td></td>
+<td>49</td>
 <td>nuego_automation_project.NuegoBookingTest@7642df8f</td></tr>
 </table><p>
 </body>

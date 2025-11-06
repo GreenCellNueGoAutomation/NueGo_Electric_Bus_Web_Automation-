@@ -9,14 +9,14 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">234,430</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">180,611</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">nuego_automation_project.NuegoBookingTest</td><td><a href="#m0">testPaymentFlow</a></td><td rowspan="1">1762340866011</td><td rowspan="1">62891</td></tr><tr class="failedeven"><td><a href="#m1">testSelectSeatAndProceedToPay</a></td><td rowspan="1">1762340734356</td><td rowspan="1">82435</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">nuego_automation_project.NuegoBookingTest</td><td><a href="#m2">testBusBookingPageActions</a></td><td rowspan="1">1762340726130</td><td rowspan="1">8219</td></tr><tr class="passedeven"><td><a href="#m3">testFilters</a></td><td rowspan="1">1762340713840</td><td rowspan="1">12282</td></tr><tr class="passedeven"><td><a href="#m4">testHomePageActions</a></td><td rowspan="1">1762340700295</td><td rowspan="1">13539</td></tr><tr class="passedeven"><td><a href="#m5">testLogin</a></td><td rowspan="1">1762340697144</td><td rowspan="1">3086</td></tr><tr class="passedeven"><td><a href="#m6">testReviewBookingFlow</a></td><td rowspan="1">1762340816915</td><td rowspan="1">49090</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">nuego_automation_project.NuegoBookingTest</td><td><a href="#m0">testPaymentFlow</a></td><td rowspan="1">1762344134617</td><td rowspan="1">69996</td></tr><tr class="failedeven"><td><a href="#m1">testSelectSeatAndProceedToPay</a></td><td rowspan="1">1762344064873</td><td rowspan="1">19984</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">nuego_automation_project.NuegoBookingTest</td><td><a href="#m2">testBusBookingPageActions</a></td><td rowspan="1">1762344056633</td><td rowspan="1">8236</td></tr><tr class="passedeven"><td><a href="#m3">testFilters</a></td><td rowspan="1">1762344044829</td><td rowspan="1">11793</td></tr><tr class="passedeven"><td><a href="#m4">testHomePageActions</a></td><td rowspan="1">1762344031181</td><td rowspan="1">13641</td></tr><tr class="passedeven"><td><a href="#m5">testLogin</a></td><td rowspan="1">1762344026949</td><td rowspan="1">4162</td></tr><tr class="passedeven"><td><a href="#m6">testReviewBookingFlow</a></td><td rowspan="1">1762344084991</td><td rowspan="1">49622</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">nuego_automation_project.NuegoBookingTest#testPaymentFlow</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //div[@id=&apos;1000120&apos;]//article[@role=&apos;none&apos;][normalize-space()=&apos;NetBanking&apos;]
+<h2>Default test</h2><h3 id="m0">nuego_automation_project.NuegoBookingTest#testPaymentFlow</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //article[@role=&apos;none&apos; and normalize-space()=&apos;Proceed to Pay&apos;]
 	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
-	at nuego_automation_project.Payment_Mode.selectNetBanking(Payment_Mode.java:35)
-	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:201)
+	at nuego_automation_project.Payment_Mode.clickProceedToPay(Payment_Mode.java:51)
+	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:218)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -48,7 +48,7 @@
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1578)
 	at org.testng.Assert.assertTrue(Assert.java:57)
-	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:171)
+	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:186)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)

@@ -53,7 +53,7 @@ public class NuegoBookingTest extends BaseTest {
         String jenkinsEnv = System.getenv("JENKINS_HOME");
         if (jenkinsEnv != null) {
             System.out.println("🧠 Detected Jenkins environment — using headless full HD mode");
-            options.addArguments("--headless=new");
+           // options.addArguments("--headless=new");
             options.addArguments("--window-size=1920,1080");
         } else {
             System.out.println("💻 Local execution — starting Chrome in visible maximized mode");
@@ -137,7 +137,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- TEST CASE 4: BUS BOOKING -----------------------------
-    @Test(priority = 4, description = "Scroll and click seat on Bus Booking page")
+    @Test(priority = 4,dependsOnMethods = {"testFilters"}, description = "Scroll and click seat on Bus Booking page")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Bus Seat Visibility and Click Flow")
     public void testBusBookingPageActions() {
@@ -158,10 +158,10 @@ public class NuegoBookingTest extends BaseTest {
     public void testSelectSeatAndProceedToPay() {
         test = extent.createTest("Seat Selection Test", "Select seats and proceed to payment");
         try {
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[id*='seat']")));
+          wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[id*='seat']")));
             Thread.sleep(1000);
 
-            seatPointsPage.selectSeats("5B", "6C", "2D", "7D");
+            seatPointsPage.selectSeats("7D");
             seatPointsPage.selectPickupPoint();
             seatPointsPage.selectDropPoint();
             seatPointsPage.clickBookAndPay();
