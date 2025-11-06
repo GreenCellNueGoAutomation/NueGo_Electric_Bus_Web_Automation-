@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\sumedh.sonawane\AppData\Local\Temp\testng-eclipse--102654082\testng-customsuite.xml</span>
+                    <span>C:\Users\sumedh.sonawane\AppData\Local\Temp\testng-eclipse-392679307\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">7 methods, 2 failed,   5 passed</span>
+                    <span class="method-stats">7 methods, 1 failed,   6 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -104,11 +104,6 @@
                       <span>
                         <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testPaymentFlow">testPaymentFlow</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testSelectSeatAndProceedToPay">testSelectSeatAndProceedToPay</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -145,6 +140,11 @@
                         <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testReviewBookingFlow">testReviewBookingFlow</a> <!-- method navigator-link -->
                       </span>
                       <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testSelectSeatAndProceedToPay">testSelectSeatAndProceedToPay</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
                   </li>
                 </ul>
@@ -168,10 +168,10 @@
                   <a name="testPaymentFlow">
                   </a> <!-- testPaymentFlow -->
                   <span class="method-name">testPaymentFlow</span>
-                  <div class="stack-trace">java.lang.AssertionError: Timeout: Element not clickable → By.xpath: //article[@role=&apos;none&apos; and normalize-space()=&apos;Proceed to Pay&apos;]
+                  <div class="stack-trace">java.lang.AssertionError: Timeout: Element not clickable → By.xpath: /html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[3]/div[1]/div[1]/article[1]
 	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
-	at nuego_automation_project.Payment_Mode.clickProceedToPay(Payment_Mode.java:51)
-	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:218)
+	at nuego_automation_project.Payment_Mode.selectNetBanking(Payment_Mode.java:35)
+	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:219)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -202,48 +202,6 @@
 </div> <!-- stack-trace -->
                   <em>
 (Complete payment flow using NetBanking - Axis Bank)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testSelectSeatAndProceedToPay">
-                  </a> <!-- testSelectSeatAndProceedToPay -->
-                  <span class="method-name">testSelectSeatAndProceedToPay</span>
-                  <div class="stack-trace">java.lang.AssertionError: Expected to navigate to review or payment page. expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:186)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-
-</div> <!-- stack-trace -->
-                  <em>
-(Select seat, pickup & drop points and click Book & Pay)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -299,12 +257,21 @@
 (Verify Review Booking flow actions)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testSelectSeatAndProceedToPay">
+                  </a> <!-- testSelectSeatAndProceedToPay -->
+                  <span class="method-name">testSelectSeatAndProceedToPay</span>
+                  <em>
+(Select seat, pickup & drop points and click Book & Pay)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Default_suite-class-passed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\sumedh.sonawane\AppData\Local\Temp\testng-eclipse--102654082\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\sumedh.sonawane\AppData\Local\Temp\testng-eclipse-392679307\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -355,38 +322,38 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(7);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'testPaymentFlow')
+data.setCell(0, 1, 'testSelectSeatAndProceedToPay')
 data.setCell(0, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(0, 3, 69996);
+data.setCell(0, 3, 82512);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'testReviewBookingFlow')
+data.setCell(1, 1, 'testPaymentFlow')
 data.setCell(1, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(1, 3, 49622);
+data.setCell(1, 3, 62759);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'testSelectSeatAndProceedToPay')
+data.setCell(2, 1, 'testReviewBookingFlow')
 data.setCell(2, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(2, 3, 19984);
+data.setCell(2, 3, 48714);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'testHomePageActions')
+data.setCell(3, 1, 'testLogin')
 data.setCell(3, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(3, 3, 13641);
+data.setCell(3, 3, 17832);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'testFilters')
+data.setCell(4, 1, 'testHomePageActions')
 data.setCell(4, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(4, 3, 11793);
+data.setCell(4, 3, 13801);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'testBusBookingPageActions')
+data.setCell(5, 1, 'testFilters')
 data.setCell(5, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(5, 3, 8236);
+data.setCell(5, 3, 13126);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'testLogin')
+data.setCell(6, 1, 'testBusBookingPageActions')
 data.setCell(6, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(6, 3, 4162);
+data.setCell(6, 3, 8249);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <span class="suite-total-time">Total running time: 4 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -419,39 +386,37 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">testLogin</span>
-                <span class="method-start">1982 ms</span>
+                <span class="method-start">2505 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testHomePageActions</span>
-                <span class="method-start">6214 ms</span>
+                <span class="method-start">20454 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testFilters</span>
-                <span class="method-start">19862 ms</span>
+                <span class="method-start">34255 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testBusBookingPageActions</span>
-                <span class="method-start">31666 ms</span>
+                <span class="method-start">47382 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">testSelectSeatAndProceedToPay</span>
-                <span class="method-start">39906 ms</span>
+                <span class="method-start">55636 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testReviewBookingFlow</span>
-                <span class="method-start">60024 ms</span>
+                <span class="method-start">138159 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">testPaymentFlow</span>
-                <span class="method-start">109650 ms</span>
+                <span class="method-start">186875 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">179803 ms</span>
+                <span class="method-start">249806 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

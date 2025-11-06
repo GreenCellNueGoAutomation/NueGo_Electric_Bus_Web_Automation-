@@ -18,6 +18,7 @@ import utils.CommonUtils;
 
 import java.io.ByteArrayInputStream;
 import java.time.Duration;
+import java.util.Base64;
 
 @Epic("NueGo Web Automation")
 @Feature("Complete Booking Flow")
@@ -53,7 +54,7 @@ public class NuegoBookingTest extends BaseTest {
         String jenkinsEnv = System.getenv("JENKINS_HOME");
         if (jenkinsEnv != null) {
             System.out.println("🧠 Detected Jenkins environment — using headless full HD mode");
-           // options.addArguments("--headless=new");
+            // options.addArguments("--headless=new");
             options.addArguments("--window-size=1920,1080");
         } else {
             System.out.println("💻 Local execution — starting Chrome in visible maximized mode");
@@ -63,7 +64,6 @@ public class NuegoBookingTest extends BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        // Ensure full window size
         try {
             driver.manage().window().maximize();
         } catch (Exception e) {
@@ -137,7 +137,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- TEST CASE 4: BUS BOOKING -----------------------------
-    @Test(priority = 4,dependsOnMethods = {"testFilters"}, description = "Scroll and click seat on Bus Booking page")
+    @Test(priority = 4, dependsOnMethods = {"testFilters"}, description = "Scroll and click seat on Bus Booking page")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Bus Seat Visibility and Click Flow")
     public void testBusBookingPageActions() {
@@ -152,40 +152,43 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- TEST CASE 5: SELECT SEATS -----------------------------
-    @Test(priority = 5, description = "Select seat, pickup & drop points and click Book & Pay")
+    @Test(priority = 5, dependsOnMethods = {"testBusBookingPageActions"},description = "Select seat, pickup & drop points and click Book & Pay")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Seat Selection & Booking")
     public void testSelectSeatAndProceedToPay() {
         test = extent.createTest("Seat Selection Test", "Select seats and proceed to payment");
         try {
-          wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[id*='seat']")));
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[id*='seat']")));
             Thread.sleep(1000);
 
-            seatPointsPage.selectSeats("7D");
+            seatPointsPage.selectSeats("5B", "6C","2D","7D");	
             seatPointsPage.selectPickupPoint();
             seatPointsPage.selectDropPoint();
             seatPointsPage.clickBookAndPay();
 
-            // ✅ Handle Discount Alert popup immediately after Book & Pay
+            // ✅ Handle Discount Alert popup
             reviewBookingPage.handleDiscountPopup();
 
-            WebDriverWait pageWait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebDriverWait pageWait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            boolean navigated = false;
+
             try {
-                pageWait.until(ExpectedConditions.or(
-                        ExpectedConditions.urlContains("review"),
-                        ExpectedConditions.urlContains("payment"),
-                        ExpectedConditions.presenceOfElementLocated(
-                                By.xpath("//*[contains(text(),'Review Booking') or contains(text(),'Payment')]"))
+                WebElement reviewOrPaymentElement = pageWait.until(ExpectedConditions.presenceOfElementLocated(
+                        By.xpath("//*[contains(text(),'Review Booking') or contains(text(),'Payment')]")
                 ));
+                navigated = reviewOrPaymentElement.isDisplayed();
             } catch (TimeoutException te) {
-                System.out.println("⚠️ Navigation timeout: review/payment page not detected within 15 seconds");
+                System.out.println("⚠️ Timeout: Review or Payment page element not found within 20s");
             }
 
-            String currentUrl = driver.getCurrentUrl();
-            test.log(Status.INFO, "Current URL: " + currentUrl);
-            Assert.assertTrue(currentUrl.contains("review") || currentUrl.contains("payment"),
-                    "Expected to navigate to review or payment page.");
-            test.log(Status.PASS, "Seat selection and Book & Pay successful ✅");
+            if (navigated) {
+                test.log(Status.PASS, "Seat selection and Book & Pay successful ✅");
+            } else {
+                String screenshotBase64 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+                test.log(Status.FAIL, "Did not reach Review or Payment page ❌")
+                    .addScreenCaptureFromBase64String(screenshotBase64, "Navigation_Failure");
+                Assert.fail("Expected to navigate to Review or Payment page, but element not found.");
+            }
 
         } catch (Exception e) {
             handleFailure("Seat selection and payment test failed", e);
@@ -193,7 +196,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- TEST CASE 6: REVIEW BOOKING -----------------------------
-    @Test(priority = 6, description = "Verify Review Booking flow actions")
+    @Test(priority = 6,dependsOnMethods={"testSelectSeatAndProceedToPay"} ,description = "Verify Review Booking flow actions")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Review Booking and Coupon Flow")
     public void testReviewBookingFlow() {
@@ -235,12 +238,14 @@ public class NuegoBookingTest extends BaseTest {
     public void handleFailure(String message, Exception e) {
         try {
             String webError = CommonUtils.captureErrorMessage(driver);
+            String screenshotBase64 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 
             if (test != null) {
                 test.log(Status.FAIL, message + " ❌");
                 if (webError != null)
                     test.log(Status.FAIL, "Web error message: " + webError);
-                test.log(Status.FAIL, e.getMessage());
+                test.log(Status.FAIL, e.getMessage())
+                    .addScreenCaptureFromBase64String(screenshotBase64, "Error Screenshot");
             }
 
             System.out.println("❌ " + message + ": " + e.getMessage());
