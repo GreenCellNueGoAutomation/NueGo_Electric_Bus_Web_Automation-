@@ -46,9 +46,11 @@ public class NuegoBookingTest extends BaseTest {
         options.addArguments("--disable-notifications");
         options.addArguments("--ignore-certificate-errors");
         options.addArguments("--disable-blink-features=AutomationControlled");
+        options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-dev-shm-usage");
 
         // 🧩 Detect Jenkins environment for full resolution
         String jenkinsEnv = System.getenv("JENKINS_HOME");

@@ -42,19 +42,19 @@ public class HomePage{
             WebElement source = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Enter Source']")));
             source.clear();
             source.sendKeys(sourceCity);
-            Thread.sleep(1500);
+            Thread.sleep(2000);
 
             System.out.println("Entering destination: " + destCity);
             WebElement dest = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Enter Destination']")));
             dest.clear();
             dest.sendKeys(destCity);
-            Thread.sleep(500);
+            Thread.sleep(2000);
 
             System.out.println("Select seat type...");
             WebElement seat = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[normalize-space()='Seater']")));
             seat.click();
             System.out.println("Seater selected");
-            Thread.sleep(500);
+            Thread.sleep(1500);
 
             seat = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[normalize-space()='Sleeper']")));
             seat.click();
@@ -64,6 +64,7 @@ public class HomePage{
             WebElement calendarIcon = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@alt='Calendar']")));
             calendarIcon.click();
             System.out.println("Calendar icon clicked.");
+            Thread.sleep(1500);
 
             // Select future date → tomorrow instead of today
             WebElement todayDate = wait.until(ExpectedConditions.presenceOfElementLocated(
@@ -71,13 +72,14 @@ public class HomePage{
             WebElement tomorrowDate = todayDate.findElement(By.xpath("following-sibling::button[1]"));
             wait.until(ExpectedConditions.elementToBeClickable(tomorrowDate)).click();
             System.out.println("Future date (tomorrow) selected.");
+            Thread.sleep(1500);
 
             // Click search
             System.out.println("Clicking Search button...");
             WebElement search = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='homepage-d-search-button']")));
             search.click();
             System.out.println("Search button clicked successfully.");
-
+            Thread.sleep(1500);
         } catch (Exception e) {
             throw new RuntimeException("Failed to search bus: " + e.getMessage(), e);
         }

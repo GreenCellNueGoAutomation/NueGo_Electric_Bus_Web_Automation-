@@ -16,7 +16,7 @@ public class Payment_Mode {
     }
 
     // ✅ Locators
-    private final By netBankingOption = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[3]/div[1]/div[1]/article[1]");
+    private final By netBankingOption = By.xpath("//div[@id='1000120']//article[@role='none'][normalize-space()='NetBanking']");
     private final By axisBankOption = By.xpath("//article[normalize-space()='Axis Bank']");
     private final By proceedToPayBtn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]");
     private final By txnDropdown = By.xpath("//div[@id='txnStateDropdownText']");
