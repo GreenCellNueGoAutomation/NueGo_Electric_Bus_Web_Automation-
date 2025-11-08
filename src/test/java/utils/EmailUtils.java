@@ -73,7 +73,7 @@ public class EmailUtils {
     // Optional: Simple test main
     public static void main(String[] args) {
         sendEmail(
-                "sumedhsonwane19@gmail.com",
+        		"sumedhsonwane19@gmail.com,sumedhsonwane18@gmail.com",
                 "Test Email",
                 "Hello, this is a test email with attachment!",
                 "C:/path/to/file.txt"
