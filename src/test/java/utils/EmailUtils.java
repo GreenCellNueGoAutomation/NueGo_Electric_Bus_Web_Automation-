@@ -3,22 +3,23 @@ package utils;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
-import java.nio.file.Paths;
+import java.nio.file.*;
+import java.util.List;
 import java.util.Properties;
 
 public class EmailUtils {
 
     /**
-     * Send an email with optional attachment.
+     * Send an email with optional attachments to multiple recipients.
      *
-     * @param toEmail        Recipient email address
+     * @param toEmails       List of recipient email addresses
      * @param subject        Email subject
      * @param body           Email body text
-     * @param attachmentPath Full path to attachment file (optional, can be null)
+     * @param attachments    List of file paths to attach (can be empty)
      */
-    public static void sendEmail(String toEmail, String subject, String body, String attachmentPath) {
-    	final String fromEmail = "sumedh.sonawane@sumasoft.net"; // your email
-    	final String password = "oxzrysredrqsebmg"; // Gmail App Password
+    public static void sendEmail(List<String> toEmails, String subject, String body, List<String> attachments) {
+        final String fromEmail = "sumedh.sonawane@sumasoft.net"; // your email
+        final String password = "oxzrysredrqsebmg"; // Gmail App Password
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -26,7 +27,6 @@ public class EmailUtils {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587"); // TLS port
 
-        // Create session
         Session session = Session.getInstance(props, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -38,45 +38,48 @@ public class EmailUtils {
             // Create message
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(fromEmail));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
+
+            InternetAddress[] recipientAddresses = toEmails.stream()
+                    .map(email -> {
+                        try { return new InternetAddress(email); }
+                        catch (AddressException e) { e.printStackTrace(); return null; }
+                    })
+                    .filter(addr -> addr != null)
+                    .toArray(InternetAddress[]::new);
+
+            message.setRecipients(Message.RecipientType.TO, recipientAddresses);
             message.setSubject(subject);
 
-            // Create multipart message
+            // Multipart
             Multipart multipart = new MimeMultipart();
 
             // Body part
-            MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText(body);
-            multipart.addBodyPart(messageBodyPart);
+            MimeBodyPart bodyPart = new MimeBodyPart();
+            bodyPart.setText(body);
+            multipart.addBodyPart(bodyPart);
 
-            // Attachment part (optional)
-            if (attachmentPath != null && !attachmentPath.isEmpty()) {
-                MimeBodyPart attachmentPart = new MimeBodyPart();
-                DataSource source = new FileDataSource(Paths.get(attachmentPath).toFile());
-                attachmentPart.setDataHandler(new DataHandler(source));
-                attachmentPart.setFileName(Paths.get(attachmentPath).getFileName().toString());
-                multipart.addBodyPart(attachmentPart);
+            // Attachments
+            if (attachments != null) {
+                for (String path : attachments) {
+                    if (path != null && !path.isEmpty()) {
+                        MimeBodyPart attachPart = new MimeBodyPart();
+                        DataSource source = new FileDataSource(Paths.get(path).toFile());
+                        attachPart.setDataHandler(new DataHandler(source));
+                        attachPart.setFileName(Paths.get(path).getFileName().toString());
+                        multipart.addBodyPart(attachPart);
+                    }
+                }
             }
 
             message.setContent(multipart);
 
             // Send email
             Transport.send(message);
-            System.out.println("✅ Email sent successfully to " + toEmail);
+            System.out.println("✅ Email sent successfully to: " + String.join(", ", toEmails));
 
         } catch (MessagingException e) {
             e.printStackTrace();
             System.err.println("❌ Failed to send email: " + e.getMessage());
         }
-    }
-
-    // Optional: Simple test main
-    public static void main(String[] args) {
-        sendEmail(
-                "sumedhsonwane19@gmail.com",
-                "Test Email",
-                "Hello, this is a test email with attachment!",
-                "C:/path/to/file.txt"
-        );
     }
 }
