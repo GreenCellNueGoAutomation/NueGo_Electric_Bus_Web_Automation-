@@ -34,7 +34,8 @@ public class NuegoBookingTest extends BaseTest {
     private Review_Booking_Page reviewBookingPage;
     private Payment_Mode paymentModePage;
     
-    private static final String REPORT_DIR = System.getProperty("user.dir") +"/target/ExtentReports";
+    private static final String REPORT_DIR = System.getProperty("user.dir") +"target/ExtentReports/*.html\r\n"
+    		+ "";
             
 
 
