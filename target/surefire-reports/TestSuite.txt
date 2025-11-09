@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 2, Errors: 0, Skipped: 7, Time elapsed: 2.915 s <<< FAILURE! -- in TestSuite
-nuego_automation_project.NuegoBookingTest.setUp -- Time elapsed: 1.856 s <<< FAILURE!
+Tests run: 9, Failures: 2, Errors: 0, Skipped: 7, Time elapsed: 5.972 s <<< FAILURE! -- in TestSuite
+nuego_automation_project.NuegoBookingTest.setUp -- Time elapsed: 3.704 s <<< FAILURE!
 java.nio.file.InvalidPathException: 
 Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html
 /screenshots
@@ -45,7 +45,7 @@ Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automat
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-nuego_automation_project.NuegoBookingTest.tearDown -- Time elapsed: 0.589 s <<< FAILURE!
+nuego_automation_project.NuegoBookingTest.tearDown -- Time elapsed: 1.228 s <<< FAILURE!
 java.nio.file.InvalidPathException: 
 Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html
 target/ExtentReports

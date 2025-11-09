@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="7" passed="0" failed="0" skipped="7">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-09T12:09:48 IST" name="NueGo Automation Suite" finished-at="2025-11-09T12:09:49 IST" duration-ms="1002">
+  <suite started-at="2025-11-09T12:54:42 IST" name="NueGo Automation Suite" finished-at="2025-11-09T12:54:44 IST" duration-ms="2171">
     <groups>
     </groups>
-    <test started-at="2025-11-09T12:09:48 IST" name="NueGo Functional Tests" finished-at="2025-11-09T12:09:49 IST" duration-ms="1002">
+    <test started-at="2025-11-09T12:54:42 IST" name="NueGo Functional Tests" finished-at="2025-11-09T12:54:44 IST" duration-ms="2171">
       <class name="nuego_automation_project.NuegoBookingTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:09:48 IST" name="setUp" finished-at="2025-11-09T12:09:48 IST" duration-ms="25" status="FAIL">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="setUp" finished-at="2025-11-09T12:54:42 IST" duration-ms="65" status="FAIL">
           <exception class="java.nio.file.InvalidPathException">
             <message>
               <![CDATA[Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html
@@ -60,7 +60,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:09:48 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-11-09T12:09:48 IST" duration-ms="0" status="SKIP">
+        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-11-09T12:54:42 IST" duration-ms="0" status="SKIP">
           <exception class="java.nio.file.InvalidPathException">
             <message>
               <![CDATA[Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html
@@ -113,7 +113,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLogin -->
-        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:09:48 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-11-09T12:09:48 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="0" status="SKIP">
+        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -151,7 +151,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testHomePageActions -->
-        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:09:48 IST" name="testFilters" description="Apply filters" finished-at="2025-11-09T12:09:48 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testHomePageActions" duration-ms="0" status="SKIP">
+        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testFilters" description="Apply filters" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testHomePageActions" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -189,7 +189,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFilters -->
-        <test-method signature="testBusBookingPageActions()[pri:4, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:09:48 IST" name="testBusBookingPageActions" description="Scroll and click seat" finished-at="2025-11-09T12:09:48 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testFilters" duration-ms="0" status="SKIP">
+        <test-method signature="testBusBookingPageActions()[pri:4, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testBusBookingPageActions" description="Scroll and click seat" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testFilters" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -227,7 +227,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testBusBookingPageActions -->
-        <test-method signature="testSelectSeatAndProceedToPay()[pri:5, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:09:48 IST" name="testSelectSeatAndProceedToPay" description="Select seat &amp; proceed to pay" finished-at="2025-11-09T12:09:48 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testBusBookingPageActions" duration-ms="0" status="SKIP">
+        <test-method signature="testSelectSeatAndProceedToPay()[pri:5, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testSelectSeatAndProceedToPay" description="Select seat &amp; proceed to pay" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testBusBookingPageActions" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -265,7 +265,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSelectSeatAndProceedToPay -->
-        <test-method signature="testReviewBookingFlow()[pri:6, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:09:48 IST" name="testReviewBookingFlow" description="Verify Review Booking flow actions" finished-at="2025-11-09T12:09:48 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay" duration-ms="0" status="SKIP">
+        <test-method signature="testReviewBookingFlow()[pri:6, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testReviewBookingFlow" description="Verify Review Booking flow actions" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testReviewBookingFlow() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -303,7 +303,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testReviewBookingFlow -->
-        <test-method signature="testPaymentFlow()[pri:7, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:09:48 IST" name="testPaymentFlow" description="Complete payment flow using NetBanking" finished-at="2025-11-09T12:09:48 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testReviewBookingFlow" duration-ms="0" status="SKIP">
+        <test-method signature="testPaymentFlow()[pri:7, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testPaymentFlow" description="Complete payment flow using NetBanking" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testReviewBookingFlow" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testPaymentFlow() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -341,7 +341,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPaymentFlow -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:09:48 IST" name="tearDown" finished-at="2025-11-09T12:09:49 IST" duration-ms="572" status="FAIL">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="tearDown" finished-at="2025-11-09T12:54:44 IST" duration-ms="1193" status="FAIL">
           <exception class="java.nio.file.InvalidPathException">
             <message>
               <![CDATA[Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html

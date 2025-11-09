@@ -83,15 +83,15 @@ public class Payment_Mode {
         try {
             waitForPaymentPage();
             selectNetBanking();
-            Thread.sleep(1500);
+            Thread.sleep(2500);
             selectAxisBank();
-            Thread.sleep(1500);
+            Thread.sleep(2500);
             clickProceedToPay();
             Thread.sleep(2000);
             clickTxnDropdown();
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             selectChargedOption();
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             clickSubmitButton();
             System.out.println("🎉 Payment flow completed successfully!");
         } catch (Exception e) {
