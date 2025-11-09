@@ -24,7 +24,7 @@ public class EmailUtils {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true"); // TLS
         props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587"); // TLS port
+        props.put("mail.smtp.port", "465"); // TLS port
 
         // Create session
         Session session = Session.getInstance(props, new Authenticator() {

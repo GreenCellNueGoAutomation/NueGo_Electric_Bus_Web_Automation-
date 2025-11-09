@@ -34,8 +34,9 @@ public class NuegoBookingTest extends BaseTest {
     private Review_Booking_Page reviewBookingPage;
     private Payment_Mode paymentModePage;
     
-    private static final String REPORT_DIR = System.getProperty("user.dir") +"target/ExtentReports/*.html\r\n"
-    		+ "";
+    private static final String REPORT_DIR = System.getProperty("user.dir") 
+    		+ "C:\\Users\\sumedh.sonawane\\Desktop\\Nuego_Web_Automation\\automation\\target\\ExtentReports";
+
             
 
 
@@ -263,7 +264,7 @@ public class NuegoBookingTest extends BaseTest {
         System.out.println("Extent report flushed successfully");
 
         // Email the ExtentReport
-        String reportPath = REPORT_DIR + "target/ExtentReports";
+        String reportPath = REPORT_DIR + "C:\\Users\\sumedh.sonawane\\Desktop\\Nuego_Web_Automation\\automation\\target\\ExtentReports";
         EmailUtils.sendEmail(
         	    "sumedhsonwane19@gmail.com,sumedhsonwane18@gmail.com",  // recipients
         	    "NueGo Automation Test Report",                          // subject
