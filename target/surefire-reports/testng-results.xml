@@ -2,20 +2,18 @@
 <testng-results ignored="0" total="7" passed="0" failed="0" skipped="7">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-09T12:54:42 IST" name="NueGo Automation Suite" finished-at="2025-11-09T12:54:44 IST" duration-ms="2171">
+  <suite started-at="2025-11-09T13:22:42 IST" name="NueGo Automation Suite" finished-at="2025-11-09T13:22:44 IST" duration-ms="2125">
     <groups>
     </groups>
-    <test started-at="2025-11-09T12:54:42 IST" name="NueGo Functional Tests" finished-at="2025-11-09T12:54:44 IST" duration-ms="2171">
+    <test started-at="2025-11-09T13:22:42 IST" name="NueGo Functional Tests" finished-at="2025-11-09T13:22:44 IST" duration-ms="2125">
       <class name="nuego_automation_project.NuegoBookingTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="setUp" finished-at="2025-11-09T12:54:42 IST" duration-ms="65" status="FAIL">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T13:22:42 IST" name="setUp" finished-at="2025-11-09T13:22:42 IST" duration-ms="73" status="FAIL">
           <exception class="java.nio.file.InvalidPathException">
             <message>
-              <![CDATA[Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html
-/screenshots]]>
+              <![CDATA[Illegal char <:> at index 65: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationC:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation\target\ExtentReports/screenshots]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.nio.file.InvalidPathException: Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html
-/screenshots
+              <![CDATA[java.nio.file.InvalidPathException: Illegal char <:> at index 65: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationC:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation\target\ExtentReports/screenshots
 at java.base/sun.nio.fs.WindowsPathParser.normalize(WindowsPathParser.java:182)
 at java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:153)
 at java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:77)
@@ -23,7 +21,7 @@ at java.base/sun.nio.fs.WindowsPath.parse(WindowsPath.java:92)
 at java.base/sun.nio.fs.WindowsFileSystem.getPath(WindowsFileSystem.java:232)
 at java.base/java.nio.file.Path.of(Path.java:147)
 at java.base/java.nio.file.Paths.get(Paths.java:69)
-at nuego_automation_project.NuegoBookingTest.setUp(NuegoBookingTest.java:49)
+at nuego_automation_project.NuegoBookingTest.setUp(NuegoBookingTest.java:50)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -60,15 +58,13 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-11-09T12:54:42 IST" duration-ms="0" status="SKIP">
+        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T13:22:43 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-11-09T13:22:43 IST" duration-ms="0" status="SKIP">
           <exception class="java.nio.file.InvalidPathException">
             <message>
-              <![CDATA[Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html
-/screenshots]]>
+              <![CDATA[Illegal char <:> at index 65: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationC:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation\target\ExtentReports/screenshots]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.nio.file.InvalidPathException: Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html
-/screenshots
+              <![CDATA[java.nio.file.InvalidPathException: Illegal char <:> at index 65: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationC:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation\target\ExtentReports/screenshots
 at java.base/sun.nio.fs.WindowsPathParser.normalize(WindowsPathParser.java:182)
 at java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:153)
 at java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:77)
@@ -76,7 +72,7 @@ at java.base/sun.nio.fs.WindowsPath.parse(WindowsPath.java:92)
 at java.base/sun.nio.fs.WindowsFileSystem.getPath(WindowsFileSystem.java:232)
 at java.base/java.nio.file.Path.of(Path.java:147)
 at java.base/java.nio.file.Paths.get(Paths.java:69)
-at nuego_automation_project.NuegoBookingTest.setUp(NuegoBookingTest.java:49)
+at nuego_automation_project.NuegoBookingTest.setUp(NuegoBookingTest.java:50)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -113,7 +109,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLogin -->
-        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="0" status="SKIP">
+        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T13:22:43 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-11-09T13:22:43 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testHomePageActions() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -151,7 +147,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testHomePageActions -->
-        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testFilters" description="Apply filters" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testHomePageActions" duration-ms="0" status="SKIP">
+        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T13:22:43 IST" name="testFilters" description="Apply filters" finished-at="2025-11-09T13:22:43 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testHomePageActions" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testFilters() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -189,7 +185,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFilters -->
-        <test-method signature="testBusBookingPageActions()[pri:4, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testBusBookingPageActions" description="Scroll and click seat" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testFilters" duration-ms="0" status="SKIP">
+        <test-method signature="testBusBookingPageActions()[pri:4, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T13:22:43 IST" name="testBusBookingPageActions" description="Scroll and click seat" finished-at="2025-11-09T13:22:43 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testFilters" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testBusBookingPageActions() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -227,7 +223,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testBusBookingPageActions -->
-        <test-method signature="testSelectSeatAndProceedToPay()[pri:5, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testSelectSeatAndProceedToPay" description="Select seat &amp; proceed to pay" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testBusBookingPageActions" duration-ms="0" status="SKIP">
+        <test-method signature="testSelectSeatAndProceedToPay()[pri:5, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T13:22:43 IST" name="testSelectSeatAndProceedToPay" description="Select seat &amp; proceed to pay" finished-at="2025-11-09T13:22:43 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testBusBookingPageActions" duration-ms="2" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -265,7 +261,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSelectSeatAndProceedToPay -->
-        <test-method signature="testReviewBookingFlow()[pri:6, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testReviewBookingFlow" description="Verify Review Booking flow actions" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay" duration-ms="0" status="SKIP">
+        <test-method signature="testReviewBookingFlow()[pri:6, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T13:22:43 IST" name="testReviewBookingFlow" description="Verify Review Booking flow actions" finished-at="2025-11-09T13:22:43 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testReviewBookingFlow() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -303,7 +299,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testReviewBookingFlow -->
-        <test-method signature="testPaymentFlow()[pri:7, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="testPaymentFlow" description="Complete payment flow using NetBanking" finished-at="2025-11-09T12:54:42 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testReviewBookingFlow" duration-ms="0" status="SKIP">
+        <test-method signature="testPaymentFlow()[pri:7, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T13:22:43 IST" name="testPaymentFlow" description="Complete payment flow using NetBanking" finished-at="2025-11-09T13:22:43 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testReviewBookingFlow" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
               <![CDATA[Method nuego_automation_project.NuegoBookingTest.testPaymentFlow() on instance nuego_automation_project.NuegoBookingTest@34f22f9d depends on not successfully finished methods 
@@ -341,15 +337,13 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPaymentFlow -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T12:54:42 IST" name="tearDown" finished-at="2025-11-09T12:54:44 IST" duration-ms="1193" status="FAIL">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@34f22f9d]" started-at="2025-11-09T13:22:43 IST" name="tearDown" finished-at="2025-11-09T13:22:44 IST" duration-ms="1167" status="FAIL">
           <exception class="java.nio.file.InvalidPathException">
             <message>
-              <![CDATA[Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html
-target/ExtentReports]]>
+              <![CDATA[Illegal char <:> at index 65: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationC:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation\target\ExtentReportsC:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation\target\ExtentReports]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.nio.file.InvalidPathException: Illegal char <*> at index 85: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationtarget/ExtentReports/*.html
-target/ExtentReports
+              <![CDATA[java.nio.file.InvalidPathException: Illegal char <:> at index 65: C:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automationC:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation\target\ExtentReportsC:\Users\sumedh.sonawane\Desktop\Nuego_Web_Automation\automation\target\ExtentReports
 at java.base/sun.nio.fs.WindowsPathParser.normalize(WindowsPathParser.java:182)
 at java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:153)
 at java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:77)
@@ -358,7 +352,7 @@ at java.base/sun.nio.fs.WindowsFileSystem.getPath(WindowsFileSystem.java:232)
 at java.base/java.nio.file.Path.of(Path.java:147)
 at java.base/java.nio.file.Paths.get(Paths.java:69)
 at utils.EmailUtils.sendEmail(EmailUtils.java:55)
-at nuego_automation_project.NuegoBookingTest.tearDown(NuegoBookingTest.java:267)
+at nuego_automation_project.NuegoBookingTest.tearDown(NuegoBookingTest.java:268)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
