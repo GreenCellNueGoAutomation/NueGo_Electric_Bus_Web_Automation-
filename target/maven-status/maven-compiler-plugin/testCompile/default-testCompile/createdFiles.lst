@@ -1,7 +1,5 @@
 utils\AllureListener.class
 utils\BaseTest.class
-utils\EmailUtils$1.class
-utils\EmailUtils.class
 utils\ExtentReportManager.class
 nuego_automation_project\NuegoBookingTest.class
 utils\ExtentListener.class

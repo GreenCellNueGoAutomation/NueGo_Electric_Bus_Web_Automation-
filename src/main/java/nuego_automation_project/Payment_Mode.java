@@ -12,22 +12,39 @@ public class Payment_Mode {
 
     public Payment_Mode(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(60)); // ⏳ Increased to 60s for slow loads
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
     // ✅ Locators
-    private final By netBankingOption = By.xpath("//div[@id='1000120']//article[@role='none'][normalize-space()='NetBanking']");
+    private final By netBankingOption = By.xpath("(//div[@testid='nvb_net_banking' and not(contains(@style,'display:none'))])[2]");
     private final By axisBankOption = By.xpath("//article[normalize-space()='Axis Bank']");
-    private final By proceedToPayBtn = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]");
+    private final By proceedToPayBtn = By.xpath("(//article[normalize-space(text())='Proceed to Pay'])[1]");
     private final By txnDropdown = By.xpath("//div[@id='txnStateDropdownText']");
     private final By chargedOption = By.xpath("//span[normalize-space()='CHARGED']");
     private final By submitBtn = By.xpath("//button[@id='submitButton']");
+    private final By bookingSuccessMessage = By.xpath("//div[contains(text(),'Booking Confirmed') or contains(text(),'Ticket booked successfully')]"); // update text if needed
 
-    // ✅ Wait for Payment Page Load
-    public void waitForPaymentPage() {
-        System.out.println("⏳ Waiting for Payment Mode page to load...");
-        wait.until(ExpectedConditions.presenceOfElementLocated(netBankingOption));
-        System.out.println("✅ Payment Mode page loaded successfully.");
+    // ✅ Wait for Payment Page or Booking Confirmation
+    public void waitForPaymentOrBooking() {
+        System.out.println("⏳ Waiting for Payment Mode page or Booking confirmation...");
+
+        try {
+            wait.until(ExpectedConditions.or(
+                    ExpectedConditions.presenceOfElementLocated(netBankingOption),
+                    ExpectedConditions.presenceOfElementLocated(bookingSuccessMessage)
+            ));
+
+            if (driver.findElements(bookingSuccessMessage).size() > 0) {
+                System.out.println("✅ Ticket booked successfully. Payment Page skipped.");
+            } else if (driver.findElements(netBankingOption).size() > 0) {
+                System.out.println("✅ Payment Mode page loaded successfully.");
+            } else {
+                throw new AssertionError("❌ Neither Payment Page nor Booking Confirmation appeared!");
+            }
+
+        } catch (TimeoutException e) {
+            throw new AssertionError("❌ Timeout: Neither Payment Page nor Booking Confirmation appeared!");
+        }
     }
 
     // ✅ Step 1: Click NetBanking
@@ -44,12 +61,8 @@ public class Payment_Mode {
     public void clickProceedToPay() {
         System.out.println("⏳ Waiting for Proceed to Pay button...");
         try {
-            // ✅ Check for iframe (common in payment pages)
             switchToPaymentIframeIfPresent();
-
-            // ✅ Try clicking normally first
             clickElement(proceedToPayBtn, "Step 3: Clicked on Proceed to Pay button");
-
         } catch (Exception e) {
             System.out.println("⚠️ Proceed to Pay not clickable directly, trying JS click...");
             try {
@@ -81,9 +94,9 @@ public class Payment_Mode {
     // ✅ Main Flow
     public void completePaymentFlow() {
         try {
-            waitForPaymentPage();
+            waitForPaymentOrBooking(); // updated method here
             selectNetBanking();
-            Thread.sleep(2500);
+            Thread.sleep(1500);
             selectAxisBank();
             Thread.sleep(2500);
             clickProceedToPay();
