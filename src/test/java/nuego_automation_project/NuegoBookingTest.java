@@ -46,7 +46,7 @@ public class NuegoBookingTest extends BaseTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
 
-        // Jenkins mode detection
+    /*    // Jenkins mode detection
         String jenkinsEnv = System.getenv("JENKINS_HOME");
         if (jenkinsEnv != null) {
             System.out.println("🧠 Detected Jenkins environment — using headless full HD mode");
@@ -56,15 +56,15 @@ public class NuegoBookingTest extends BaseTest {
             System.out.println("💻 Local execution — starting Chrome in visible maximized mode");
             options.addArguments("--start-maximized");
         }
-
+*/
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         try {
             driver.manage().window().maximize();
         } catch (WebDriverException e) {
-            System.out.println("⚠️ Maximize failed, setting manual resolution.");
-            driver.manage().window().setSize(new Dimension(1920, 1080));
+            System.out.println("Maximize browser full screen.");
+            driver.manage().window().maximize();
         }
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(25));
