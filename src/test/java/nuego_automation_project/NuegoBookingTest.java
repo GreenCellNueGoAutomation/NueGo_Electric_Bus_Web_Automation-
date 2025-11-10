@@ -78,8 +78,8 @@ public class NuegoBookingTest extends BaseTest {
         reviewBookingPage = new Review_Booking_Page(driver);
         paymentModePage = new Payment_Mode(driver);
         ticketPage = new NueGoTicketPage(driver);
-
-        // Metadata for Extent Report
+    }
+     /*   // Metadata for Extent Report
         String buildNum = System.getenv("BUILD_NUMBER");
         String jobName = System.getenv("JOB_NAME");
         extent.setSystemInfo("Build Number", buildNum != null ? buildNum : "Local");
@@ -89,7 +89,7 @@ public class NuegoBookingTest extends BaseTest {
         System.out.println("✅ Browser launched successfully (" +
                 (jenkinsEnv != null ? "Jenkins Headless Mode" : "Visible Mode") + ")");
     }
-
+*/
     // ---------------------- TEST CASE 1: LOGIN -----------------------------
     @Test(priority = 1, description = "Login to application using mobile and OTP", retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.CRITICAL)
