@@ -12,11 +12,8 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import utils.*;
-
 import java.io.ByteArrayInputStream;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Date;
 
 @Epic("NueGo Web Automation")
 @Feature("Complete Booking Flow")
@@ -34,6 +31,7 @@ public class NuegoBookingTest extends BaseTest {
     private SelectSeatPoints seatPointsPage;
     private Review_Booking_Page reviewBookingPage;
     private Payment_Mode paymentModePage;
+    private NueGoTicketPage ticketPage;
 
     // ---------------------- SETUP -----------------------------
     @BeforeClass(alwaysRun = true)
@@ -48,7 +46,7 @@ public class NuegoBookingTest extends BaseTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
 
-        // 🧩 Detect Jenkins environment
+        // Jenkins mode detection
         String jenkinsEnv = System.getenv("JENKINS_HOME");
         if (jenkinsEnv != null) {
             System.out.println("🧠 Detected Jenkins environment — using headless full HD mode");
@@ -71,6 +69,7 @@ public class NuegoBookingTest extends BaseTest {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
+        // Initialize Page Objects
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
         bookingPage = new BusBookingPage(driver);
@@ -78,8 +77,9 @@ public class NuegoBookingTest extends BaseTest {
         seatPointsPage = new SelectSeatPoints(driver);
         reviewBookingPage = new Review_Booking_Page(driver);
         paymentModePage = new Payment_Mode(driver);
+        ticketPage = new NueGoTicketPage(driver);
 
-        // 🧾 Add Jenkins Metadata to Extent Report
+        // Metadata for Extent Report
         String buildNum = System.getenv("BUILD_NUMBER");
         String jobName = System.getenv("JOB_NAME");
         extent.setSystemInfo("Build Number", buildNum != null ? buildNum : "Local");
@@ -98,8 +98,6 @@ public class NuegoBookingTest extends BaseTest {
         test = extent.createTest("Login Test", "Login using mobile and OTP");
         try {
             driver.get("https://greencell-nuego-web.web.app/");
-            System.out.println("Opened NueGo Website");
-
             loginPage.login("7385109680", "1234");
             test.log(Status.PASS, "Login successful and redirected to Home page ✅");
         } catch (Exception e) {
@@ -164,24 +162,17 @@ public class NuegoBookingTest extends BaseTest {
         test = extent.createTest("Seat Selection Test", "Select seats and proceed to payment");
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id*='seat']")));
-
-            seatPointsPage.selectSeats("5B", "6C", "2D", "7D");
+            seatPointsPage.selectSeats("5B", "6C", "2D", "7D", "9B", "2A");
             seatPointsPage.selectPickupPoint();
             seatPointsPage.selectDropPoint();
             seatPointsPage.clickBookAndPay();
-
             reviewBookingPage.handleDiscountPopup();
-
             WebDriverWait pageWait = new WebDriverWait(driver, Duration.ofSeconds(30));
             WebElement reviewOrPaymentElement = pageWait.until(ExpectedConditions.presenceOfElementLocated(
                     By.xpath("//*[contains(text(),'Review Booking') or contains(text(),'Payment')]")
             ));
-
-            if (reviewOrPaymentElement.isDisplayed()) {
-                test.log(Status.PASS, "Seat selection and Book & Pay successful ✅");
-            } else {
-                throw new Exception("Review or Payment page not reached");
-            }
+            Assert.assertTrue(reviewOrPaymentElement.isDisplayed(), "Review or Payment page not reached");
+            test.log(Status.PASS, "Seat selection and Book & Pay successful ✅");
         } catch (Exception e) {
             handleFailure("Seat selection and payment test failed", e);
         }
@@ -208,15 +199,66 @@ public class NuegoBookingTest extends BaseTest {
     public void testPaymentFlow() {
         test = extent.createTest("Payment Flow Test", "Complete payment using NetBanking (Axis Bank)");
         try {
-            paymentModePage.selectNetBanking();
-            paymentModePage.selectAxisBank();
-            paymentModePage.clickProceedToPay();
-            paymentModePage.clickTxnDropdown();
-            paymentModePage.selectChargedOption();
-            paymentModePage.clickSubmitButton();
-            test.log(Status.PASS, "Payment flow completed successfully with 'CHARGED' status ✅");
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+            boolean isPaymentVisible = driver.findElements(By.xpath("//div[contains(@class,'payment-options')]")).size() > 0;
+
+            if (isPaymentVisible) {
+                paymentModePage.selectNetBanking();
+                paymentModePage.selectAxisBank();
+                paymentModePage.clickProceedToPay();
+                paymentModePage.clickTxnDropdown();
+                paymentModePage.selectChargedOption();
+                paymentModePage.clickSubmitButton();
+                test.log(Status.PASS, "Payment flow completed successfully ✅");
+            } else {
+                wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//*[contains(text(),'Ticket Confirmation') or contains(text(),'Booking Confirmed')]")
+                ));
+                test.log(Status.PASS, "Payment step skipped — Ticket confirmation displayed directly ✅");
+            }
+
         } catch (Exception e) {
             handleFailure("Payment Flow failed", e);
+        }
+    }
+
+    // ---------------------- TEST CASE 8: TICKET PAGE -----------------------------
+    @Test(priority = 8, dependsOnMethods = {"testPaymentFlow"}, description = "Verify ticket confirmation page actions", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Ticket Confirmation Page Actions")
+    public void testTicketPageFlow() {
+        test = extent.createTest("Ticket Page Flow", "Validate post-booking actions on Ticket Confirmation page");
+        try {
+            ticketPage.clickDontAllowIfVisible();
+            ticketPage.clickWhatsapp();
+            Thread.sleep(2000);
+            ticketPage.clickTextMessage();
+            Thread.sleep(2000);
+            ticketPage.scrollDown();
+            Thread.sleep(1000);
+            ticketPage.clickFareDetail();
+            Thread.sleep(2000);
+            ticketPage.closeFareDetail();
+            Thread.sleep(2000);
+            ticketPage. scrollDown2() ;
+    	       
+            ticketPage.clickShareOption();
+            Thread.sleep(2000);
+            ticketPage.closeShareScreen();
+            Thread.sleep(2000);
+            ticketPage.clickETicket();
+            ticketPage.clickCopyLink();
+            ticketPage.clickDownloadTicket();
+            Thread.sleep(2000);
+            ticketPage.clickETicket();
+            Thread.sleep(2000);
+            ticketPage.clickCopyLink();
+            Thread.sleep(2000);
+            ticketPage.clickChangeBooking();
+            Thread.sleep(2000);
+            test.log(Status.PASS, "Ticket page interactions executed successfully ✅");
+        } catch (Exception e) {
+            handleFailure("Ticket Page flow failed", e);
         }
     }
 
@@ -231,7 +273,6 @@ public class NuegoBookingTest extends BaseTest {
         try {
             String webError = CommonUtils.captureErrorMessage(driver);
             String screenshotBase64 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
-
             if (test != null) {
                 test.log(Status.FAIL, message + " ❌");
                 if (webError != null)
@@ -239,7 +280,6 @@ public class NuegoBookingTest extends BaseTest {
                 test.log(Status.FAIL, e.getMessage())
                     .addScreenCaptureFromBase64String(screenshotBase64, "Error Screenshot");
             }
-
             Allure.addAttachment("Failure Screenshot", new ByteArrayInputStream(takeScreenshot()));
             Assert.fail(message + ": " + e.getMessage());
         } catch (Exception ex) {

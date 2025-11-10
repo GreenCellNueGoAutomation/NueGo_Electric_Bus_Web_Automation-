@@ -52,7 +52,7 @@ public class Review_Booking_Page {
             System.out.println("⬇️ Scrolled down to Assurance and Wallet section");
             sleep(1500);
 
-            // ✅ Click Assurance Checkbox
+            // ✅ Click Assurance Check box
             clickAssuranceCheckbox();
 
             // ✅ Apply Wallet
