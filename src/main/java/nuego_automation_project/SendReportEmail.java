@@ -10,7 +10,7 @@ public class SendReportEmail {
     public static void main(String[] args) {
         try {
             // ✅ Recipients and sender
-            String to = "sumedh.sonawane@sumasoft.net,sumedhsonwane19@gmail.com";
+            String to = "sumedh.sonawane@sumasoft.net,sumedhsonwane18@gmail.com";
             String from = "sumedh.sonawane@sumasoft.net";
 
             // ⚠️ Gmail App Password (use valid app password)
@@ -68,7 +68,7 @@ public class SendReportEmail {
             MimeBodyPart textPart = new MimeBodyPart();
             textPart.setText("Hi Team,\n\nPlease find attached the latest automation test report.\n\n"
                     + "Report Name: " + latestReport.getName()
-                    + "\n\nRegards,\nNueGo QA Automation");
+                    + "\n\nRegards,\"sumedh Sonawane");
 
             // ✅ Attachment
             MimeBodyPart attachmentPart = new MimeBodyPart();

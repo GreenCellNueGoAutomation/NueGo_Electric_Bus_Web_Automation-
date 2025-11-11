@@ -1,1 +1,0 @@
-{"uuid":"56748f7e-adfe-480b-8470-7a4e7ebd3561","name":"Default suite","children":["4ee604c3-f0c5-41b1-9ea3-c5fa67d6d099"],"befores":[],"afters":[{"name":"sendReportEmail","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1762844038738,"stop":1762844038749}],"start":1762843631131,"stop":1762844038750}
