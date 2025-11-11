@@ -66,9 +66,16 @@ public class SendReportEmail {
 
             // ✅ Message body
             MimeBodyPart textPart = new MimeBodyPart();
-            textPart.setText("Hi Team,\n\nPlease find attached the latest automation test report.\n\n"
-                    + "Report Name: " + latestReport.getName()
-                    + "\n\nRegards,\"sumedh Sonawane");
+            textPart.setText(
+                "Hi Team,\n\n" +
+                "Please find attached the latest automation test report.\n\n" +
+                "Report Name: " + latestReport.getName() + "\n\n" +
+                "Thanks & Regards,\n" +
+                "Sumedh Sonawane\n" +
+                "Quality Assurance Engineer\n" +
+                "SumaSoft Pvt. Ltd.\n" +
+                "Aundh | Pune"
+            );
 
             // ✅ Attachment
             MimeBodyPart attachmentPart = new MimeBodyPart();
