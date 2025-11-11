@@ -10,8 +10,12 @@
           <include name="setUp"/>
           <include name="testFilters"/>
           <include name="testBusBookingPageActions"/>
+          <include name="testPaymentFlow"/>
+          <include name="sendReportEmail"/>
           <include name="testHomePageActions"/>
           <include name="testSelectSeatAndProceedToPay"/>
+          <include name="testReviewBookingFlow"/>
+          <include name="testTicketPageFlow"/>
         </methods>
       </class> <!-- nuego_automation_project.NuegoBookingTest -->
     </classes>

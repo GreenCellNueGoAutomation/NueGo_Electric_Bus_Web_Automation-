@@ -7,3 +7,4 @@ nuego_automation_project\utils\ScreenshotUtil.class
 nuego_automation_project\HomePage.class
 nuego_automation_project\SelectSeatPoints.class
 nuego_automation_project\LoginPage.class
+nuego_automation_project\NueGoTicketPage.class

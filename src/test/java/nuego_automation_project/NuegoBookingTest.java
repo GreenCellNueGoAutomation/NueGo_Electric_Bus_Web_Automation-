@@ -8,12 +8,17 @@ import io.qameta.allure.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import utils.*;
+
 import java.io.ByteArrayInputStream;
 import java.time.Duration;
+
+// ✅ Import your email utility
+import nuego_automation_project.SendReportEmail;
 
 @Epic("NueGo Web Automation")
 @Feature("Complete Booking Flow")
@@ -45,18 +50,8 @@ public class NuegoBookingTest extends BaseTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--start-maximized");
 
-    /*    // Jenkins mode detection
-        String jenkinsEnv = System.getenv("JENKINS_HOME");
-        if (jenkinsEnv != null) {
-            System.out.println("🧠 Detected Jenkins environment — using headless full HD mode");
-            options.addArguments("--headless=new");
-            options.addArguments("--window-size=1920,1080");
-        } else {
-            System.out.println("💻 Local execution — starting Chrome in visible maximized mode");
-            options.addArguments("--start-maximized");
-        }
-*/
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
@@ -79,18 +74,8 @@ public class NuegoBookingTest extends BaseTest {
         paymentModePage = new Payment_Mode(driver);
         ticketPage = new NueGoTicketPage(driver);
     }
-     /*   // Metadata for Extent Report
-        String buildNum = System.getenv("BUILD_NUMBER");
-        String jobName = System.getenv("JOB_NAME");
-        extent.setSystemInfo("Build Number", buildNum != null ? buildNum : "Local");
-        extent.setSystemInfo("Jenkins Job", jobName != null ? jobName : "Local Run");
-        extent.setSystemInfo("Environment", jenkinsEnv != null ? "Jenkins" : "Local");
 
-        System.out.println("✅ Browser launched successfully (" +
-                (jenkinsEnv != null ? "Jenkins Headless Mode" : "Visible Mode") + ")");
-    }
-*/
-    // ---------------------- TEST CASE 1: LOGIN -----------------------------
+    // ---------------------- TEST CASES -----------------------------
     @Test(priority = 1, description = "Login to application using mobile and OTP", retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.CRITICAL)
     @Story("User Login")
@@ -105,7 +90,6 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    // ---------------------- TEST CASE 2: HOME PAGE -----------------------------
     @Test(priority = 2, dependsOnMethods = {"testLogin"}, description = "Handle homepage popups and search bus", retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.NORMAL)
     @Story("Home Page Flow")
@@ -121,7 +105,6 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    // ---------------------- TEST CASE 3: FILTERS -----------------------------
     @Test(priority = 3, dependsOnMethods = {"testHomePageActions"}, description = "Apply filters", retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.MINOR)
     @Story("Bus Filtering")
@@ -139,7 +122,6 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    // ---------------------- TEST CASE 4: BUS BOOKING -----------------------------
     @Test(priority = 4, dependsOnMethods = {"testFilters"}, description = "Scroll and click seat on Bus Booking page", retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.CRITICAL)
     @Story("Bus Seat Visibility and Click Flow")
@@ -154,7 +136,6 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    // ---------------------- TEST CASE 5: SELECT SEATS -----------------------------
     @Test(priority = 5, dependsOnMethods = {"testBusBookingPageActions"}, description = "Select seat, pickup & drop points and click Book & Pay", retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.CRITICAL)
     @Story("Seat Selection & Booking")
@@ -164,9 +145,13 @@ public class NuegoBookingTest extends BaseTest {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id*='seat']")));
             seatPointsPage.selectSeats("5B", "6C", "2D", "7D", "9B", "2A");
             seatPointsPage.selectPickupPoint();
+            Thread.sleep(2000);
             seatPointsPage.selectDropPoint();
+            Thread.sleep(2000);
             seatPointsPage.clickBookAndPay();
+            Thread.sleep(2000);
             reviewBookingPage.handleDiscountPopup();
+            Thread.sleep(2000);
             WebDriverWait pageWait = new WebDriverWait(driver, Duration.ofSeconds(30));
             WebElement reviewOrPaymentElement = pageWait.until(ExpectedConditions.presenceOfElementLocated(
                     By.xpath("//*[contains(text(),'Review Booking') or contains(text(),'Payment')]")
@@ -178,7 +163,6 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    // ---------------------- TEST CASE 6: REVIEW BOOKING -----------------------------
     @Test(priority = 6, dependsOnMethods = {"testSelectSeatAndProceedToPay"}, description = "Verify Review Booking flow actions", retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.CRITICAL)
     @Story("Review Booking and Coupon Flow")
@@ -192,7 +176,6 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    // ---------------------- TEST CASE 7: PAYMENT FLOW -----------------------------
     @Test(priority = 7, dependsOnMethods = {"testReviewBookingFlow"}, description = "Complete payment flow using NetBanking - Axis Bank", retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.CRITICAL)
     @Story("Payment Flow")
@@ -202,17 +185,35 @@ public class NuegoBookingTest extends BaseTest {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
             boolean isPaymentVisible = driver.findElements(By.xpath("//div[contains(@class,'payment-options')]")).size() > 0;
 
+            
+            WebElement netBanking = driver.findElement(By.xpath("(//article[contains(text(),'NetBanking')])[2]"));
+            Actions actions = new Actions(driver);
+            actions.moveToElement(netBanking).click().perform();
+            
+            
+            WebElement axisBankOption = driver.findElement(By.xpath("(//article[normalize-space(text())='Axis Bank']"));
+            Actions actions1 = new Actions(driver);
+            actions1.moveToElement( axisBankOption).click().perform();
+            
             if (isPaymentVisible) {
+            	
+            	
                 paymentModePage.selectNetBanking();
+                Thread.sleep(3000);
                 paymentModePage.selectAxisBank();
+                Thread.sleep(3000); // wait for 2 seconds before proceeding
                 paymentModePage.clickProceedToPay();
+                Thread.sleep(3000); // wait for 3 seconds to ensure payment processing
                 paymentModePage.clickTxnDropdown();
+                Thread.sleep(3000);
                 paymentModePage.selectChargedOption();
+                Thread.sleep(3000);
                 paymentModePage.clickSubmitButton();
+                Thread.sleep(3000);
                 test.log(Status.PASS, "Payment flow completed successfully ✅");
             } else {
                 wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//*[contains(text(),'Ticket Confirmation') or contains(text(),'Booking Confirmed')]")
+                        By.xpath("//*[contains(text(),'Ticket Confirmation') or contains(text(),'Booking Confirmed')]")
                 ));
                 test.log(Status.PASS, "Payment step skipped — Ticket confirmation displayed directly ✅");
             }
@@ -222,7 +223,6 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    // ---------------------- TEST CASE 8: TICKET PAGE -----------------------------
     @Test(priority = 8, dependsOnMethods = {"testPaymentFlow"}, description = "Verify ticket confirmation page actions", retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.NORMAL)
     @Story("Ticket Confirmation Page Actions")
@@ -240,8 +240,7 @@ public class NuegoBookingTest extends BaseTest {
             Thread.sleep(2000);
             ticketPage.closeFareDetail();
             Thread.sleep(2000);
-            ticketPage. scrollDown2() ;
-    	       
+            ticketPage.scrollDown2();
             ticketPage.clickShareOption();
             Thread.sleep(2000);
             ticketPage.closeShareScreen();
@@ -278,7 +277,7 @@ public class NuegoBookingTest extends BaseTest {
                 if (webError != null)
                     test.log(Status.FAIL, "Web error message: " + webError);
                 test.log(Status.FAIL, e.getMessage())
-                    .addScreenCaptureFromBase64String(screenshotBase64, "Error Screenshot");
+                        .addScreenCaptureFromBase64String(screenshotBase64, "Error Screenshot");
             }
             Allure.addAttachment("Failure Screenshot", new ByteArrayInputStream(takeScreenshot()));
             Assert.fail(message + ": " + e.getMessage());
@@ -300,6 +299,19 @@ public class NuegoBookingTest extends BaseTest {
             System.out.println("Extent report flushed successfully");
         } catch (Exception e) {
             System.out.println("⚠️ Error during teardown: " + e.getMessage());
+        }
+    }
+
+    // ---------------------- EMAIL TRIGGER AFTER SUITE -----------------------------
+    @AfterSuite(alwaysRun = true)
+    public void sendReportEmail() {
+        try {
+            System.out.println("📧 Triggering report email after suite completion...");
+            SendReportEmail.main(null);
+            System.out.println("✅ Report email triggered successfully!");
+        } catch (Exception e) {
+            System.err.println("❌ Failed to send automation report email: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

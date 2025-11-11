@@ -1,6 +1,7 @@
 package nuego_automation_project;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -16,8 +17,12 @@ public class Payment_Mode {
     }
 
     // ✅ Locators
-    private final By netBankingOption = By.xpath("//div[contains(text(),'NetBanking') or contains(text(),'Net Banking')]");
-    private final By axisBankOption = By.xpath("//article[normalize-space()='Axis Bank']");
+   private final By netBankingOption = By.xpath("(//article[contains(text(),'NetBanking')])[2]");
+    
+    
+
+    private final By axisBankOption = By.xpath("//article[normalize-space(text())='Axis Bank']");
+    
     private final By proceedToPayBtn = By.xpath("(//article[normalize-space(text())='Proceed to Pay'])[1]");
     private final By txnDropdown = By.xpath("//div[@id='txnStateDropdownText']");
     private final By chargedOption = By.xpath("//span[normalize-space()='CHARGED']");

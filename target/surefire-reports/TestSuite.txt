@@ -1,20 +1,26 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 220.7 s <<< FAILURE! -- in TestSuite
-nuego_automation_project.NuegoBookingTest.testPaymentFlow -- Time elapsed: 64.52 s <<< FAILURE!
-java.lang.AssertionError: Timeout: Element not clickable → By.xpath: /html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]
-	at nuego_automation_project.Payment_Mode.clickElement(Payment_Mode.java:110)
-	at nuego_automation_project.Payment_Mode.clickProceedToPay(Payment_Mode.java:51)
-	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:223)
+Tests run: 10, Failures: 1, Errors: 0, Skipped: 3, Time elapsed: 345.6 s <<< FAILURE! -- in TestSuite
+nuego_automation_project.NuegoBookingTest.testPaymentFlow -- Time elapsed: 71.96 s <<< FAILURE!
+java.lang.AssertionError: 
+Payment Flow failed: Expected condition failed: waiting for visibility of element located by By.xpath: //*[contains(text(),'Ticket Confirmation') or contains(text(),'Booking Confirmed')] (tried for 25 second(s) with 500 milliseconds interval)
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.134, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62850}, goog:processID: 23748, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62850/devtoo..., se:cdpVersion: 142.0.7444.134, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: bfcceb28662bb1b72882886810754c78
+	at org.testng.Assert.fail(Assert.java:111)
+	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:284)
+	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:221)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
 	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker.retryFailed(TestInvoker.java:269)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:76)
 	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
 	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
