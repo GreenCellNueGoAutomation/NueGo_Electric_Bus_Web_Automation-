@@ -10,7 +10,7 @@ public class SendReportEmail {
     public static void main(String[] args) {
         try {
             // ✅ Recipients and sender
-            String to = "sumedh.sonawane@sumasoft.net,ssharma4@greencellmobility.com";
+            String to = "sumedh.sonawane@sumasoft.net,";
             String from = "sumedh.sonawane@sumasoft.net";
 
             // ⚠️ Gmail App Password (use valid app password)
