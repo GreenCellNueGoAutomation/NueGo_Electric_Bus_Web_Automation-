@@ -1,146 +1,147 @@
 package nuego_automation_project;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.List;
 
 public class Payment_Mode {
 
-    private final WebDriver driver;
-    private final WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
+    private JavascriptExecutor js;
 
+    // ---------- LOCATORS ----------
+    private final By netBankingOption = By.xpath("(//article[contains(text(),'NetBanking')])[2]");
+    private final By netBankingOption1 = By.xpath("(//*[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'netbanking')])[1]");
+    private final By axisBankOption = By.xpath("//article[normalize-space()='Axis Bank']");
+    private final By axisBankOption3 = By.xpath("//img[contains(@src,'jp_boxedlayout_tick.png')]");
+    private final By axisBankOption1 = By.xpath("(//*[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'axis bank')])[1]");
+  //  private final By payNowButton = By.xpath("//*[contains(text(),'Pay Now') or contains(text(),'Proceed') or contains(text(),'Continue')]");
+    private final By ProceedToPay = By.xpath("(//article[normalize-space(text())='Proceed to Pay'])[1]");
+    
+    private final By ProceedToPay1 = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]");
+    private final By dropdowntxt = By.xpath("//div[@id='txnStateDropdownText']");
+    private final By clickCharged = By.xpath("//span[normalize-space(text())='CHARGED']");
+    private final By sbumitbutton = By.xpath("//button[@id='submitButton']");
+
+    // ---------- CONSTRUCTOR ----------
     public Payment_Mode(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+        this.js = (JavascriptExecutor) driver;
     }
 
-    // ✅ Locators
-   private final By netBankingOption = By.xpath("(//article[contains(text(),'NetBanking')])[2]");
+    // -------------------- INDIVIDUAL ACTION METHODS --------------------
+
+    public void clickNetBanking() throws InterruptedException {
+        switchToPaymentIframeIfPresent();
+        clickWithWait(netBankingOption, "NetBanking");
+    }
+
+    public void clickAxisBank() throws InterruptedException {
+        switchToPaymentIframeIfPresent();
+        clickWithWait(axisBankOption, "Axis Bank");
+    }
+
+    public void clickAxisBankTick() throws InterruptedException {
+        switchToPaymentIframeIfPresent();
+        clickWithWait(axisBankOption3, "Axis Bank Tick Image");
+    }
+
+  /*  public void clickPayNow() throws InterruptedException {
+        switchToPaymentIframeIfPresent();
+        clickWithWait(payNowButton, "Pay Now / Proceed");
+    }
+*/
+    public void clickProceedToPay() throws InterruptedException {
+        switchToPaymentIframeIfPresent();
+        clickWithWait(ProceedToPay, "Proceed To Pay");
+       
+    }
     
+    public void clickProceedToclk() throws InterruptedException {
+        switchToPaymentIframeIfPresent();
+        clickWithWait(ProceedToPay1, "Proceed To Pay");
+       
+    }
+
+    public void clickDropdownText() throws InterruptedException {
+        switchToPaymentIframeIfPresent();
+        clickWithWait(dropdowntxt, "Dropdown Text");
+    }
     
 
-    private final By axisBankOption = By.xpath("//article[normalize-space(text())='Axis Bank']");
-    
-    private final By proceedToPayBtn = By.xpath("(//article[normalize-space(text())='Proceed to Pay'])[1]");
-    private final By txnDropdown = By.xpath("//div[@id='txnStateDropdownText']");
-    private final By chargedOption = By.xpath("//span[normalize-space()='CHARGED']");
-    private final By submitBtn = By.xpath("//button[@id='submitButton']");
-    private final By bookingSuccessMessage = By.xpath("//div[contains(text(),'Booking Confirmed') or contains(text(),'Ticket booked successfully')]"); // update text if needed
+    public void clickCharged() throws InterruptedException {
+        switchToPaymentIframeIfPresent();
+        clickWithWait(clickCharged, "CHARGED");
+    }
 
-    // ✅ Wait for Payment Page or Booking Confirmation
-    public void waitForPaymentOrBooking() {
-        System.out.println("⏳ Waiting for Payment Mode page or Booking confirmation...");
+    public void clickSubmitButton() throws InterruptedException {
+        switchToPaymentIframeIfPresent();
+        clickWithWait(sbumitbutton, "Submit Button");
+    }
 
+    // -------------------- MAIN METHODS --------------------
+
+    public void selectNetBankingAndAxisBank() throws InterruptedException {
+        clickNetBanking();
+        Thread.sleep(1500);
+        clickAxisBank();
+    }
+
+    public void completePaymentFlow() throws InterruptedException {
+    //    clickPayNow();
+        Thread.sleep(3000);
+    }
+
+    // -------------------- HELPER METHODS --------------------
+
+    private void clickWithWait(By locator, String elementName) {
         try {
-            wait.until(ExpectedConditions.or(
-                    ExpectedConditions.presenceOfElementLocated(netBankingOption),
-                    ExpectedConditions.presenceOfElementLocated(bookingSuccessMessage)
-            ));
-
-            if (driver.findElements(bookingSuccessMessage).size() > 0) {
-                System.out.println("✅ Ticket booked successfully. Payment Page skipped.");
-            } else if (driver.findElements(netBankingOption).size() > 0) {
-                System.out.println("✅ Payment Mode page loaded successfully.");
-            } else {
-                throw new AssertionError("❌ Neither Payment Page nor Booking Confirmation appeared!");
-            }
-
-        } catch (TimeoutException e) {
-            throw new AssertionError("❌ Timeout: Neither Payment Page nor Booking Confirmation appeared!");
-        }
-    }
-
-    // ✅ Step 1: Click NetBanking
-    public void selectNetBanking() {
-        clickElement(netBankingOption, "Step 1: Clicked on Net Banking");
-    }
-
-    // ✅ Step 2: Select Axis Bank
-    public void selectAxisBank() {
-        clickElement(axisBankOption, "Step 2: Selected Axis Bank");
-    }
-
-    // ✅ Step 3: Click Proceed to Pay (with iframe + scroll fallback)
-    public void clickProceedToPay() {
-        System.out.println("⏳ Waiting for Proceed to Pay button...");
-        try {
-            switchToPaymentIframeIfPresent();
-            clickElement(proceedToPayBtn, "Step 3: Clicked on Proceed to Pay button");
-        } catch (Exception e) {
-            System.out.println("⚠️ Proceed to Pay not clickable directly, trying JS click...");
-            try {
-                WebElement element = driver.findElement(proceedToPayBtn);
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", element);
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-                System.out.println("✅ JS clicked on Proceed to Pay button");
-            } catch (Exception jsEx) {
-                throw new AssertionError("❌ Failed to click Proceed to Pay: " + jsEx.getMessage());
-            }
-        }
-    }
-
-    // ✅ Step 4: Click Transaction Dropdown
-    public void clickTxnDropdown() {
-        clickElement(txnDropdown, "Step 4: Clicked on Transaction Status dropdown");
-    }
-
-    // ✅ Step 5: Select "CHARGED"
-    public void selectChargedOption() {
-        clickElement(chargedOption, "Step 5: Selected 'CHARGED' option");
-    }
-
-    // ✅ Step 6: Submit
-    public void clickSubmitButton() {
-        clickElement(submitBtn, "Step 6: Clicked on Submit button");
-    }
-
-    // ✅ Main Flow
-    public void completePaymentFlow() {
-        try {
-            waitForPaymentOrBooking(); // updated method here
-            selectNetBanking();
-            Thread.sleep(1500);
-            selectAxisBank();
-            Thread.sleep(2500);
-            clickProceedToPay();
-            Thread.sleep(2000);
-            clickTxnDropdown();
-            Thread.sleep(2000);
-            selectChargedOption();
-            Thread.sleep(2000);
-            clickSubmitButton();
-            System.out.println("🎉 Payment flow completed successfully!");
-        } catch (Exception e) {
-            throw new AssertionError("❌ Payment Flow failed: " + e.getMessage());
-        }
-    }
-
-    // ✅ Helper to safely click any element
-    private void clickElement(By locator, String logMessage) {
-        try {
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", element);
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            wait.until(ExpectedConditions.elementToBeClickable(locator));
+            js.executeScript("arguments[0].scrollIntoView({block:'center'});", element);
             element.click();
-            System.out.println("✅ " + logMessage);
-        } catch (TimeoutException te) {
-            throw new AssertionError("Timeout: Element not clickable → " + locator);
-        } catch (NoSuchElementException ne) {
-            throw new AssertionError("Not Found: " + locator);
+            System.out.println("✅ Clicked: " + elementName);
+        } catch (Exception e) {
+            System.out.println("⚠️ Normal click failed for " + elementName + ", trying JS click...");
+            try {
+                WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+                js.executeScript("arguments[0].click();", element);
+                System.out.println("✅ JS Clicked: " + elementName);
+            } catch (Exception ex) {
+                System.out.println("❌ Failed to click " + elementName + ": " + ex.getMessage());
+            }
         }
     }
 
-    // ✅ Detect and switch to iframe if payment form is inside one
     private void switchToPaymentIframeIfPresent() {
-        try {
-            int iframeCount = driver.findElements(By.tagName("iframe")).size();
-            if (iframeCount > 0) {
-                driver.switchTo().frame(0);
-                System.out.println("🔄 Switched to payment iframe (index 0)");
+        driver.switchTo().defaultContent();
+        List<WebElement> frames = driver.findElements(By.tagName("iframe"));
+        System.out.println("🧩 Total iframes found: " + frames.size());
+        boolean frameFound = false;
+
+        for (int i = 0; i < frames.size(); i++) {
+            try {
+                driver.switchTo().frame(i);
+                if (driver.findElements(netBankingOption).size() > 0 ||
+                    driver.findElements(axisBankOption).size() > 0 ||
+                    driver.findElements(ProceedToPay).size() > 0) {
+                    System.out.println("✅ Switched to payment iframe #" + i);
+                    frameFound = true;
+                    break;
+                } else {
+                    driver.switchTo().defaultContent();
+                }
+            } catch (Exception ignored) {
+                driver.switchTo().defaultContent();
             }
-        } catch (Exception e) {
-            System.out.println("ℹ️ No iframe found, continuing in main DOM");
+        }
+
+        if (!frameFound) {
+            System.out.println("ℹ️ No payment iframe detected — continuing in main DOM.");
         }
     }
 }

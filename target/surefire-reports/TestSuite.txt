@@ -1,18 +1,18 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 1, Errors: 0, Skipped: 9, Time elapsed: 156.5 s <<< FAILURE! -- in TestSuite
-nuego_automation_project.NuegoBookingTest.testLogin -- Time elapsed: 32.53 s <<< FAILURE!
+Tests run: 10, Failures: 1, Errors: 0, Skipped: 9, Time elapsed: 243.2 s <<< FAILURE! -- in TestSuite
+nuego_automation_project.NuegoBookingTest.testLogin -- Time elapsed: 35.58 s <<< FAILURE!
 java.lang.AssertionError: 
 Login failed: Login failed: element click intercepted: Element <img src="/static/media/profile.fdbf0d3a866b38196f43cf1587d719bd.svg" alt="Profile" class="mr-2 profile-picture" loading="lazy"> is not clickable at point (1221, 51). Other element would receive the click: <div class="modal-backdrop fade show"></div>
   (Session info: chrome=142.0.7444.134)
 Build info: version: '4.21.0', revision: '79ed462ef4'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [27af3a84f973fb96acb587f42bd35f55, clickElement {id=f.95CD3D29FBA1A071278931CE9015F7E7.d.26984C20A9001E333A248762C51ACD17.e.311}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.134, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64814}, goog:processID: 26340, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64814/devtoo..., se:cdpVersion: 142.0.7444.134, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (27af3a84f973fb96acb587f42bd35f55)] -> xpath: //img[@alt='Profile']]
-Session ID: 27af3a84f973fb96acb587f42bd35f55
+Command: [05d6cb69c180e10078244f97e7cdc120, clickElement {id=f.FB2CFE049CEE38D1B94319287CA2CFFD.d.E2D7EDED2C8D216A7945743CEB1A79E3.e.317}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.134, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51131}, goog:processID: 21480, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51131/devtoo..., se:cdpVersion: 142.0.7444.134, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (05d6cb69c180e10078244f97e7cdc120)] -> xpath: //img[@alt='Profile']]
+Session ID: 05d6cb69c180e10078244f97e7cdc120
 	at org.testng.Assert.fail(Assert.java:111)
 	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:283)
 	at nuego_automation_project.NuegoBookingTest.testLogin(NuegoBookingTest.java:89)
