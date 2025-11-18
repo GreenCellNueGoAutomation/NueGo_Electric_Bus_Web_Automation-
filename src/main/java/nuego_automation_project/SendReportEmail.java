@@ -10,7 +10,9 @@ public class SendReportEmail {
     public static void main(String[] args) {
         try {
             // ✅ Recipients and sender
-            String to = "sumedh.sonawane@sumasoft.net,";
+            String to = "ssharma4@greencellmobility.com" ;
+          //  String cc = "sumedhsonwane19@gmail.com";
+                         
             String from = "sumedh.sonawane@sumasoft.net";
 
             // ⚠️ Gmail App Password (use valid app password)
@@ -62,6 +64,8 @@ public class SendReportEmail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+          //  message.setRecipients(Message.RecipientType.CC,
+           //         InternetAddress.parse(cc));
             message.setSubject("NueGo Automation Test Report - Build " + buildNum);
 
             // ✅ Message body

@@ -110,8 +110,15 @@ public class SelectSeatPoints {
                 return "//div[31]//div[1]//div[1]//img[1]";
             case "9B":
 				return "//div[44]//div[1]//div[1]//img[1]";
-            case "2A":
-				return "//div[10]//div[1]//div[1]//img[1]";
+           
+            case "8C":
+            	return "//div[37]//div[1]//div[1]//img[1]";
+            case "3C":
+            	return "//div[12]//div[1]//div[1]//img[1]";
+            	
+            case "6B":
+            	return "//div[29]//div[1]//div[1]//img[1]";
+            		
             default:
                 return null;
         }

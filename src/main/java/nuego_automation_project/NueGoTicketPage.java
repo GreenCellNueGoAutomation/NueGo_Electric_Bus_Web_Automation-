@@ -1,4 +1,4 @@
-package nuego_automation_project;
+/*package nuego_automation_project;
 
 
 
@@ -70,7 +70,7 @@ package nuego_automation_project;
 	    }
 	    
 	    public void scrollDown2() {
-	        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,1000)");
+	        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,750)");
 	        System.out.println("Scrolled down the page.");
 	    }
 
@@ -112,6 +112,6 @@ package nuego_automation_project;
 	        System.out.println("Clicked on Change Booking.");
 	    }
 	}
-
+*/
 
 

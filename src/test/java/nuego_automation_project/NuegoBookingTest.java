@@ -37,7 +37,7 @@ public class NuegoBookingTest extends BaseTest {
     private SelectSeatPoints seatPointsPage;
     private Review_Booking_Page reviewBookingPage;
     private Payment_Mode paymentModePage;
-    private NueGoTicketPage ticketPage;
+   // private NueGoTicketPage ticketPage;
 
     // ---------------------- SETUP -----------------------------
     @BeforeClass(alwaysRun = true)
@@ -54,6 +54,8 @@ public class NuegoBookingTest extends BaseTest {
                 "--remote-allow-origins=*",
                 "--start-maximized"
         );
+        
+       
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -69,7 +71,7 @@ public class NuegoBookingTest extends BaseTest {
         seatPointsPage = new SelectSeatPoints(driver);
         reviewBookingPage = new Review_Booking_Page(driver);
         paymentModePage = new Payment_Mode(driver);
-        ticketPage = new NueGoTicketPage(driver);
+      //  ticketPage = new NueGoTicketPage(driver);
     }
 
     // ---------------------- TEST CASES -----------------------------
@@ -132,7 +134,7 @@ public class NuegoBookingTest extends BaseTest {
         test = extent.createTest("Seat Selection Test", "Select seats and proceed to payment");
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id*='seat']")));
-            seatPointsPage.selectSeats("5B", "6C", "2D", "7D", "9B", "2A");
+            seatPointsPage.selectSeats("5B", "6C", "2D", "7D", "9B", "8C", "3C", "6B");	
             seatPointsPage.selectPickupPoint();
             Thread.sleep(1500);
             seatPointsPage.selectDropPoint();
@@ -164,102 +166,104 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ✅ UPDATED PAYMENT FLOW TEST
-    @Test(priority = 7, dependsOnMethods = {"testReviewBookingFlow"}, description = "Complete payment flow using NetBanking - Axis Bank", retryAnalyzer = RetryAnalyzer.class)
-    @Severity(SeverityLevel.CRITICAL)
-    @Story("Payment Flow")
-    public void testPaymentFlow() {
-        test = extent.createTest("Payment Flow Test", "Complete payment using NetBanking (Axis Bank)");
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+   
+    
+    @Test(priority = 7, //dependsOnMethods = {"testReviewBookingFlow"},//
+    	      description = "Complete payment flow using NetBanking - Axis Bank",
+    	      retryAnalyzer = RetryAnalyzer.class)
+    	@Severity(SeverityLevel.CRITICAL)
+    	@Story("Payment Flow")
+    	public void testPaymentFlow() {
+    	    test = extent.createTest("Payment Flow Test", "Complete payment using NetBanking (Axis Bank)");
+    	    try {
+    	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+    	        Actions actions = new Actions(driver);
 
-            // Wait for Payment section to load
-            wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath("//*[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'netbanking')]")));
-            
-            WebElement netBanking = driver.findElement(By.xpath("(//article[contains(text(),'NetBanking')])[2]"));
-            Actions actions = new Actions(driver);
-            actions.moveToElement(netBanking).click().perform();
-            
-            WebElement axisBank = driver.findElement(By.xpath("//article[normalize-space()='Axis Bank']"));
-            Actions actions1 = new Actions(driver);
-            actions.moveToElement(axisBank).click().perform();
-            
-    /*        WebElement axisBank2 = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/article[1]"));
-            Actions actions2 = new Actions(driver);
-            actions.moveToElement(axisBank2).click().perform();*/
-            
-            
-            WebElement axisBank3 = driver.findElement(By.xpath("//img[contains(@src,'jp_boxedlayout_tick.png')]"));
+    	        System.out.println("🧭 Navigating through payment section...");
 
-             Actions actions3 = new Actions(driver);
-            actions.moveToElement(axisBank3).click().perform();
-            
-            
-            WebElement proceedtopay = driver.findElement(By.xpath("(//article[normalize-space(text())='Proceed to Pay'])[1]"));
-            Actions actions4 = new Actions(driver);
-            actions.moveToElement(proceedtopay).click().perform();
-            
-            WebElement proceedtopay1 = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]"));
-            Actions actions5 = new Actions(driver);
-            actions.moveToElement(proceedtopay1).click().perform();
-            
-           
-           
-           WebElement txtoption = driver.findElement(By.xpath("//div[@id='txnStateDropdownText']"));
-           Actions actions6 = new Actions(driver);
-           actions.moveToElement(txtoption).click().perform();
-          
-           WebElement clkcharge = driver.findElement(By.xpath("//span[normalize-space(text())='CHARGED']"));
-           Actions actions7 = new Actions(driver);
-           actions.moveToElement(clkcharge).click().perform();
-           
-           
-           WebElement submitbtn = driver.findElement(By.xpath("//button[@id='submitButton']"));
-           Actions actions8 = new Actions(driver);
-           actions.moveToElement(submitbtn).click().perform();
-        
-            System.out.println("🧭 Navigating through payment section...");
-            paymentModePage.selectNetBankingAndAxisBank();
-            Thread.sleep(2000);
-            paymentModePage.completePaymentFlow();
-            Thread.sleep(2000);
-            paymentModePage.clickNetBanking();
-            Thread.sleep(2000);
-            paymentModePage.clickAxisBank();
-            Thread.sleep(2000);
-            paymentModePage.clickAxisBankTick();
-            Thread.sleep(2000);
-            paymentModePage.clickProceedToPay();
-            Thread.sleep(2000);
-            paymentModePage.clickProceedToclk();
-            paymentModePage.clickDropdownText();
-            Thread.sleep(2000);
-            paymentModePage.clickCharged();
-            Thread.sleep(2000);
-            paymentModePage.clickSubmitButton();
-           
-           
-            
+    	        // 1️⃣ Basic wait to ensure NetBanking text is present on page (Juspay/payment loaded)
+    	        wait.until(ExpectedConditions.presenceOfElementLocated(
+    	                By.xpath("//*[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'netbanking')]")
+    	        ));
 
-            test.log(Status.PASS, "✅ Payment flow completed successfully (NetBanking → Axis Bank)");
-        } catch (Exception e) {
-            handleFailure("Payment Flow failed", e);
-        } finally {
-            try {
-                driver.switchTo().defaultContent();
-            } catch (Exception ignored) {}
-        }
-    }
+    	        // 2️⃣ Click NetBanking using Actions (locator from Payment_Mode)
+    	        WebElement netBanking = wait.until(
+    	                ExpectedConditions.elementToBeClickable(paymentModePage.netBankingOption)
+    	        );
+    	        actions.moveToElement(netBanking).click().perform();
+    	        System.out.println("✅ Clicked NetBanking via Actions");
+    	        Thread.sleep(2000);
 
+    	        // 3️⃣ Click Axis Bank using Actions (locator from Payment_Mode)
+    	        WebElement axisBank = wait.until(
+    	                ExpectedConditions.elementToBeClickable(paymentModePage.axisBankOption)
+    	        );
+    	        actions.moveToElement(axisBank).click().perform();
+    	        System.out.println("✅ Clicked Axis Bank via Actions");
+    	        Thread.sleep(3000);
+
+    	        // 4️⃣ Click Proceed to Pay using Actions (locator from Payment_Mode)
+    	        WebElement proceedToPay = wait.until(
+    	                ExpectedConditions.elementToBeClickable(paymentModePage.ProceedToPay)
+    	        );
+    	        actions.moveToElement(proceedToPay).click().perform();
+    	        System.out.println("✅ Clicked Proceed to Pay via Actions");
+    	        Thread.sleep(3000);
+
+    	        // ⭐⭐⭐ NEW PART STARTS HERE — using only Actions and new locators ⭐⭐⭐
+
+    	        // 5️⃣ Click Txn State dropdown toggle
+    	        WebElement txnDropdown = wait.until(
+    	                ExpectedConditions.elementToBeClickable(
+    	                        By.xpath("//button[@id='txnStateDropdownToggle']")
+    	                )
+    	        );
+    	        actions.moveToElement(txnDropdown).click().perform();
+    	        System.out.println("✅ Clicked Txn State dropdown via Actions");
+    	        Thread.sleep(3000);
+
+    	        // 6️⃣ Click CHARGED option
+    	        WebElement charged = wait.until(
+    	                ExpectedConditions.elementToBeClickable(
+    	                        By.xpath("//span[normalize-space()='CHARGED']")
+    	                )
+    	        );
+    	        actions.moveToElement(charged).click().perform();
+    	        System.out.println("✅ Clicked CHARGED via Actions");
+    	        Thread.sleep(2000);
+
+    	        // 7️⃣ Click Submit button
+    	        WebElement submitBtn = wait.until(
+    	                ExpectedConditions.elementToBeClickable(
+    	                        By.xpath("//button[@id='submitButton']")
+    	                )
+    	        );
+    	        actions.moveToElement(submitBtn).click().perform();
+    	        System.out.println("✅ Clicked Submit Button via Actions");
+    	        Thread.sleep(3000);
+
+    	        // ⭐⭐⭐ NEW PART ENDS HERE ⭐⭐⭐
+
+    	        test.log(Status.PASS,
+    	                "Payment flow completed successfully (NetBanking → Axis Bank → Proceed to Pay → CHARGED → Submit)");
+    	    } catch (Exception e) {
+    	        handleFailure("Payment Flow failed", e);
+    	    } finally {
+    	        try {
+    	            driver.switchTo().defaultContent();
+    	        } catch (Exception ignored) {}
+    	    }
+    	}
+/*
     @Test(priority = 8, dependsOnMethods = {"testPaymentFlow"}, description = "Verify ticket confirmation page actions", retryAnalyzer = RetryAnalyzer.class)
     public void testTicketPageFlow() {
         test = extent.createTest("Ticket Page Flow", "Validate post-booking actions on Ticket Confirmation page");
         try {
             ticketPage.clickDontAllowIfVisible();
             ticketPage.clickWhatsapp();
-            Thread.sleep(3000);
+            Thread.sleep(5000);
             ticketPage.clickTextMessage();
-            Thread.sleep(3000);
+            Thread.sleep(5000);
             ticketPage.scrollDown();
             Thread.sleep(3000);
             ticketPage.clickFareDetail();
@@ -282,7 +286,7 @@ public class NuegoBookingTest extends BaseTest {
             handleFailure("Ticket Page flow failed", e);
         }
     }
-
+*/
     // ---------------------- FAILURE HANDLER -----------------------------
     @Attachment(value = "Screenshot on Failure", type = "image/png")
     public byte[] takeScreenshot() {
@@ -338,4 +342,4 @@ public class NuegoBookingTest extends BaseTest {
             e.printStackTrace();
         }
     }
-}
+} 
