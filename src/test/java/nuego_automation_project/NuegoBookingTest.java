@@ -8,7 +8,6 @@ import io.qameta.allure.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -37,7 +36,8 @@ public class NuegoBookingTest extends BaseTest {
     private SelectSeatPoints seatPointsPage;
     private Review_Booking_Page reviewBookingPage;
     private Payment_Mode paymentModePage;
-   // private NueGoTicketPage ticketPage;
+    private Ticket_Confirmation ticketConfirmationPage;
+    private Reschedule_Booking rescheduleBookingPage;
 
     // ---------------------- SETUP -----------------------------
     @BeforeClass(alwaysRun = true)
@@ -51,11 +51,11 @@ public class NuegoBookingTest extends BaseTest {
                 "--disable-blink-features=AutomationControlled",
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
-                "--remote-allow-origins=*",
-                "--start-maximized"
+                "--remote-allow-origins=*"
+                // "--headless=new",
+                // "--disable-gpu",
+                // "--window-size=1920,1080"
         );
-        
-       
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -71,7 +71,8 @@ public class NuegoBookingTest extends BaseTest {
         seatPointsPage = new SelectSeatPoints(driver);
         reviewBookingPage = new Review_Booking_Page(driver);
         paymentModePage = new Payment_Mode(driver);
-      //  ticketPage = new NueGoTicketPage(driver);
+        ticketConfirmationPage = new Ticket_Confirmation(driver);
+        rescheduleBookingPage = new Reschedule_Booking(driver);
     }
 
     // ---------------------- TEST CASES -----------------------------
@@ -129,23 +130,40 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 5, dependsOnMethods = {"testBusBookingPageActions"}, description = "Select seat, pickup & drop points and click Book & Pay", retryAnalyzer = RetryAnalyzer.class)
+    @Test(
+            priority = 5,
+            dependsOnMethods = {"testBusBookingPageActions"},
+            description = "Select seat, pickup & drop points and click Book & Pay",
+            retryAnalyzer = RetryAnalyzer.class
+    )
     public void testSelectSeatAndProceedToPay() {
         test = extent.createTest("Seat Selection Test", "Select seats and proceed to payment");
         try {
+            // Wait for seat layout to be visible
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id*='seat']")));
-            seatPointsPage.selectSeats("5B", "6C", "2D", "7D", "9B", "8C", "3C", "6B");	
+
+            // ✅ Auto-select ANY available seat
+            seatPointsPage.selectSeats();
+
+            // ✅ Pickup & Drop selection
             seatPointsPage.selectPickupPoint();
             Thread.sleep(1500);
             seatPointsPage.selectDropPoint();
             Thread.sleep(1500);
+
+            // ✅ Book & Pay
             seatPointsPage.clickBookAndPay();
+
+            // Discount popup (if any)
             reviewBookingPage.handleDiscountPopup();
 
+            // ✅ Verify we reached Review Booking or Payment page
             WebDriverWait pageWait = new WebDriverWait(driver, Duration.ofSeconds(30));
-            WebElement reviewOrPaymentElement = pageWait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath("//*[contains(text(),'Review Booking') or contains(text(),'Payment')]")
-            ));
+            WebElement reviewOrPaymentElement = pageWait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            By.xpath("//*[contains(text(),'Review Booking') or contains(text(),'Payment')]")
+                    )
+            );
 
             Assert.assertTrue(reviewOrPaymentElement.isDisplayed(), "❌ Review or Payment page not reached");
             test.log(Status.PASS, "✅ Seat selection and Book & Pay successful");
@@ -154,139 +172,234 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 6, dependsOnMethods = {"testSelectSeatAndProceedToPay"}, description = "Verify Review Booking flow actions", retryAnalyzer = RetryAnalyzer.class)
+    // ✅ Review Booking page test
+    @Test(
+            priority = 6,
+            dependsOnMethods = {"testSelectSeatAndProceedToPay"},
+            description = "Review Booking: handle popup, coupon (if any), assurance/wallet/miles (if any), GST & Proceed",
+            retryAnalyzer = RetryAnalyzer.class
+    )
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Review Booking")
     public void testReviewBookingFlow() {
-        test = extent.createTest("Review Booking Flow", "Apply coupon and verify review booking actions");
+
+        test = extent.createTest(
+                "Review Booking Flow",
+                "Handle discount popup, optional coupon, optional assurance/wallet/miles, GST validation and Proceed & Book"
+        );
+
         try {
-            reviewBookingPage.clickApplyCoupon();
-            test.log(Status.PASS, "✅ Review Booking flow completed successfully");
+            System.out.println("➡️ Starting Review Booking flow...");
+
+            // 1️⃣ Ensure Review Booking section is visible
+            reviewBookingPage.scrollToReviewSection();
+            test.log(Status.INFO, "✅ Scrolled to Review Booking section");
+
+            // 2️⃣ Run the complete flow (internally skips sections not present – safe for reschedule)
+            reviewBookingPage.completeReviewBookingFlow();
+            test.log(Status.INFO, "✅ Review Booking flow executed (with dynamic checks)");
+
+            test.pass("Review Booking flow executed successfully");
+            test.log(Status.PASS, "✅ Review Booking page flow passed");
+
         } catch (Exception e) {
-            handleFailure("Review Booking flow failed", e);
+            test.fail("❌ Review Booking flow failed – " + e.getMessage());
+            test.log(Status.FAIL, "❌ Review Booking flow failed with exception: " + e.getMessage());
+            e.printStackTrace();
+            Assert.fail("Review Booking flow failed", e);
         }
     }
 
-    // ✅ UPDATED PAYMENT FLOW TEST
-   
-    
-    @Test(priority = 7, //dependsOnMethods = {"testReviewBookingFlow"},//
-    	      description = "Complete payment flow using NetBanking - Axis Bank",
-    	      retryAnalyzer = RetryAnalyzer.class)
-    	@Severity(SeverityLevel.CRITICAL)
-    	@Story("Payment Flow")
-    	public void testPaymentFlow() {
-    	    test = extent.createTest("Payment Flow Test", "Complete payment using NetBanking (Axis Bank)");
-    	    try {
-    	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
-    	        Actions actions = new Actions(driver);
+    @Test(
+            priority = 7,
+            dependsOnMethods = {"testReviewBookingFlow"},
+            description = "Complete payment flow using NetBanking - Axis Bank",
+            retryAnalyzer = RetryAnalyzer.class
+    )
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Payment Flow")
+    public void testPaymentFlow() {
+        test = extent.createTest(
+                "Payment Flow Test",
+                "Complete payment using NetBanking (Axis Bank)"
+        );
 
-    	        System.out.println("🧭 Navigating through payment section...");
-
-    	        // 1️⃣ Basic wait to ensure NetBanking text is present on page (Juspay/payment loaded)
-    	        wait.until(ExpectedConditions.presenceOfElementLocated(
-    	                By.xpath("//*[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'netbanking')]")
-    	        ));
-
-    	        // 2️⃣ Click NetBanking using Actions (locator from Payment_Mode)
-    	        WebElement netBanking = wait.until(
-    	                ExpectedConditions.elementToBeClickable(paymentModePage.netBankingOption)
-    	        );
-    	        actions.moveToElement(netBanking).click().perform();
-    	        System.out.println("✅ Clicked NetBanking via Actions");
-    	        Thread.sleep(2000);
-
-    	        // 3️⃣ Click Axis Bank using Actions (locator from Payment_Mode)
-    	        WebElement axisBank = wait.until(
-    	                ExpectedConditions.elementToBeClickable(paymentModePage.axisBankOption)
-    	        );
-    	        actions.moveToElement(axisBank).click().perform();
-    	        System.out.println("✅ Clicked Axis Bank via Actions");
-    	        Thread.sleep(3000);
-
-    	        // 4️⃣ Click Proceed to Pay using Actions (locator from Payment_Mode)
-    	        WebElement proceedToPay = wait.until(
-    	                ExpectedConditions.elementToBeClickable(paymentModePage.ProceedToPay)
-    	        );
-    	        actions.moveToElement(proceedToPay).click().perform();
-    	        System.out.println("✅ Clicked Proceed to Pay via Actions");
-    	        Thread.sleep(3000);
-
-    	        // ⭐⭐⭐ NEW PART STARTS HERE — using only Actions and new locators ⭐⭐⭐
-
-    	        // 5️⃣ Click Txn State dropdown toggle
-    	        WebElement txnDropdown = wait.until(
-    	                ExpectedConditions.elementToBeClickable(
-    	                        By.xpath("//button[@id='txnStateDropdownToggle']")
-    	                )
-    	        );
-    	        actions.moveToElement(txnDropdown).click().perform();
-    	        System.out.println("✅ Clicked Txn State dropdown via Actions");
-    	        Thread.sleep(3000);
-
-    	        // 6️⃣ Click CHARGED option
-    	        WebElement charged = wait.until(
-    	                ExpectedConditions.elementToBeClickable(
-    	                        By.xpath("//span[normalize-space()='CHARGED']")
-    	                )
-    	        );
-    	        actions.moveToElement(charged).click().perform();
-    	        System.out.println("✅ Clicked CHARGED via Actions");
-    	        Thread.sleep(2000);
-
-    	        // 7️⃣ Click Submit button
-    	        WebElement submitBtn = wait.until(
-    	                ExpectedConditions.elementToBeClickable(
-    	                        By.xpath("//button[@id='submitButton']")
-    	                )
-    	        );
-    	        actions.moveToElement(submitBtn).click().perform();
-    	        System.out.println("✅ Clicked Submit Button via Actions");
-    	        Thread.sleep(3000);
-
-    	        // ⭐⭐⭐ NEW PART ENDS HERE ⭐⭐⭐
-
-    	        test.log(Status.PASS,
-    	                "Payment flow completed successfully (NetBanking → Axis Bank → Proceed to Pay → CHARGED → Submit)");
-    	    } catch (Exception e) {
-    	        handleFailure("Payment Flow failed", e);
-    	    } finally {
-    	        try {
-    	            driver.switchTo().defaultContent();
-    	        } catch (Exception ignored) {}
-    	    }
-    	}
-/*
-    @Test(priority = 8, dependsOnMethods = {"testPaymentFlow"}, description = "Verify ticket confirmation page actions", retryAnalyzer = RetryAnalyzer.class)
-    public void testTicketPageFlow() {
-        test = extent.createTest("Ticket Page Flow", "Validate post-booking actions on Ticket Confirmation page");
         try {
-            ticketPage.clickDontAllowIfVisible();
-            ticketPage.clickWhatsapp();
-            Thread.sleep(5000);
-            ticketPage.clickTextMessage();
-            Thread.sleep(5000);
-            ticketPage.scrollDown();
-            Thread.sleep(3000);
-            ticketPage.clickFareDetail();
-            Thread.sleep(3000);
-            ticketPage.closeFareDetail();
-            Thread.sleep(3000);
-            ticketPage.scrollDown2();
-            ticketPage.clickShareOption();
-            Thread.sleep(3000);
-            ticketPage.closeShareScreen();
-            Thread.sleep(3000);
-            ticketPage.clickETicket();
-            ticketPage.clickCopyLink();
-            ticketPage.clickDownloadTicket();
-            Thread.sleep(3000);
-            ticketPage.clickChangeBooking();
-            Thread.sleep(3000);
-            test.log(Status.PASS, "✅ Ticket page interactions executed successfully");
+            System.out.println("🧭 Navigating through payment section...");
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'netbanking')]")
+            ));
+            System.out.println("✅ Payment page with NetBanking options loaded");
+
+            paymentModePage.completeNetBankingAxisFlow();
+
+            test.log(Status.PASS,
+                    "Payment flow completed successfully (NetBanking → Axis Bank → Proceed to Pay → CHARGED → Submit)");
+
         } catch (Exception e) {
-            handleFailure("Ticket Page flow failed", e);
+            handleFailure("Payment Flow failed", e);
+        } finally {
+            try {
+                driver.switchTo().defaultContent();
+            } catch (Exception ignored) {}
         }
     }
-*/
+
+    // ✅ Ticket Confirmation page test
+    @Test(
+            priority = 8,
+            dependsOnMethods = {"testPaymentFlow"},
+            description = "Verify Ticket Confirmation page actions (Whatsapp, SMS, Fare, E-ticket, Copy Link, Download)",
+            retryAnalyzer = RetryAnalyzer.class
+    )
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Ticket Confirmation")
+    public void testTicketConfirmationFlow() {
+
+        test = extent.createTest(
+                "Ticket Confirmation Test",
+                "Verify confirmation page, Whatsapp, SMS, Fare details, E-ticket, Copy Link & Download"
+        );
+
+        try {
+            // 1️⃣ Ensure we’re on confirmation page
+            ticketConfirmationPage.verifyOnConfirmationPage();
+            String currentUrl = ticketConfirmationPage.getCurrentUrl();
+            System.out.println("Current URL on Confirmation page → " + currentUrl);
+            Assert.assertTrue(
+                    currentUrl.contains("confirmation"),
+                    "Not on confirmation page!"
+            );
+            test.log(Status.INFO, "✅ Landed on Ticket Confirmation page");
+
+            // 2️⃣ Dismiss notification popup if present
+            ticketConfirmationPage.dismissNotificationIfPresent();
+            test.log(Status.INFO, "Handled notification popup (if present)");
+
+            // 3️⃣ Click on Whatsapp (twice) & verify success message
+            ticketConfirmationPage.clickWhatsappOnceAndVerifySuccess();
+            ticketConfirmationPage.clickWhatsappOnceAndVerifySuccess();
+            test.log(Status.INFO, "✅ Whatsapp ticket share verified (2 times)");
+
+            // 4️⃣ Click on SMS & verify success message
+            ticketConfirmationPage.clickSmsAndVerifySuccess();
+            test.log(Status.INFO, "✅ SMS ticket share verified");
+
+            // 5️⃣ Open & close Fare Details
+            ticketConfirmationPage.openAndCloseFareDetails();
+            test.log(Status.INFO, "✅ Fare details opened & closed");
+
+            // 6️⃣ Click E-Ticket option
+            ticketConfirmationPage.clickETicketOption();
+            test.log(Status.INFO, "✅ E-Ticket option clicked");
+
+            // 7️⃣ Click Copy Link button
+            ticketConfirmationPage.clickCopyLink();
+            test.log(Status.INFO, "✅ Copy Link button clicked");
+
+            // 8️⃣ Click on Download Ticket (opens in new tab) & verify new tab
+            ticketConfirmationPage.clickDownloadAndVerifyTicketInNewTab();
+            test.log(Status.INFO, "✅ Download Ticket clicked and new tab handled");
+
+            test.pass("Ticket Confirmation flow executed successfully");
+            test.log(Status.PASS, "✅ Ticket Confirmation page flow executed successfully");
+
+        } catch (Exception e) {
+            handleFailure("Ticket Confirmation flow failed", e);
+        }
+    }
+
+    @Test(
+            priority = 9,
+            dependsOnMethods = {"testTicketConfirmationFlow"},
+            description = "Verify Reschedule Booking flow from confirmation page",
+            retryAnalyzer = RetryAnalyzer.class
+    )
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Reschedule Booking")
+    public void testRescheduleBookingFlow() {
+        test = extent.createTest(
+                "Reschedule Booking Test",
+                "Verify change booking, reschedule tab, calendar future date, View Coaches, seat selection, payment & confirmation"
+        );
+
+        try {
+            System.out.println("===== 🔁 Starting Reschedule Booking flow =====");
+
+            // 0️⃣ Ensure we are on Ticket Confirmation page
+            ticketConfirmationPage.verifyOnConfirmationPage();
+            String currentUrl = ticketConfirmationPage.getCurrentUrl();
+            System.out.println("Current URL on Confirmation page → " + currentUrl);
+            Assert.assertTrue(
+                    currentUrl.contains("confirmation"),
+                    "Not on confirmation page! Cannot start reschedule."
+            );
+            test.log(Status.INFO, "✅ Confirmed we are on Ticket Confirmation page before reschedule");
+
+            // 1️⃣ Click on Change booking from confirmation page
+            System.out.println(">>> Step 1: Click Change booking");
+            rescheduleBookingPage.clickChangeBooking();
+
+            // 2️⃣ Click on Reschedule tab (with fallback handled inside page object)
+            System.out.println(">>> Step 2: Click Reschedule tab");
+            try {
+                rescheduleBookingPage.clickRescheduleTab();
+            } catch (Exception e) {
+                System.out.println("Primary Reschedule tab locator failed, using alternate...");
+                rescheduleBookingPage.clickRescheduleTabAlt1();
+            }
+
+            // 3️⃣ Open calendar
+            System.out.println(">>> Step 3: Open calendar");
+            rescheduleBookingPage.openCalendar();
+
+            // 4️⃣ Select automatic future date
+            System.out.println(">>> Step 4: Select future date automatically");
+            rescheduleBookingPage.selectFutureDateAutomatically();
+
+            // 5️⃣ Click on View Coaches
+            System.out.println(">>> Step 5: Click View Coaches");
+            rescheduleBookingPage.clickViewCoaches();
+
+            // 6️⃣ Seat selection (for rescheduled bus)
+            System.out.println(">>> Step 6: Seat selection");
+            bookingPage.clickSeat();
+
+            // ✅ Pickup & Drop selection
+            seatPointsPage.selectSeats();
+            Thread.sleep(1000);
+            seatPointsPage.selectPickupPoint();
+            Thread.sleep(1000);
+            seatPointsPage.selectDropPoint();
+            Thread.sleep(1000);
+
+            // ✅ Book & Pay
+            seatPointsPage.clickBookAndPay();
+            Thread.sleep(1000);
+            System.out.println("Clicked Book & Pay");
+
+            // 7️⃣ Review booking actions for rescheduled journey
+            reviewBookingPage.scrollToReviewSection();
+            Thread.sleep(2000);
+            // For reschedule, coupon/assurance may not exist – we do minimal steps:
+            reviewBookingPage.clickWalletApply();
+            reviewBookingPage.clickProceedToBookButton();
+
+            
+            paymentModePage.completeNetBankingAxisFlow();
+
+            ticketConfirmationPage.completeConfirmationActionsFlow();
+
+            test.log(Status.PASS, "✅ Reschedule Booking flow executed successfully");
+            System.out.println("===== ✅ Reschedule Booking flow completed =====");
+
+        } catch (Exception e) {
+            handleFailure("Reschedule Booking flow failed", e);
+        }
+    }
+
     // ---------------------- FAILURE HANDLER -----------------------------
     @Attachment(value = "Screenshot on Failure", type = "image/png")
     public byte[] takeScreenshot() {
@@ -315,7 +428,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- CLEANUP -----------------------------
-    @AfterClass(alwaysRun = true)
+    /*@AfterClass(alwaysRun = true)
     public void tearDown() {
         try {
             if (driver != null) {
@@ -328,7 +441,7 @@ public class NuegoBookingTest extends BaseTest {
         } catch (Exception e) {
             System.out.println("⚠️ Error during teardown: " + e.getMessage());
         }
-    }
+    }*/
 
     // ---------------------- EMAIL TRIGGER -----------------------------
     @AfterSuite(alwaysRun = true)
@@ -342,4 +455,4 @@ public class NuegoBookingTest extends BaseTest {
             e.printStackTrace();
         }
     }
-} 
+}

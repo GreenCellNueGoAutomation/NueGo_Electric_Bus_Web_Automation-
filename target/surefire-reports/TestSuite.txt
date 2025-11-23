@@ -1,18 +1,21 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 1, Errors: 0, Skipped: 5, Time elapsed: 274.7 s <<< FAILURE! -- in TestSuite
-nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay -- Time elapsed: 64.08 s <<< FAILURE!
+Tests run: 11, Failures: 1, Errors: 0, Skipped: 10, Time elapsed: 169.4 s <<< FAILURE! -- in TestSuite
+nuego_automation_project.NuegoBookingTest.testLogin -- Time elapsed: 33.30 s <<< FAILURE!
 java.lang.AssertionError: 
-Seat selection and payment test failed: Expected condition failed: waiting for visibility of element located by By.cssSelector: div[id*='seat'] (tried for 25 second(s) with 500 milliseconds interval)
+Login failed: Login failed: element click intercepted: Element <img src="/static/media/profile.fdbf0d3a866b38196f43cf1587d719bd.svg" alt="Profile" class="mr-2 profile-picture" loading="lazy"> is not clickable at point (1221, 51). Other element would receive the click: <div class="modal-backdrop fade show"></div>
+  (Session info: chrome=142.0.7444.134)
 Build info: version: '4.21.0', revision: '79ed462ef4'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.134, chrome: {chromedriverVersion: 142.0.7444.162 (c076baf266c..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49682}, goog:processID: 3376, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49682/devtoo..., se:cdpVersion: 142.0.7444.134, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 7e6122ec3ac0c2e00cd68639ad2c1226
+Command: [05babee2d4878d1c18b07a3fa54ad117, clickElement {id=f.C2431E621887CD24F69DE2BE83697231.d.CDD579FA2AF375A907A0EA15E78E3EBD.e.330}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.134, chrome: {chromedriverVersion: 142.0.7444.175 (302067f14a4..., userDataDir: C:\Users\SUMEDH~1.SON\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51694}, goog:processID: 22028, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51694/devtoo..., se:cdpVersion: 142.0.7444.134, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (05babee2d4878d1c18b07a3fa54ad117)] -> xpath: //img[@alt='Profile']]
+Session ID: 05babee2d4878d1c18b07a3fa54ad117
 	at org.testng.Assert.fail(Assert.java:111)
-	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:307)
-	at nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay(NuegoBookingTest.java:151)
+	at nuego_automation_project.NuegoBookingTest.handleFailure(NuegoBookingTest.java:396)
+	at nuego_automation_project.NuegoBookingTest.testLogin(NuegoBookingTest.java:91)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

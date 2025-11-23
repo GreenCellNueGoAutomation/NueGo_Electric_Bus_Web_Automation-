@@ -10,8 +10,8 @@ public class SendReportEmail {
     public static void main(String[] args) {
         try {
             // ✅ Recipients and sender
-            String to = "ssharma4@greencellmobility.com" ;
-          //  String cc = "sumedhsonwane19@gmail.com";
+            String to = "sumedh.sonawane@sumasoft.net" ;
+          //  String cc = "";
                          
             String from = "sumedh.sonawane@sumasoft.net";
 

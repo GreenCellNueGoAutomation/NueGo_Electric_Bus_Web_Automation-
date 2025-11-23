@@ -6,16 +6,17 @@
       <class name="nuego_automation_project.NuegoBookingTest">
         <methods>
           <include name="tearDown"/>
-          <include name="setUp"/>
           <include name="testLogin"/>
+          <include name="setUp"/>
           <include name="testFilters"/>
           <include name="testBusBookingPageActions"/>
+          <include name="testRescheduleBookingFlow"/>
           <include name="testPaymentFlow"/>
           <include name="sendReportEmail"/>
           <include name="testHomePageActions"/>
           <include name="testSelectSeatAndProceedToPay"/>
           <include name="testReviewBookingFlow"/>
-          <include name="testTicketPageFlow"/>
+          <include name="testTicketConfirmationFlow"/>
         </methods>
       </class> <!-- nuego_automation_project.NuegoBookingTest -->
     </classes>

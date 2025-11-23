@@ -36,7 +36,8 @@ public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//button[@class='teal-22BBB0-bg white-color open-600w-16s-24h p-3 w-100 submit-button mb-3']")
     private WebElement btnVerifyOtp;
-
+    
+  
     // ---------------- Constructor ---------------- //
     public LoginPage(WebDriver driver) {
         super(driver);

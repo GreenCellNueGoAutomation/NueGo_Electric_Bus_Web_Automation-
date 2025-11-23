@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.*;
+import java.util.List;
 
 public class SelectSeatPoints {
 
@@ -20,45 +20,13 @@ public class SelectSeatPoints {
 
     // ---------------- Main Seat Selection Logic ---------------- //
 
+    // Kept same signature so existing tests compile, but we ignore args
     public void selectSeats(String... seatNumbers) {
-        selectSeats(Arrays.asList(seatNumbers));
+        selectAnyAvailableSeats(2);   // always select 1 seat
     }
 
     public void selectSeats(List<String> seatNumbers) {
-        int seatsSelected = 0;
-
-        for (String seatNumber : seatNumbers) {
-            String xpath = getSeatXPath(seatNumber);
-            if (xpath == null) continue;
-
-            try {
-                By seatLocator = By.xpath(xpath);
-                WebElement seat = wait.until(ExpectedConditions.presenceOfElementLocated(seatLocator));
-
-                scrollIntoCenterView(seat);
-
-                // Check if seat is available
-                if (isSeatAvailable(seat)) {
-                    safeClick(seat);
-                    System.out.println("✅ Selected seat: " + seatNumber);
-                    seatsSelected++;
-                    pause(1200);
-
-                    if (seatsSelected >= 1) break; // ✅ Select only ONE seat
-                } else {
-                    System.out.println("⚠️ Seat " + seatNumber + " is already booked, trying next...");
-                }
-
-            } catch (Exception e) {
-                System.out.println("⚠️ Seat " + seatNumber + " not found or not clickable. Trying next...");
-            }
-        }
-
-        // If not enough seats selected, pick from available automatically
-        if (seatsSelected < 1) {
-            System.out.println("🔁 Preferred seat not available. Selecting one available seat automatically...");
-            selectAnyAvailableSeats(1 - seatsSelected); // ✅ Only 1 needed
-        }
+        selectAnyAvailableSeats(2);   // always select 1 seat
     }
 
     // ---------------- Helper: Check seat availability ---------------- //
@@ -68,6 +36,7 @@ public class SelectSeatPoints {
             String classAttr = seat.getAttribute("class");
             String aria = seat.getAttribute("aria-disabled");
             boolean disabled = "true".equalsIgnoreCase(aria);
+            // adjust "booked" keyword as per your UI if needed
             return !disabled && (classAttr == null || !classAttr.contains("booked"));
         } catch (Exception e) {
             return false;
@@ -76,51 +45,40 @@ public class SelectSeatPoints {
 
     // ---------------- Helper: Auto-select from available ---------------- //
 
+    /**
+     * Uses generic available seat locator:
+     * //*[@class='position-relative  seat-available']
+     * and clicks neededSeats seats (currently you only ever need 1).
+     */
     private void selectAnyAvailableSeats(int neededSeats) {
-        List<WebElement> availableSeats = driver.findElements(By.xpath("//img[contains(@src, 'seat') and not(contains(@class,'booked'))]"));
+        By availableSeatsLocator = By.xpath("//*[@class='position-relative  seat-available']");
+
+        List<WebElement> availableSeats = driver.findElements(availableSeatsLocator);
+        if (availableSeats.isEmpty()) {
+            System.out.println("❌ No available seats found using generic locator.");
+            return;
+        }
+
         int count = 0;
 
         for (WebElement seat : availableSeats) {
             try {
+                if (!isSeatAvailable(seat)) {
+                    continue;
+                }
+
                 scrollIntoCenterView(seat);
                 safeClick(seat);
                 count++;
                 System.out.println("✅ Auto-selected available seat #" + count);
                 pause(1000);
-                if (count >= neededSeats) break; // ✅ Stop after selecting 1
+
+                if (count >= neededSeats) break;  // stop after neededSeats
             } catch (Exception ignored) {}
         }
 
         if (count < neededSeats) {
-            System.out.println("❌ Unable to select a seat automatically.");
-        }
-    }
-
-    // ---------------- Seat Mapping ---------------- //
-
-    private String getSeatXPath(String seatNumber) {
-        switch (seatNumber) {
-            case "5B":
-                return "//div[24]//div[1]//div[1]//img[1]";
-            case "6C":
-                return "//div[27]//div[1]//div[1]//img[1]";
-            case "2D":
-                return "//div[6]//div[1]//div[1]//img[1]";
-            case "7D":
-                return "//div[31]//div[1]//div[1]//img[1]";
-            case "9B":
-				return "//div[44]//div[1]//div[1]//img[1]";
-           
-            case "8C":
-            	return "//div[37]//div[1]//div[1]//img[1]";
-            case "3C":
-            	return "//div[12]//div[1]//div[1]//img[1]";
-            	
-            case "6B":
-            	return "//div[29]//div[1]//div[1]//img[1]";
-            		
-            default:
-                return null;
+            System.out.println("❌ Unable to select required number of seats automatically. Selected: " + count);
         }
     }
 
