@@ -1,57 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="9" passed="9" failed="0" skipped="0">
+<testng-results ignored="0" total="11" passed="7" failed="0" skipped="4">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-23T12:53:56 IST" name="Default suite" finished-at="2025-11-23T12:58:40 IST" duration-ms="283663">
+  <suite started-at="2025-11-24T13:21:23 IST" name="Default suite" finished-at="2025-11-24T13:24:09 IST" duration-ms="166109">
     <groups>
     </groups>
-    <test started-at="2025-11-23T12:53:56 IST" name="Default test" finished-at="2025-11-23T12:58:40 IST" duration-ms="283663">
+    <test started-at="2025-11-24T13:21:23 IST" name="Default test" finished-at="2025-11-24T13:24:09 IST" duration-ms="166109">
       <class name="nuego_automation_project.NuegoBookingTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:53:56 IST" name="setUp" finished-at="2025-11-23T12:54:04 IST" duration-ms="7266" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:21:23 IST" name="setUp" finished-at="2025-11-24T13:21:25 IST" duration-ms="1855" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:54:04 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-11-23T12:54:13 IST" duration-ms="8936" status="PASS">
+        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:21:25 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-11-24T13:21:28 IST" duration-ms="3741" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLogin -->
-        <test-method signature="testHomePageActions()[pri:2, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:54:13 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-11-23T12:54:36 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="23315" status="PASS">
+        <test-method signature="testAddMoneyToWallet()[pri:2, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:21:29 IST" name="testAddMoneyToWallet" description="Open wallet and add money" finished-at="2025-11-24T13:22:38 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="69899" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddMoneyToWallet -->
+        <test-method signature="testHomePageActions()[pri:3, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:22:38 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-11-24T13:22:59 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="21036" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testHomePageActions -->
-        <test-method signature="testFilters()[pri:3, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:54:36 IST" name="testFilters" description="Apply filters" finished-at="2025-11-23T12:54:51 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testHomePageActions" duration-ms="15408" status="PASS">
+        <test-method signature="testFilters()[pri:4, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:22:59 IST" name="testFilters" description="Apply filters" finished-at="2025-11-24T13:23:10 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testHomePageActions" duration-ms="10515" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFilters -->
-        <test-method signature="testBusBookingPageActions()[pri:4, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:54:51 IST" name="testBusBookingPageActions" description="Scroll and click seat on Bus Booking page" finished-at="2025-11-23T12:55:00 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testFilters" duration-ms="8617" status="PASS">
+        <test-method signature="testBusBookingPageActions()[pri:5, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:23:10 IST" name="testBusBookingPageActions" description="Scroll and click seat on Bus Booking page" finished-at="2025-11-24T13:23:18 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testFilters" duration-ms="8242" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testBusBookingPageActions -->
-        <test-method signature="testSelectSeatAndProceedToPay()[pri:5, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:55:00 IST" name="testSelectSeatAndProceedToPay" description="Select seat, pickup &amp; drop points and click Book &amp; Pay" finished-at="2025-11-23T12:55:25 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testBusBookingPageActions" duration-ms="24532" status="PASS">
+        <test-method signature="testSelectSeatAndProceedToPay()[pri:6, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:23:18 IST" name="testSelectSeatAndProceedToPay" description="Select seat, pickup &amp; drop points and click Book &amp; Pay" finished-at="2025-11-24T13:23:41 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testBusBookingPageActions" duration-ms="22334" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSelectSeatAndProceedToPay -->
-        <test-method signature="testReviewBookingFlow()[pri:6, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:55:25 IST" name="testReviewBookingFlow" description="Review Booking: handle popup, coupon (if any), assurance/wallet/miles (if any), GST &amp; Proceed" finished-at="2025-11-23T12:55:54 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay" duration-ms="28937" status="PASS">
+        <test-method signature="testReviewBookingFlow()[pri:7, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:23:41 IST" name="testReviewBookingFlow" description="Review Booking: handle popup, coupon (if any), assurance/wallet/miles (if any), GST &amp; Proceed" finished-at="2025-11-24T13:24:08 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay" duration-ms="27832" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testReviewBookingFlow -->
-        <test-method signature="testPaymentFlow()[pri:7, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:55:54 IST" name="testPaymentFlow" description="Complete payment flow using NetBanking - Axis Bank" finished-at="2025-11-23T12:56:15 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testReviewBookingFlow" duration-ms="21212" status="PASS">
+        <test-method signature="testPaymentFlow()[pri:8, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:24:08 IST" name="testPaymentFlow" description="Complete payment flow using NetBanking - Axis Bank" finished-at="2025-11-24T13:24:08 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testReviewBookingFlow" duration-ms="16" status="SKIP">
+          <exception class="org.testng.SkipException">
+            <message>
+              <![CDATA[🎫 Ticket already confirmed after Review Booking – no Payment page shown. Skipping payment flow.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.SkipException: 🎫 Ticket already confirmed after Review Booking – no Payment page shown. Skipping payment flow.
+at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:292)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.SkipException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPaymentFlow -->
-        <test-method signature="testTicketConfirmationFlow()[pri:8, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:56:15 IST" name="testTicketConfirmationFlow" description="Verify Ticket Confirmation page actions (Whatsapp, SMS, Fare, E-ticket, Copy Link, Download)" finished-at="2025-11-23T12:56:58 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testPaymentFlow" duration-ms="43262" status="PASS">
+        <test-method signature="testTicketConfirmationFlow()[pri:9, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:24:08 IST" name="testTicketConfirmationFlow" description="Verify Ticket Confirmation page actions (Whatsapp, SMS, Fare, E-ticket, Copy Link, Download)" finished-at="2025-11-24T13:24:08 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testPaymentFlow" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method nuego_automation_project.NuegoBookingTest.testTicketConfirmationFlow() on instance nuego_automation_project.NuegoBookingTest@663411de depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testPaymentFlow() on instance nuego_automation_project.NuegoBookingTest@663411de]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testTicketConfirmationFlow() on instance nuego_automation_project.NuegoBookingTest@663411de depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testPaymentFlow() on instance nuego_automation_project.NuegoBookingTest@663411de]
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testTicketConfirmationFlow -->
-        <test-method signature="testRescheduleBookingFlow()[pri:9, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:56:58 IST" name="testRescheduleBookingFlow" description="Verify Reschedule Booking flow from confirmation page" finished-at="2025-11-23T12:58:39 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testTicketConfirmationFlow" duration-ms="100569" status="PASS">
+        <test-method signature="testRescheduleBookingFlow()[pri:10, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:24:08 IST" name="testRescheduleBookingFlow" description="Verify Reschedule Booking flow from confirmation page" finished-at="2025-11-24T13:24:08 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testTicketConfirmationFlow" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method nuego_automation_project.NuegoBookingTest.testRescheduleBookingFlow() on instance nuego_automation_project.NuegoBookingTest@663411de depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testTicketConfirmationFlow() on instance nuego_automation_project.NuegoBookingTest@663411de]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testRescheduleBookingFlow() on instance nuego_automation_project.NuegoBookingTest@663411de depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testTicketConfirmationFlow() on instance nuego_automation_project.NuegoBookingTest@663411de]
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRescheduleBookingFlow -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:58:39 IST" name="tearDown" finished-at="2025-11-23T12:58:40 IST" duration-ms="1282" status="PASS">
+        <test-method signature="testCancelBookingFlow()[pri:11, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:24:08 IST" name="testCancelBookingFlow" description="Cancel Booking flow: Cancel → Checkbox → Continue → Refund → Go Home" finished-at="2025-11-24T13:24:08 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testRescheduleBookingFlow" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method nuego_automation_project.NuegoBookingTest.testCancelBookingFlow() on instance nuego_automation_project.NuegoBookingTest@663411de depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testRescheduleBookingFlow() on instance nuego_automation_project.NuegoBookingTest@663411de]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testCancelBookingFlow() on instance nuego_automation_project.NuegoBookingTest@663411de depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testRescheduleBookingFlow() on instance nuego_automation_project.NuegoBookingTest@663411de]
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCancelBookingFlow -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:24:08 IST" name="tearDown" finished-at="2025-11-24T13:24:09 IST" duration-ms="423" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="sendReportEmail()[pri:0, instance:nuego_automation_project.NuegoBookingTest@2d96543c]" started-at="2025-11-23T12:58:41 IST" name="sendReportEmail" finished-at="2025-11-23T12:58:46 IST" duration-ms="5290" status="PASS">
+        <test-method is-config="true" signature="sendReportEmail()[pri:0, instance:nuego_automation_project.NuegoBookingTest@663411de]" started-at="2025-11-24T13:24:09 IST" name="sendReportEmail" finished-at="2025-11-24T13:24:15 IST" duration-ms="5128" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- sendReportEmail -->

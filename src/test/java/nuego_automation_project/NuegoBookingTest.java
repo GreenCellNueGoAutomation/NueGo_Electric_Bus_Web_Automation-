@@ -12,6 +12,9 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import utils.*;
+import utils.ExcelUtils;
+
+
 
 import java.io.ByteArrayInputStream;
 import java.time.Duration;
@@ -27,9 +30,9 @@ public class NuegoBookingTest extends BaseTest {
     private WebDriverWait wait;
     private static ExtentReports extent = ExtentReportManager.getReport();
     private static ExtentTest test;
-
-    // Page Objects
+ // Page Objects
     private LoginPage loginPage;
+    private  Wallet walletpage;
     private HomePage homePage;
     private BusBookingPage bookingPage;
     private Filters filtersPage;
@@ -38,6 +41,7 @@ public class NuegoBookingTest extends BaseTest {
     private Payment_Mode paymentModePage;
     private Ticket_Confirmation ticketConfirmationPage;
     private Reschedule_Booking rescheduleBookingPage;
+    private CancelBooking cancelBookingPage; // ✅ Use correct type & lowercase variable
 
     // ---------------------- SETUP -----------------------------
     @BeforeClass(alwaysRun = true)
@@ -52,9 +56,6 @@ public class NuegoBookingTest extends BaseTest {
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
                 "--remote-allow-origins=*"
-                // "--headless=new",
-                // "--disable-gpu",
-                // "--window-size=1920,1080"
         );
 
         driver = new ChromeDriver(options);
@@ -73,9 +74,10 @@ public class NuegoBookingTest extends BaseTest {
         paymentModePage = new Payment_Mode(driver);
         ticketConfirmationPage = new Ticket_Confirmation(driver);
         rescheduleBookingPage = new Reschedule_Booking(driver);
+        cancelBookingPage = new CancelBooking(driver); // ✅ Fixed
+        walletpage = new Wallet(driver);
     }
 
-    // ---------------------- TEST CASES -----------------------------
     @Test(priority = 1, description = "Login to application using mobile and OTP", retryAnalyzer = RetryAnalyzer.class)
     @Severity(SeverityLevel.CRITICAL)
     @Story("User Login")
@@ -88,9 +90,62 @@ public class NuegoBookingTest extends BaseTest {
         } catch (Exception e) {
             handleFailure("Login failed", e);
         }
+    } 
+
+    @Test(
+            priority = 2,
+            dependsOnMethods = {"testLogin"},
+            description = "Open wallet and add money",
+            retryAnalyzer = RetryAnalyzer.class
+    )
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Wallet Operations")
+    public void testAddMoneyToWallet() {
+        test = extent.createTest("Wallet Test", "Open wallet and add money to account");
+        try {
+            // 1️⃣ Open wallet icon
+            walletpage.openWallet();
+            test.log(Status.INFO, "Wallet icon clicked successfully");
+
+            // 2️⃣ Enter amount & click Add Money (lands on payment page)
+            walletpage.addMoney();
+            test.log(Status.INFO, "Amount entered and Add Money clicked, navigating to payment");
+
+            // 3️⃣ Complete payment using reused method
+            paymentModePage.completeNetBankingAxisFlow();
+            test.log(Status.INFO, "NetBanking Axis payment flow completed");
+
+            // 4️⃣ OPTIONAL: Try to verify payment/wallet success message
+            try {
+                WebDriverWait localWait = new WebDriverWait(driver, Duration.ofSeconds(30));
+                localWait.until(ExpectedConditions.or(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.xpath("//p[contains(.,'Payment Successful') or contains(.,'Money added successfully') or contains(.,'Wallet recharged successfully')]")
+                        ),
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.xpath("//*[contains(.,'Money added to wallet') or contains(.,'Wallet updated')]")
+                        )
+                ));
+                test.log(Status.INFO, "Wallet / payment success message displayed");
+            } catch (Exception waitEx) {
+                test.log(Status.WARNING,
+                        "Could not explicitly verify wallet success message, proceeding to navigate home: " + waitEx.getMessage());
+            }
+
+            test.log(Status.PASS, "Money added to wallet flow executed");
+
+            // 5️⃣ Go back to Home page AFTER payment success / success attempt
+            walletpage.goBackToHomePage();
+            test.log(Status.INFO, "Navigated back to Home page after wallet top-up");
+
+        } catch (Exception e) {
+            handleFailure("Wallet operation failed", e);
+        }
     }
 
-    @Test(priority = 2, dependsOnMethods = {"testLogin"}, description = "Handle homepage popups and search bus", retryAnalyzer = RetryAnalyzer.class)
+
+    
+    @Test(priority = 3, dependsOnMethods = {"testLogin"}, description = "Handle homepage popups and search bus", retryAnalyzer = RetryAnalyzer.class)
     public void testHomePageActions() {
         test = extent.createTest("Home Page Test", "Handle popups and search buses");
         try {
@@ -103,7 +158,7 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 3, dependsOnMethods = {"testHomePageActions"}, description = "Apply filters", retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 4, dependsOnMethods = {"testHomePageActions"}, description = "Apply filters", retryAnalyzer = RetryAnalyzer.class)
     public void testFilters() {
         test = extent.createTest("Filter Test", "Apply filters and verify results");
         try {
@@ -118,7 +173,7 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 4, dependsOnMethods = {"testFilters"}, description = "Scroll and click seat on Bus Booking page", retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 5, dependsOnMethods = {"testFilters"}, description = "Scroll and click seat on Bus Booking page", retryAnalyzer = RetryAnalyzer.class)
     public void testBusBookingPageActions() {
         test = extent.createTest("Bus Booking Page Test", "Scroll and click on seat");
         try {
@@ -131,7 +186,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     @Test(
-            priority = 5,
+            priority = 6,
             dependsOnMethods = {"testBusBookingPageActions"},
             description = "Select seat, pickup & drop points and click Book & Pay",
             retryAnalyzer = RetryAnalyzer.class
@@ -174,7 +229,7 @@ public class NuegoBookingTest extends BaseTest {
 
     // ✅ Review Booking page test
     @Test(
-            priority = 6,
+            priority = 7,
             dependsOnMethods = {"testSelectSeatAndProceedToPay"},
             description = "Review Booking: handle popup, coupon (if any), assurance/wallet/miles (if any), GST & Proceed",
             retryAnalyzer = RetryAnalyzer.class
@@ -211,7 +266,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     @Test(
-            priority = 7,
+            priority = 8,
             dependsOnMethods = {"testReviewBookingFlow"},
             description = "Complete payment flow using NetBanking - Axis Bank",
             retryAnalyzer = RetryAnalyzer.class
@@ -249,7 +304,7 @@ public class NuegoBookingTest extends BaseTest {
 
     // ✅ Ticket Confirmation page test
     @Test(
-            priority = 8,
+            priority = 9,
             dependsOnMethods = {"testPaymentFlow"},
             description = "Verify Ticket Confirmation page actions (Whatsapp, SMS, Fare, E-ticket, Copy Link, Download)",
             retryAnalyzer = RetryAnalyzer.class
@@ -312,7 +367,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     @Test(
-            priority = 9,
+            priority = 10,
             dependsOnMethods = {"testTicketConfirmationFlow"},
             description = "Verify Reschedule Booking flow from confirmation page",
             retryAnalyzer = RetryAnalyzer.class
@@ -399,6 +454,58 @@ public class NuegoBookingTest extends BaseTest {
             handleFailure("Reschedule Booking flow failed", e);
         }
     }
+     
+    
+    @Test(
+            priority = 11,
+            dependsOnMethods = {"testRescheduleBookingFlow"},
+            description = "Cancel Booking flow: Cancel → Checkbox → Continue → Refund → Go Home"
+    )
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Cancel Booking")
+    public void testCancelBookingFlow() {
+        test = extent.createTest(
+                "Cancel Booking Flow",
+                "Execute Cancel Booking: Cancel tab → select reason → Continue → Refund → Go Home"
+        );
+        
+        // reused method
+        System.out.println(" Click Change booking");
+        rescheduleBookingPage.clickChangeBooking();
+
+        
+        try {
+            System.out.println("===== 🔁 Starting Cancel Booking flow =====");
+
+            // 1️⃣ Click Cancel button
+            cancelBookingPage.clickCancelButton();
+            test.log(Status.INFO, "✅ Clicked Cancel button");
+
+            // 2️⃣ Select checkbox "My travel plans have changed"
+            cancelBookingPage.selectTravelCheckbox();
+            test.log(Status.INFO, "✅ Selected checkbox for reason");
+
+            // 3️⃣ Click Continue button
+            cancelBookingPage.clickContinueButton();
+            test.log(Status.INFO, "✅ Clicked Continue button");
+
+            // 4️⃣ Click Refund button
+            cancelBookingPage.clickRefundButton();
+            test.log(Status.INFO, "✅ Clicked Refund button");
+
+            // 5️⃣ Click Go to Home button
+            cancelBookingPage.clickGoHomeButton();
+            test.log(Status.INFO, "✅ Clicked Go to Home button");
+
+            test.pass("✅ Cancel Booking flow executed successfully");
+            System.out.println("===== ✅ Cancel Booking flow completed =====");
+
+        } catch (Exception e) {
+            handleFailure("Cancel Booking flow failed", e);
+        }
+    }
+
+    
 
     // ---------------------- FAILURE HANDLER -----------------------------
     @Attachment(value = "Screenshot on Failure", type = "image/png")

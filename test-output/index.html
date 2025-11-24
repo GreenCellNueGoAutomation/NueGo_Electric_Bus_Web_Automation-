@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+              <span class="suite-name border-skipped">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\sumedh.sonawane\AppData\Local\Temp\testng-eclipse--893502949\testng-customsuite.xml</span>
+                    <span>C:\Users\sumedh.sonawane\AppData\Local\Temp\testng-eclipse-1822800158\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,36 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">9 methods,   9 passed</span>
+                    <span class="method-stats">11 methods,  4 skipped,  7 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title skipped">Skipped methods</span>
+                    <span class="show-or-hide-methods skipped">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods skipped suite-Default_suite"> (hide)</a> <!-- hide-methods skipped suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods skipped suite-Default_suite"> (show)</a> <!-- show-methods skipped suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content skipped suite-Default_suite">
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testCancelBookingFlow">testCancelBookingFlow</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testPaymentFlow">testPaymentFlow</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testRescheduleBookingFlow">testRescheduleBookingFlow</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testTicketConfirmationFlow">testTicketConfirmationFlow</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content skipped suite-Default_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -101,6 +130,11 @@
                       <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
                     </span>
                     <div class="method-list-content passed suite-Default_suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testAddMoneyToWallet">testAddMoneyToWallet</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testBusBookingPageActions">testBusBookingPageActions</a> <!-- method navigator-link -->
@@ -123,27 +157,12 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testPaymentFlow">testPaymentFlow</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testRescheduleBookingFlow">testRescheduleBookingFlow</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testReviewBookingFlow">testReviewBookingFlow</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testSelectSeatAndProceedToPay">testSelectSeatAndProceedToPay</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="nuego_automation_project.NuegoBookingTest" class="method navigator-link" hash-for-method="testTicketConfirmationFlow">testTicketConfirmationFlow</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -158,12 +177,164 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
+          <div class="suite-Default_suite-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">nuego_automation_project.NuegoBookingTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testCancelBookingFlow">
+                  </a> <!-- testCancelBookingFlow -->
+                  <span class="method-name">testCancelBookingFlow</span>
+                  <div class="stack-trace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testCancelBookingFlow() on instance nuego_automation_project.NuegoBookingTest@663411de depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testRescheduleBookingFlow() on instance nuego_automation_project.NuegoBookingTest@663411de]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+
+</div> <!-- stack-trace -->
+                  <em>
+(Cancel Booking flow: Cancel → Checkbox → Continue → Refund → Go Home)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testPaymentFlow">
+                  </a> <!-- testPaymentFlow -->
+                  <span class="method-name">testPaymentFlow</span>
+                  <div class="stack-trace">org.testng.SkipException: 🎫 Ticket already confirmed after Review Booking – no Payment page shown. Skipping payment flow.
+	at nuego_automation_project.NuegoBookingTest.testPaymentFlow(NuegoBookingTest.java:292)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+
+</div> <!-- stack-trace -->
+                  <em>
+(Complete payment flow using NetBanking - Axis Bank)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testRescheduleBookingFlow">
+                  </a> <!-- testRescheduleBookingFlow -->
+                  <span class="method-name">testRescheduleBookingFlow</span>
+                  <div class="stack-trace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testRescheduleBookingFlow() on instance nuego_automation_project.NuegoBookingTest@663411de depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testTicketConfirmationFlow() on instance nuego_automation_project.NuegoBookingTest@663411de]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+
+</div> <!-- stack-trace -->
+                  <em>
+(Verify Reschedule Booking flow from confirmation page)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testTicketConfirmationFlow">
+                  </a> <!-- testTicketConfirmationFlow -->
+                  <span class="method-name">testTicketConfirmationFlow</span>
+                  <div class="stack-trace">java.lang.Throwable: Method nuego_automation_project.NuegoBookingTest.testTicketConfirmationFlow() on instance nuego_automation_project.NuegoBookingTest@663411de depends on not successfully finished methods 
+[nuego_automation_project.NuegoBookingTest.testPaymentFlow() on instance nuego_automation_project.NuegoBookingTest@663411de]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+
+</div> <!-- stack-trace -->
+                  <em>
+(Verify Ticket Confirmation page actions (Whatsapp, SMS, Fare, E-ticket, Copy Link, Download))                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-skipped -->
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
               <span class="class-name">nuego_automation_project.NuegoBookingTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testAddMoneyToWallet">
+                  </a> <!-- testAddMoneyToWallet -->
+                  <span class="method-name">testAddMoneyToWallet</span>
+                  <em>
+(Open wallet and add money)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="testBusBookingPageActions">
@@ -202,24 +373,6 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testPaymentFlow">
-                  </a> <!-- testPaymentFlow -->
-                  <span class="method-name">testPaymentFlow</span>
-                  <em>
-(Complete payment flow using NetBanking - Axis Bank)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testRescheduleBookingFlow">
-                  </a> <!-- testRescheduleBookingFlow -->
-                  <span class="method-name">testRescheduleBookingFlow</span>
-                  <em>
-(Verify Reschedule Booking flow from confirmation page)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
                   <a name="testReviewBookingFlow">
                   </a> <!-- testReviewBookingFlow -->
                   <span class="method-name">testReviewBookingFlow</span>
@@ -236,21 +389,12 @@
 (Select seat, pickup & drop points and click Book & Pay)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testTicketConfirmationFlow">
-                  </a> <!-- testTicketConfirmationFlow -->
-                  <span class="method-name">testTicketConfirmationFlow</span>
-                  <em>
-(Verify Ticket Confirmation page actions (Whatsapp, SMS, Fare, E-ticket, Copy Link, Download))                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Default_suite-class-passed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\sumedh.sonawane\AppData\Local\Temp\testng-eclipse--893502949\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\sumedh.sonawane\AppData\Local\Temp\testng-eclipse-1822800158\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -299,48 +443,56 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(9);
+data.addRows(11);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'testRescheduleBookingFlow')
+data.setCell(0, 1, 'testAddMoneyToWallet')
 data.setCell(0, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(0, 3, 100569);
+data.setCell(0, 3, 69899);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'testTicketConfirmationFlow')
+data.setCell(1, 1, 'testReviewBookingFlow')
 data.setCell(1, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(1, 3, 43262);
+data.setCell(1, 3, 27832);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'testReviewBookingFlow')
+data.setCell(2, 1, 'testSelectSeatAndProceedToPay')
 data.setCell(2, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(2, 3, 28937);
+data.setCell(2, 3, 22334);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'testSelectSeatAndProceedToPay')
+data.setCell(3, 1, 'testHomePageActions')
 data.setCell(3, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(3, 3, 24532);
+data.setCell(3, 3, 21036);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'testHomePageActions')
+data.setCell(4, 1, 'testFilters')
 data.setCell(4, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(4, 3, 23315);
+data.setCell(4, 3, 10515);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'testPaymentFlow')
+data.setCell(5, 1, 'testBusBookingPageActions')
 data.setCell(5, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(5, 3, 21212);
+data.setCell(5, 3, 8242);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'testFilters')
+data.setCell(6, 1, 'testLogin')
 data.setCell(6, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(6, 3, 15408);
+data.setCell(6, 3, 3741);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'testLogin')
+data.setCell(7, 1, 'testPaymentFlow')
 data.setCell(7, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(7, 3, 8936);
+data.setCell(7, 3, 16);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'testBusBookingPageActions')
+data.setCell(8, 1, 'testCancelBookingFlow')
 data.setCell(8, 2, 'nuego_automation_project.NuegoBookingTest')
-data.setCell(8, 3, 8617);
+data.setCell(8, 3, 0);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'testTicketConfirmationFlow')
+data.setCell(9, 2, 'nuego_automation_project.NuegoBookingTest')
+data.setCell(9, 3, 0);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'testRescheduleBookingFlow')
+data.setCell(10, 2, 'nuego_automation_project.NuegoBookingTest')
+data.setCell(10, 3, 0);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 4 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -373,47 +525,55 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">testLogin</span>
-                <span class="method-start">7293 ms</span>
+                <span class="method-start">1876 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testAddMoneyToWallet</span>
+                <span class="method-start">5706 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testHomePageActions</span>
-                <span class="method-start">16359 ms</span>
+                <span class="method-start">75613 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testFilters</span>
-                <span class="method-start">39685 ms</span>
+                <span class="method-start">96649 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testBusBookingPageActions</span>
-                <span class="method-start">55108 ms</span>
+                <span class="method-start">107168 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testSelectSeatAndProceedToPay</span>
-                <span class="method-start">63735 ms</span>
+                <span class="method-start">115416 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testReviewBookingFlow</span>
-                <span class="method-start">88286 ms</span>
+                <span class="method-start">137757 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testPaymentFlow</span>
-                <span class="method-start">117239 ms</span>
+                <span class="method-start">165605 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testTicketConfirmationFlow</span>
-                <span class="method-start">138461 ms</span>
+                <span class="method-start">165637 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testRescheduleBookingFlow</span>
-                <span class="method-start">181734 ms</span>
+                <span class="method-start">165644 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testCancelBookingFlow</span>
+                <span class="method-start">165657 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">282303 ms</span>
+                <span class="method-start">165657 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-suite after">
                 <span class="method-name">sendReportEmail</span>
-                <span class="method-start">284530 ms</span>
+                <span class="method-start">166564 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
