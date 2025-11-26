@@ -27,9 +27,28 @@ public class Review_Booking_Page {
             // 🔹 COUPON SECTION – ONLY IF PRESENT
             if (isElementPresent(getCouponIconLocator())) {
                 System.out.println("🔎 Coupon section found – applying coupon flow");
+
+                // 1) Capture total fare before coupon
+                double totalFareBeforeCoupon = 0.0;
+                try {
+                    totalFareBeforeCoupon = getTotalFareAmount();
+                    System.out.println("💳 Captured Total Fare BEFORE coupon: " + totalFareBeforeCoupon);
+                } catch (Exception e) {
+                    System.out.println("⚠️ Could not capture total fare before coupon: " + e.getMessage());
+                }
+
+                // 2) Apply coupon flow (3rd coupon, then any valid)
                 openCouponModal();
-                applyThirdCouponFromList();
+                applyBestAvailableCoupon();   // <<<<<< NEW CENTRAL METHOD
                 waitForCouponSuccessMessageIfAny();
+
+                // 3) Log coupon discount (if we have prior fare)
+                if (totalFareBeforeCoupon > 0) {
+                    logCouponDiscountAmount(totalFareBeforeCoupon);
+                } else {
+                    System.out.println("ℹ️ Skipping coupon discount calculation (no valid pre-coupon total).");
+                }
+
             } else {
                 System.out.println("ℹ️ Coupon icon not present on this flow – skipping coupon steps");
             }
@@ -44,7 +63,8 @@ public class Review_Booking_Page {
             }
 
             if (isElementPresent(getWalletApplyButtonLocator())) {
-                clickWalletApply();
+                // ✅ fixed wallet rules (100 or fare-1)
+                applyWalletFixedOrLess();
             } else {
                 System.out.println("ℹ️ Wallet Apply button not present – skipping wallet step");
             }
@@ -59,8 +79,8 @@ public class Review_Booking_Page {
 
             // 🔹 GST validation – only if labels exist
             if (isElementPresent(getBaseFareLabelLocator()) &&
-                isElementPresent(getGstLabelLocator()) &&
-                isElementPresent(getTotalFareLabelLocator())) {
+                    isElementPresent(getGstLabelLocator()) &&
+                    isElementPresent(getTotalFareLabelLocator())) {
 
                 validateGstAfterDiscounts();
             } else {
@@ -150,7 +170,6 @@ public class Review_Booking_Page {
             WebElement modalBody = waitForCouponModal();
             System.out.println("✅ Coupon modal opened");
 
-            // scroll inside modal if needed
             ((JavascriptExecutor) driver).executeScript(
                     "arguments[0].scrollTop = arguments[0].scrollHeight;", modalBody
             );
@@ -162,31 +181,151 @@ public class Review_Booking_Page {
     }
 
     /* =========================================================
-       APPLY COUPON
+       APPLY COUPON (3rd FIRST, THEN ANY)
        ========================================================= */
 
+    // old specific 3rd coupon APPLY
     public By getThirdCouponApplyLocator() {
         return By.xpath(
-                "//body/div[@id='root']/div[@class='booking-layout']/div[@class='auth-modal']/div[@class='review-payment']" +
-                        "/div[@class='coupon-list-modal']/div[@role='dialog']/div[@role='document']/div[@class='modal-content']" +
-                        "/div[@class='modal-body']/div[@class='content-section p-3']/div[@class='coupon-list-component p-3']" +
-                        "/div[@class='listing']/div[3]/div[2]/div[1]/p[1]"
+                "//div[@class='coupon-list-component p-3']//div[@class='listing']/div[3]" +
+                        "//p[contains(@class,'open-600w-16s-24h') " +
+                        "and contains(@class,'teal-2-00A095-color') " +
+                        "and contains(@class,'cursor-pointer') " +
+                        "and normalize-space()='APPLY']"
         );
     }
 
+    // success + error
     public By getCouponSuccessMessageLocator() {
         return By.xpath("//p[contains(text(),'Coupon Applied Successfully') or contains(text(),'applied successfully')]");
     }
 
-    public void applyThirdCouponFromList() {
+    public By getCouponErrorMessageLocator() {
+        return By.xpath("//*[contains(text(),'Invalid coupon') or contains(text(),'invalid coupon') or contains(text(),'not applicable')]");
+    }
+
+    // all coupon cards
+    public By getCouponCardsLocator() {
+        return By.xpath("//div[@class='coupon-list-component p-3']//div[@class='listing']/div");
+    }
+
+    // APPLY button inside a coupon (RELATIVE)
+    public By getApplyButtonInsideCouponLocator() {
+        return By.xpath(".//p[contains(@class,'open-600w-16s-24h') " +
+                "and contains(@class,'teal-2-00A095-color') " +
+                "and contains(@class,'cursor-pointer') " +
+                "and normalize-space()='APPLY']");
+    }
+
+    // 🔹 Try 3rd coupon
+    public boolean applyThirdCouponFromList() {
         try {
-            if (isElementPresent(getThirdCouponApplyLocator())) {
-                safeClick(getThirdCouponApplyLocator(), "Clicked Apply on 3rd coupon");
-            } else {
-                System.out.println("ℹ️ 3rd coupon not present – skipping coupon apply");
+            if (!isElementPresent(getThirdCouponApplyLocator())) {
+                System.out.println("ℹ️ 3rd coupon not present – cannot apply 3rd coupon.");
+                return false;
             }
+
+            safeClick(getThirdCouponApplyLocator(), "Clicked Apply on 3rd coupon");
+
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            try {
+                shortWait.until(ExpectedConditions.visibilityOfElementLocated(getCouponSuccessMessageLocator()));
+                System.out.println("✅ 3rd coupon applied successfully.");
+                return true;
+            } catch (TimeoutException te) {
+                System.out.println("⚠️ No success message after applying 3rd coupon, might be invalid.");
+            }
+
+            if (isElementPresent(getCouponErrorMessageLocator())) {
+                System.out.println("❌ 3rd coupon appears to be invalid (error shown).");
+                return false;
+            }
+
+            System.out.println("⚠️ No clear coupon success or error – treating 3rd coupon as invalid.");
+            return false;
+
         } catch (Exception e) {
             System.out.println("⚠️ Error while applying 3rd coupon: " + e.getMessage());
+            return false;
+        }
+    }
+
+    // 🔹 Fallback: try ANY coupon using common APPLY locator
+    public boolean applyAnyAvailableCouponIfThirdFails() {
+        try {
+            java.util.List<WebElement> coupons = driver.findElements(getCouponCardsLocator());
+            if (coupons == null || coupons.isEmpty()) {
+                System.out.println("ℹ️ No coupons found in the list.");
+                return false;
+            }
+
+            System.out.println("🔍 Trying to find any valid coupon out of " + coupons.size() + " coupons.");
+
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+            int index = 0;
+            for (WebElement coupon : coupons) {
+                index++;
+                try {
+                    // Scroll this coupon into view
+                    ((JavascriptExecutor) driver).executeScript(
+                            "arguments[0].scrollIntoView({block:'center'});", coupon
+                    );
+                    sleep(400);
+
+                    // 👇 IMPORTANT: relative XPath with leading dot
+                    WebElement applyBtn = coupon.findElement(getApplyButtonInsideCouponLocator());
+
+                    try {
+                        applyBtn.click();
+                    } catch (Exception clickEx) {
+                        System.out.println("⚠️ Normal click failed for coupon #" + index + ", trying JS click: " + clickEx.getMessage());
+                        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", applyBtn);
+                    }
+
+                    System.out.println("👉 Clicked APPLY on coupon #" + index);
+
+                    // Wait for success
+                    try {
+                        shortWait.until(ExpectedConditions.visibilityOfElementLocated(getCouponSuccessMessageLocator()));
+                        System.out.println("✅ Coupon #" + index + " applied successfully.");
+                        return true;
+                    } catch (TimeoutException te) {
+                        System.out.println("⚠️ No success message for coupon #" + index + ", checking for error...");
+                    }
+
+                    // Check error
+                    if (isElementPresent(getCouponErrorMessageLocator())) {
+                        System.out.println("❌ Coupon #" + index + " seems invalid (error message displayed).");
+                    } else {
+                        System.out.println("⚠️ No explicit success or error for coupon #" + index + ". Trying next.");
+                    }
+
+                } catch (NoSuchElementException nse) {
+                    System.out.println("⚠️ Apply button not found for coupon #" + index + ", skipping it.");
+                } catch (Exception e) {
+                    System.out.println("⚠️ Error while trying coupon #" + index + ": " + e.getMessage());
+                }
+            }
+
+            System.out.println("❌ No valid coupon found after checking all.");
+            return false;
+
+        } catch (Exception e) {
+            System.out.println("❌ Error in applyAnyAvailableCouponIfThirdFails: " + e.getMessage());
+            return false;
+        }
+    }
+
+    // 🔹 High-level coupon application
+    public void applyBestAvailableCoupon() {
+        boolean thirdApplied = applyThirdCouponFromList();
+        if (!thirdApplied) {
+            System.out.println("🔁 3rd coupon invalid or not applied – trying other coupons.");
+            boolean anyApplied = applyAnyAvailableCouponIfThirdFails();
+            if (!anyApplied) {
+                System.out.println("ℹ️ Could not apply any valid coupon. Proceeding without coupon.");
+            }
         }
     }
 
@@ -197,6 +336,29 @@ public class Review_Booking_Page {
             System.out.println("✅ Coupon applied successfully message displayed");
         } catch (Exception e) {
             System.out.println("⚠️ Coupon success message not found, proceeding...");
+        }
+    }
+
+    /**
+     * Logs the coupon discount amount based on difference in total fare.
+     * Call this method AFTER coupon has been applied.
+     *
+     * @param totalFareBeforeCoupon total fare captured before applying the coupon
+     */
+    public void logCouponDiscountAmount(double totalFareBeforeCoupon) {
+        try {
+            double totalFareAfterCoupon = getTotalFareAmount();
+            System.out.println("💳 Total Fare before coupon: " + totalFareBeforeCoupon);
+            System.out.println("💳 Total Fare after coupon:  " + totalFareAfterCoupon);
+
+            double discount = totalFareBeforeCoupon - totalFareAfterCoupon;
+            if (discount <= 0) {
+                System.out.println("ℹ️ No positive discount detected from coupon (discount = " + discount + ")");
+            } else {
+                System.out.println("✅ Coupon discount applied: ₹ " + discount);
+            }
+        } catch (Exception e) {
+            System.out.println("❌ Error while calculating coupon discount: " + e.getMessage());
         }
     }
 
@@ -287,6 +449,131 @@ public class Review_Booking_Page {
         } catch (Exception e) {
             System.out.println("❌ Error while reading Green Miles balance: " + e.getMessage());
             return "";
+        }
+    }
+
+    // --- WALLET AMOUNT INPUT + BALANCE DISPLAY (OPTIONAL BALANCE) ---
+
+    public By getWalletAmountInputLocator() {
+        // Your wallet input locator
+        return By.xpath("//input[@type='number']");
+    }
+
+    public By getWalletBalanceTextLocator() {
+        // If you don't show wallet balance on UI, this can remain unused
+        return By.xpath("//p[contains(text(),'Wallet Balance') or contains(text(),'wallet balance')]");
+    }
+
+    public double getWalletBalanceAmount() {
+        try {
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement walletBalanceElement = shortWait.until(
+                    ExpectedConditions.visibilityOfElementLocated(getWalletBalanceTextLocator())
+            );
+            String text = walletBalanceElement.getText().trim();
+            double balance = parseAmount(text);
+            System.out.println("💰 Wallet Balance detected: " + balance);
+            return balance;
+        } catch (TimeoutException te) {
+            System.out.println("ℹ️ Wallet balance text not visible on UI, assuming sufficient balance for rules. " + te.getMessage());
+            // If there is no balance text, assume large balance so that 100 can be used:
+            return 999999.0;
+        } catch (Exception e) {
+            System.out.println("❌ Error reading wallet balance: " + e.getMessage());
+            return 0.0;
+        }
+    }
+
+    /**
+     * Apply wallet amount with rules:
+     * - If total fare >= 100 → try to use ₹100 (or less if not enough wallet balance)
+     * - If total fare < 100 → use (fare - 1), but not more than wallet balance
+     * Wallet amount is entered in //input[@type='number'] and Apply button is clicked.
+     */
+    public void applyWalletFixedOrLess() {
+        try {
+            // Ensure section is visible
+            scrollToAssuranceWalletSectionIfExists();
+
+            double totalFare = getTotalFareAmount();
+            if (totalFare <= 0) {
+                System.out.println("⚠️ Total fare is zero or invalid, skipping wallet apply.");
+                return;
+            }
+
+            double walletBalance = getWalletBalanceAmount();
+            if (walletBalance <= 0) {
+                System.out.println("⚠️ No wallet balance available, skipping wallet apply.");
+                return;
+            }
+
+            // Decide how much wallet to use
+            double amountToUse;
+            if (totalFare >= 100) {
+                amountToUse = Math.min(100.0, walletBalance);
+            } else {
+                double desired = totalFare - 1;
+                if (desired <= 0) {
+                    System.out.println("⚠️ Total fare too low, skipping wallet apply.");
+                    return;
+                }
+                amountToUse = Math.min(desired, walletBalance);
+            }
+
+            int finalAmountInt = (int) Math.round(amountToUse);
+            if (finalAmountInt <= 0) {
+                System.out.println("⚠️ Computed wallet amount is zero or negative, skipping.");
+                return;
+            }
+            String finalAmountStr = String.valueOf(finalAmountInt);
+
+            System.out.println("💰 Wallet amount USED = ₹" + finalAmountStr +
+                    " (Wallet balance: " + walletBalance +
+                    ", Total fare: " + totalFare + ")");
+
+            WebElement walletInput = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(getWalletAmountInputLocator())
+            );
+
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", walletInput
+            );
+
+            try {
+                wait.until(ExpectedConditions.elementToBeClickable(walletInput));
+                walletInput.click();
+            } catch (Exception clickEx) {
+                System.out.println("⚠️ Normal click on wallet input intercepted, trying JS click: " + clickEx.getMessage());
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", walletInput);
+            }
+
+            walletInput.clear();
+            walletInput.sendKeys(finalAmountStr);
+
+            // --- CLICK APPLY BUTTON (WITH FALLBACK) ---
+            try {
+                WebElement applyBtn = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(getWalletApplyButtonLocator())
+                );
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});", applyBtn
+                );
+                try {
+                    wait.until(ExpectedConditions.elementToBeClickable(applyBtn));
+                    applyBtn.click();
+                } catch (Exception ex) {
+                    System.out.println("⚠️ Normal click on Wallet Apply intercepted, trying JS click: " + ex.getMessage());
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", applyBtn);
+                }
+
+                sleep(800);
+                System.out.println("🎯 Wallet applied successfully with amount: ₹" + finalAmountStr);
+            } catch (Exception exOuter) {
+                System.out.println("❌ Wallet Apply button not clickable / not found: " + exOuter.getMessage());
+            }
+
+        } catch (Exception e) {
+            System.out.println("❌ Failed to apply wallet amount: " + e.getMessage());
         }
     }
 
@@ -472,13 +759,13 @@ public class Review_Booking_Page {
 
     public boolean isElementPresent(By locator) {
         try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             boolean present = !driver.findElements(locator).isEmpty();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
             return present;
         } catch (Exception e) {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
             return false;
+        } finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         }
     }
 

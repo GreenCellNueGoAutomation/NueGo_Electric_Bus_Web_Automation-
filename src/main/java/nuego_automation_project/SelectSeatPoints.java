@@ -20,13 +20,24 @@ public class SelectSeatPoints {
 
     // ---------------- Main Seat Selection Logic ---------------- //
 
-    // Kept same signature so existing tests compile, but we ignore args
+    // No-arg method used in your test – always select 3 seats
+    public void selectSeats() {
+        selectAnyAvailableSeats(3);   // always select 3 seats
+    }
+
+    // Kept same signature so existing tests compile, but now dynamic count
     public void selectSeats(String... seatNumbers) {
-        selectAnyAvailableSeats(2);   // always select 1 seat
+        int neededSeats = (seatNumbers == null || seatNumbers.length == 0)
+                ? 3
+                : seatNumbers.length;
+        selectAnyAvailableSeats(neededSeats);
     }
 
     public void selectSeats(List<String> seatNumbers) {
-        selectAnyAvailableSeats(2);   // always select 1 seat
+        int neededSeats = (seatNumbers == null || seatNumbers.isEmpty())
+                ? 3
+                : seatNumbers.size();
+        selectAnyAvailableSeats(neededSeats);
     }
 
     // ---------------- Helper: Check seat availability ---------------- //
@@ -36,8 +47,13 @@ public class SelectSeatPoints {
             String classAttr = seat.getAttribute("class");
             String aria = seat.getAttribute("aria-disabled");
             boolean disabled = "true".equalsIgnoreCase(aria);
-            // adjust "booked" keyword as per your UI if needed
-            return !disabled && (classAttr == null || !classAttr.contains("booked"));
+
+            // adjust these keywords as per your actual UI
+            boolean isBooked = classAttr != null && classAttr.contains("booked");
+            boolean isSelected = classAttr != null && classAttr.contains("seat-selected");
+
+            // we only want free, not-booked, not-selected seats
+            return !disabled && !isBooked && !isSelected;
         } catch (Exception e) {
             return false;
         }
@@ -46,39 +62,61 @@ public class SelectSeatPoints {
     // ---------------- Helper: Auto-select from available ---------------- //
 
     /**
-     * Uses generic available seat locator:
-     * //*[@class='position-relative  seat-available']
-     * and clicks neededSeats seats (currently you only ever need 1).
+     * Uses generic available seat locator and clicks neededSeats seats.
+     * We re-fetch seats each time to avoid stale elements after DOM updates.
      */
     private void selectAnyAvailableSeats(int neededSeats) {
         By availableSeatsLocator = By.xpath("//*[@class='position-relative  seat-available']");
 
-        List<WebElement> availableSeats = driver.findElements(availableSeatsLocator);
-        if (availableSeats.isEmpty()) {
-            System.out.println("❌ No available seats found using generic locator.");
-            return;
-        }
-
         int count = 0;
+        int safetyGuard = 0; // to prevent infinite loop if something goes wrong
 
-        for (WebElement seat : availableSeats) {
-            try {
-                if (!isSeatAvailable(seat)) {
-                    continue;
+        while (count < neededSeats && safetyGuard < 20) {
+            safetyGuard++;
+
+            List<WebElement> availableSeats = driver.findElements(availableSeatsLocator);
+            if (availableSeats.isEmpty()) {
+                System.out.println("❌ No available seats found using generic locator.");
+                break;
+            }
+
+            boolean clickedThisRound = false;
+
+            for (WebElement seat : availableSeats) {
+                try {
+                    if (!isSeatAvailable(seat)) {
+                        continue;
+                    }
+
+                    scrollIntoCenterView(seat);
+                    safeClick(seat);
+                    count++;
+                    clickedThisRound = true;
+                    System.out.println("✅ Auto-selected available seat #" + count);
+                    pause(1000);
+
+                    if (count >= neededSeats) {
+                        break;
+                    }
+                } catch (StaleElementReferenceException sere) {
+                    // DOM changed, we'll retry in next loop iteration
+                    System.out.println("⚠️ StaleElementReferenceException on seat, retrying...");
+                } catch (Exception e) {
+                    System.out.println("⚠️ Error clicking seat: " + e.getMessage());
                 }
+            }
 
-                scrollIntoCenterView(seat);
-                safeClick(seat);
-                count++;
-                System.out.println("✅ Auto-selected available seat #" + count);
-                pause(1000);
-
-                if (count >= neededSeats) break;  // stop after neededSeats
-            } catch (Exception ignored) {}
+            if (!clickedThisRound) {
+                // couldn't click any seat in this pass, so no point looping forever
+                System.out.println("❌ Could not click additional seats in this pass.");
+                break;
+            }
         }
 
         if (count < neededSeats) {
             System.out.println("❌ Unable to select required number of seats automatically. Selected: " + count);
+        } else {
+            System.out.println("✅ Successfully selected " + count + " seats.");
         }
     }
 

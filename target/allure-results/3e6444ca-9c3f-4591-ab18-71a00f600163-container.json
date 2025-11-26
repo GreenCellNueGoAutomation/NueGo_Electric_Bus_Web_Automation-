@@ -1,0 +1,1 @@
+{"uuid":"3e6444ca-9c3f-4591-ab18-71a00f600163","name":"nuego_automation_project.NuegoBookingTest","children":["ab4ac833-ef30-44ef-b387-41ff1c4b0a20"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1763979569471,"stop":1763979571949}],"afters":[],"start":1763979569436,"stop":1763979572313}
