@@ -44,41 +44,58 @@ public class Wallet {
     // Add Money to wallet and then let test handle payment + home navigation
     public void addMoney() {
         try {
-            // Input amount
+            // ===== Amount input =====
             WebElement amountInput = wait.until(ExpectedConditions.visibilityOfElementLocated(
                     By.xpath("//div[@class='common-input-wrapper d-flex align-items-center']/input")
             ));
-            js.executeScript("arguments[0].scrollIntoView(true);", amountInput);
-            Thread.sleep(2500);
+
+            // Bring input nicely into view (center of screen)
+            js.executeScript(
+                    "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
+                    amountInput
+            );
+            Thread.sleep(1500);
+
+            // Small offset in case header is overlapping
+            js.executeScript("window.scrollBy(0, -80);");
+            Thread.sleep(800);
+
             amountInput.clear();
             amountInput.sendKeys("10");
             Thread.sleep(1500);
 
-            // Click Add Money button reliably
+            // ===== Click Add Money button =====
             boolean clicked = false;
             int attempts = 0;
+
             while (!clicked && attempts < 3) {
                 try {
                     WebElement addMoneyBtn = wait.until(ExpectedConditions.elementToBeClickable(
                             By.xpath("//p[@class='open-600w-18s-28h my-auto mb-0 white-color' and normalize-space()='Add money']")
                     ));
-                    js.executeScript("arguments[0].scrollIntoView(true);", addMoneyBtn);
-                    Thread.sleep(1500);
+
+                    js.executeScript(
+                            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
+                            addMoneyBtn
+                    );
+                    Thread.sleep(1000);
+
                     actions.moveToElement(addMoneyBtn).click().perform();
-                    Thread.sleep(2000);
-                    js.executeScript("arguments[0].click();", addMoneyBtn);
-                    Thread.sleep(2000);
+                    Thread.sleep(1500);
 
                     clicked = true;
                 } catch (Exception e) {
                     WebElement addMoneyBtnAlt = wait.until(ExpectedConditions.elementToBeClickable(
                             By.xpath("//p[contains(normalize-space(),'Add money')]")
                     ));
-                    js.executeScript("arguments[0].scrollIntoView(true);", addMoneyBtnAlt);
-                    Thread.sleep(1500);
+
+                    js.executeScript(
+                            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
+                            addMoneyBtnAlt
+                    );
+                    Thread.sleep(1000);
+
                     actions.moveToElement(addMoneyBtnAlt).click().perform();
-                    Thread.sleep(2000);
-                    js.executeScript("arguments[0].click();", addMoneyBtnAlt);
                     Thread.sleep(1500);
 
                     clicked = true;

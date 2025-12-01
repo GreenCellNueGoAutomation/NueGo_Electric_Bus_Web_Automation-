@@ -5,18 +5,19 @@
     <classes>
       <class name="nuego_automation_project.NuegoBookingTest">
         <methods>
-          <include name="testLogin"/>
           <include name="setUp"/>
           <include name="testFilters"/>
           <include name="testRescheduleBookingFlow"/>
+          <include name="testPaymentFlow"/>
+          <include name="testHomePageActions"/>
+          <include name="testReviewBookingFlow"/>
+          <include name="testLogin"/>
           <include name="testBusBookingPageActions"/>
           <include name="tearDown"/>
           <include name="sendReportEmail"/>
-          <include name="testPaymentFlow"/>
+          <include name="testMyBookingsAndHeaderFlow"/>
           <include name="testCancelBookingFlow"/>
-          <include name="testHomePageActions"/>
           <include name="testSelectSeatAndProceedToPay"/>
-          <include name="testReviewBookingFlow"/>
           <include name="testTicketConfirmationFlow"/>
         </methods>
       </class> <!-- nuego_automation_project.NuegoBookingTest -->

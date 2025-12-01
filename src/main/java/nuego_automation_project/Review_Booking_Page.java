@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class Review_Booking_Page {
 
@@ -21,14 +22,17 @@ public class Review_Booking_Page {
        ========================================================= */
     public void completeReviewBookingFlow() {
         try {
+            // 1) Co-passengers
+            handleCoPassengerSelection();
+
+            // 2) Discount popup
             handleDiscountPopup();
             scrollToReviewSection();
 
-            // 🔹 COUPON SECTION – ONLY IF PRESENT
+            // 3) Coupon
             if (isElementPresent(getCouponIconLocator())) {
                 System.out.println("🔎 Coupon section found – applying coupon flow");
 
-                // 1) Capture total fare before coupon
                 double totalFareBeforeCoupon = 0.0;
                 try {
                     totalFareBeforeCoupon = getTotalFareAmount();
@@ -37,12 +41,10 @@ public class Review_Booking_Page {
                     System.out.println("⚠️ Could not capture total fare before coupon: " + e.getMessage());
                 }
 
-                // 2) Apply coupon flow (3rd coupon, then any valid)
                 openCouponModal();
-                applyBestAvailableCoupon();   // <<<<<< NEW CENTRAL METHOD
+                applyBestAvailableCoupon();
                 waitForCouponSuccessMessageIfAny();
 
-                // 3) Log coupon discount (if we have prior fare)
                 if (totalFareBeforeCoupon > 0) {
                     logCouponDiscountAmount(totalFareBeforeCoupon);
                 } else {
@@ -53,7 +55,7 @@ public class Review_Booking_Page {
                 System.out.println("ℹ️ Coupon icon not present on this flow – skipping coupon steps");
             }
 
-            // 🔹 ASSURANCE / WALLET / MILES – ONLY IF PRESENT
+            // 4) Assurance / Wallet / Miles
             scrollToAssuranceWalletSectionIfExists();
 
             if (isElementPresent(getAssuranceCheckboxLocator())) {
@@ -63,7 +65,6 @@ public class Review_Booking_Page {
             }
 
             if (isElementPresent(getWalletApplyButtonLocator())) {
-                // ✅ fixed wallet rules (100 or fare-1)
                 applyWalletFixedOrLess();
             } else {
                 System.out.println("ℹ️ Wallet Apply button not present – skipping wallet step");
@@ -77,16 +78,16 @@ public class Review_Booking_Page {
                 System.out.println("ℹ️ Green Miles icon not present – skipping Miles step");
             }
 
-            // 🔹 GST validation – only if labels exist
+            // 5) GST validation
             if (isElementPresent(getBaseFareLabelLocator()) &&
                     isElementPresent(getGstLabelLocator()) &&
                     isElementPresent(getTotalFareLabelLocator())) {
-
                 validateGstAfterDiscounts();
             } else {
                 System.out.println("ℹ️ GST / fare labels missing – skipping GST validation");
             }
 
+            // 6) Proceed
             clickProceedToBookButton();
             handleBookingPopupIfPresent();
         } catch (Exception e) {
@@ -181,10 +182,9 @@ public class Review_Booking_Page {
     }
 
     /* =========================================================
-       APPLY COUPON (3rd FIRST, THEN ANY)
+       APPLY COUPON
        ========================================================= */
 
-    // old specific 3rd coupon APPLY
     public By getThirdCouponApplyLocator() {
         return By.xpath(
                 "//div[@class='coupon-list-component p-3']//div[@class='listing']/div[3]" +
@@ -195,7 +195,6 @@ public class Review_Booking_Page {
         );
     }
 
-    // success + error
     public By getCouponSuccessMessageLocator() {
         return By.xpath("//p[contains(text(),'Coupon Applied Successfully') or contains(text(),'applied successfully')]");
     }
@@ -204,12 +203,10 @@ public class Review_Booking_Page {
         return By.xpath("//*[contains(text(),'Invalid coupon') or contains(text(),'invalid coupon') or contains(text(),'not applicable')]");
     }
 
-    // all coupon cards
     public By getCouponCardsLocator() {
         return By.xpath("//div[@class='coupon-list-component p-3']//div[@class='listing']/div");
     }
 
-    // APPLY button inside a coupon (RELATIVE)
     public By getApplyButtonInsideCouponLocator() {
         return By.xpath(".//p[contains(@class,'open-600w-16s-24h') " +
                 "and contains(@class,'teal-2-00A095-color') " +
@@ -217,7 +214,6 @@ public class Review_Booking_Page {
                 "and normalize-space()='APPLY']");
     }
 
-    // 🔹 Try 3rd coupon
     public boolean applyThirdCouponFromList() {
         try {
             if (!isElementPresent(getThirdCouponApplyLocator())) {
@@ -250,10 +246,9 @@ public class Review_Booking_Page {
         }
     }
 
-    // 🔹 Fallback: try ANY coupon using common APPLY locator
     public boolean applyAnyAvailableCouponIfThirdFails() {
         try {
-            java.util.List<WebElement> coupons = driver.findElements(getCouponCardsLocator());
+            List<WebElement> coupons = driver.findElements(getCouponCardsLocator());
             if (coupons == null || coupons.isEmpty()) {
                 System.out.println("ℹ️ No coupons found in the list.");
                 return false;
@@ -267,13 +262,11 @@ public class Review_Booking_Page {
             for (WebElement coupon : coupons) {
                 index++;
                 try {
-                    // Scroll this coupon into view
                     ((JavascriptExecutor) driver).executeScript(
                             "arguments[0].scrollIntoView({block:'center'});", coupon
                     );
                     sleep(400);
 
-                    // 👇 IMPORTANT: relative XPath with leading dot
                     WebElement applyBtn = coupon.findElement(getApplyButtonInsideCouponLocator());
 
                     try {
@@ -285,7 +278,6 @@ public class Review_Booking_Page {
 
                     System.out.println("👉 Clicked APPLY on coupon #" + index);
 
-                    // Wait for success
                     try {
                         shortWait.until(ExpectedConditions.visibilityOfElementLocated(getCouponSuccessMessageLocator()));
                         System.out.println("✅ Coupon #" + index + " applied successfully.");
@@ -294,7 +286,6 @@ public class Review_Booking_Page {
                         System.out.println("⚠️ No success message for coupon #" + index + ", checking for error...");
                     }
 
-                    // Check error
                     if (isElementPresent(getCouponErrorMessageLocator())) {
                         System.out.println("❌ Coupon #" + index + " seems invalid (error message displayed).");
                     } else {
@@ -317,7 +308,6 @@ public class Review_Booking_Page {
         }
     }
 
-    // 🔹 High-level coupon application
     public void applyBestAvailableCoupon() {
         boolean thirdApplied = applyThirdCouponFromList();
         if (!thirdApplied) {
@@ -339,12 +329,6 @@ public class Review_Booking_Page {
         }
     }
 
-    /**
-     * Logs the coupon discount amount based on difference in total fare.
-     * Call this method AFTER coupon has been applied.
-     *
-     * @param totalFareBeforeCoupon total fare captured before applying the coupon
-     */
     public void logCouponDiscountAmount(double totalFareBeforeCoupon) {
         try {
             double totalFareAfterCoupon = getTotalFareAmount();
@@ -452,15 +436,11 @@ public class Review_Booking_Page {
         }
     }
 
-    // --- WALLET AMOUNT INPUT + BALANCE DISPLAY (OPTIONAL BALANCE) ---
-
     public By getWalletAmountInputLocator() {
-        // Your wallet input locator
         return By.xpath("//input[@type='number']");
     }
 
     public By getWalletBalanceTextLocator() {
-        // If you don't show wallet balance on UI, this can remain unused
         return By.xpath("//p[contains(text(),'Wallet Balance') or contains(text(),'wallet balance')]");
     }
 
@@ -476,7 +456,6 @@ public class Review_Booking_Page {
             return balance;
         } catch (TimeoutException te) {
             System.out.println("ℹ️ Wallet balance text not visible on UI, assuming sufficient balance for rules. " + te.getMessage());
-            // If there is no balance text, assume large balance so that 100 can be used:
             return 999999.0;
         } catch (Exception e) {
             System.out.println("❌ Error reading wallet balance: " + e.getMessage());
@@ -484,15 +463,8 @@ public class Review_Booking_Page {
         }
     }
 
-    /**
-     * Apply wallet amount with rules:
-     * - If total fare >= 100 → try to use ₹100 (or less if not enough wallet balance)
-     * - If total fare < 100 → use (fare - 1), but not more than wallet balance
-     * Wallet amount is entered in //input[@type='number'] and Apply button is clicked.
-     */
     public void applyWalletFixedOrLess() {
         try {
-            // Ensure section is visible
             scrollToAssuranceWalletSectionIfExists();
 
             double totalFare = getTotalFareAmount();
@@ -507,7 +479,6 @@ public class Review_Booking_Page {
                 return;
             }
 
-            // Decide how much wallet to use
             double amountToUse;
             if (totalFare >= 100) {
                 amountToUse = Math.min(100.0, walletBalance);
@@ -550,7 +521,6 @@ public class Review_Booking_Page {
             walletInput.clear();
             walletInput.sendKeys(finalAmountStr);
 
-            // --- CLICK APPLY BUTTON (WITH FALLBACK) ---
             try {
                 WebElement applyBtn = wait.until(
                         ExpectedConditions.visibilityOfElementLocated(getWalletApplyButtonLocator())
@@ -724,6 +694,221 @@ public class Review_Booking_Page {
             System.out.println("ℹ️ No extra popup appeared after Proceed & Book");
         } catch (Exception e) {
             System.out.println("⚠️ Error while handling post-proceed popup: " + e.getMessage());
+        }
+    }
+
+    /* =========================================================
+       CO-PASSENGER / GUEST SECTION  (ONLY GUEST 2 + GUEST 3 MANUAL)
+       ========================================================= */
+
+    // ================== GUEST 2 MANUAL LOCATORS ==================
+
+    // Guest 2 Name input
+    public By getGuest2NameInputLocator() {
+        return By.xpath("//body/div[@id='root']/div[@class='booking-layout']/div[@class='auth-modal']/div[@class='review-payment']/div[contains(@class,'light-fold position-relative py-5')]/div[@class='row']/div[@class='col-8']/div/div[@class='mt-4']/div[@class='personal-details-component']/div[@class='personal-detail-wrapper px-3']/div[2]/div[2]/div[1]/div[1]/input[1]");
+    }
+
+    // Guest 2 Age input
+    public By getGuest2AgeInputLocator() {
+        return By.xpath("//div[@class='personal-detail-wrapper px-3']//div[2]//div[2]//div[2]//div[1]//div[1]//div[1]//input[1]");
+    }
+
+    // Guest 2 Female option
+    public By getGuest2FemaleOptionLocator() {
+        return By.xpath("//div[@class='personal-detail-wrapper px-3']//div[2]//div[2]//div[2]//div[1]//div[2]//div[1]//div[2]//p[1]");
+    }
+
+    // ================== GUEST 3 MANUAL LOCATORS (ABSOLUTE FROM YOUR DOM) ==================
+
+    // Guest 3 Name input
+    public By getGuest3NameInputLocator() {
+        return By.xpath(
+                "//body/div[@id='root']/div[@class='booking-layout']/div[@class='auth-modal']" +
+                        "/div[@class='review-payment']/div[contains(@class,'light-fold position-relative py-5')]" +
+                        "/div[@class='row']/div[@class='col-8']/div/div[@class='mt-4']" +
+                        "/div[@class='personal-details-component']/div[@class='personal-detail-wrapper px-3']" +
+                        "/div[3]/div[2]/div[1]/div[1]/input[1]"
+        );
+    }
+
+    // Guest 3 age input
+    public By getGuest3AgeInputLocator() {
+        return By.xpath("//div[3]//div[2]//div[2]//div[1]//div[1]//div[1]//input[1]");
+    }
+
+    // Guest 3 Male option
+    public By getGuest3MaleOptionLocator() {
+        return By.xpath("//div[3]//div[2]//div[2]//div[1]//div[2]//div[1]//div[2]//p[1]");
+    }
+
+    public void handleCoPassengerSelection() {
+        try {
+            System.out.println("👥 Starting Co-Passenger selection flow...");
+
+            // Guest 2 + Guest 3 manual entries
+            handleGuest2ManualEntry();
+            handleGuest3ManualEntry();
+
+            System.out.println("✅ Co-Passenger selection flow completed.");
+        } catch (Exception e) {
+            System.out.println("⚠️ Error in co-passenger flow (will continue rest of actions): " + e.getMessage());
+        }
+    }
+
+    /* ---------- GUEST 2: NAME + AGE + FEMALE (MANUAL ENTRY) ---------- */
+    public void handleGuest2ManualEntry() {
+        try {
+            System.out.println("👥 [Guest 2] Starting manual entry...");
+
+            // 1) Name
+            WebElement guest2Name = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(getGuest2NameInputLocator())
+            );
+
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", guest2Name
+            );
+            sleep(600);
+
+            try { ((JavascriptExecutor) driver).executeScript("arguments[0].click();", guest2Name); } catch (Exception ignore) {}
+            try { guest2Name.clear(); } catch (Exception ignore) {}
+
+            try {
+                guest2Name.sendKeys("xyz");
+            } catch (Exception ex) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1];", guest2Name, "xyz");
+            }
+            System.out.println("✏️ Entered Guest 2 Name = xyz");
+            sleep(600);
+
+            // 2) Age
+            try {
+                WebElement guest2Age = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(getGuest2AgeInputLocator())
+                );
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});", guest2Age
+                );
+                sleep(400);
+
+                try { ((JavascriptExecutor) driver).executeScript("arguments[0].click();", guest2Age); } catch (Exception ignore) {}
+                try { guest2Age.clear(); } catch (Exception ignore) {}
+
+                try {
+                    guest2Age.sendKeys("24");
+                } catch (Exception ex) {
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1];", guest2Age, "24");
+                }
+                System.out.println("✏️ Entered Guest 2 Age = 24");
+                sleep(600);
+            } catch (Exception e) {
+                System.out.println("⚠️ Unable to set Age for Guest 2: " + e.getMessage());
+            }
+
+            // 3) Female
+            try {
+                WebElement femaleOption = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(getGuest2FemaleOptionLocator())
+                );
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});", femaleOption
+                );
+                sleep(400);
+                try {
+                    femaleOption.click();
+                } catch (Exception ex) {
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", femaleOption);
+                }
+                System.out.println("🚺 Selected Gender = Female for Guest 2");
+                sleep(400);
+            } catch (Exception e) {
+                System.out.println("⚠️ Unable to select Female option for Guest 2: " + e.getMessage());
+            }
+
+            System.out.println("✅ Guest 2 manual entry completed.");
+
+        } catch (Exception e) {
+            System.out.println("⚠️ Error in Guest 2 manual entry: " + e.getMessage());
+        }
+    }
+
+    /* ---------- GUEST 3: NAME + AGE + MALE (MANUAL ENTRY – FIXED) ---------- */
+    public void handleGuest3ManualEntry() {
+        try {
+            System.out.println("👥 [Guest 3] Starting manual entry...");
+
+            // 1) NAME (ABC)
+            WebElement guest3Name = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(getGuest3NameInputLocator())
+            );
+
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", guest3Name
+            );
+            sleep(600);
+
+            try { ((JavascriptExecutor) driver).executeScript("arguments[0].click();", guest3Name); } catch (Exception ignore) {}
+            try { guest3Name.clear(); } catch (Exception ignore) {}
+
+            try {
+                guest3Name.sendKeys("ABC");
+            } catch (Exception ex) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1];", guest3Name, "ABC");
+            }
+            System.out.println("✏️ Entered Guest 3 Name = ABC");
+            sleep(600);
+
+            // 2) AGE (25)
+            try {
+                WebElement ageElement = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(getGuest3AgeInputLocator())
+                );
+
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});", ageElement
+                );
+                sleep(400);
+
+                try { ((JavascriptExecutor) driver).executeScript("arguments[0].click();", ageElement); } catch (Exception ignore) {}
+                try { ageElement.clear(); } catch (Exception ignore) {}
+
+                try {
+                    ageElement.sendKeys("25");
+                } catch (Exception ex) {
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1];", ageElement, "25");
+                }
+                System.out.println("✏️ Entered Guest 3 Age = 25");
+                sleep(600);
+            } catch (Exception e) {
+                System.out.println("⚠️ Unable to set Age for Guest 3: " + e.getMessage());
+            }
+
+            // 3) MALE
+            try {
+                WebElement maleOption = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(getGuest3MaleOptionLocator())
+                );
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});", maleOption
+                );
+                sleep(400);
+
+                try {
+                    maleOption.click();
+                } catch (Exception ex) {
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", maleOption);
+                }
+
+                System.out.println("🚹 Selected Gender = Male for Guest 3");
+                sleep(400);
+            } catch (Exception e) {
+                System.out.println("⚠️ Unable to select Male option for Guest 3: " + e.getMessage());
+            }
+
+            System.out.println("✅ Guest 3 manual entry completed.");
+
+        } catch (Exception e) {
+            System.out.println("⚠️ Error in Guest 3 manual entry: " + e.getMessage());
         }
     }
 

@@ -1,4 +1,5 @@
 utils\AllureListener.class
+nuego_automation_project\ExcelUtils.class
 utils\BaseTest.class
 utils\RetryAnalyzer.class
 utils\ExtentReportManager.class

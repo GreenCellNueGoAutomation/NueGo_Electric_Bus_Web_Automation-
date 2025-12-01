@@ -1,4 +1,5 @@
 nuego_automation_project\Payment_Mode.class
+nuego_automation_project\CancelBooking.class
 nuego_automation_project\BusBookingPage.class
 nuego_automation_project\Filters.class
 nuego_automation_project\HomePage.class
@@ -7,6 +8,7 @@ nuego_automation_project\Ticket_Confirmation.class
 nuego_automation_project\base\BasePage.class
 nuego_automation_project\Review_Booking_Page.class
 nuego_automation_project\SendReportEmail$1.class
+nuego_automation_project\Wallet.class
 nuego_automation_project\utils\ScreenshotUtil.class
 nuego_automation_project\SelectSeatPoints.class
 nuego_automation_project\SendReportEmail.class
