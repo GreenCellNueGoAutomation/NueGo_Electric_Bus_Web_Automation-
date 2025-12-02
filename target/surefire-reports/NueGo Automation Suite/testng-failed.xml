@@ -5,14 +5,14 @@
     <classes>
       <class name="nuego_automation_project.NuegoBookingTest">
         <methods>
-          <include name="setUp"/>
           <include name="testLogin"/>
           <include name="testFilters"/>
-          <include name="testBusBookingPageActions"/>
+          <include name="setUp"/>
           <include name="testRescheduleBookingFlow"/>
+          <include name="testBusBookingPageActions"/>
           <include name="tearDown"/>
           <include name="testPaymentFlow"/>
-          <include name="sendReportEmail"/>
+          <include name="setUpTest"/>
           <include name="testCancelBookingFlow"/>
           <include name="testHomePageActions"/>
           <include name="testSelectSeatAndProceedToPay"/>

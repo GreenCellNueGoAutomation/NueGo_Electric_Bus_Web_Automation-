@@ -7,9 +7,7 @@ nuego_automation_project\LoginPage.class
 nuego_automation_project\Ticket_Confirmation.class
 nuego_automation_project\base\BasePage.class
 nuego_automation_project\Review_Booking_Page.class
-nuego_automation_project\SendReportEmail$1.class
 nuego_automation_project\Wallet.class
 nuego_automation_project\utils\ScreenshotUtil.class
 nuego_automation_project\SelectSeatPoints.class
-nuego_automation_project\SendReportEmail.class
 nuego_automation_project\Reschedule_Booking.class

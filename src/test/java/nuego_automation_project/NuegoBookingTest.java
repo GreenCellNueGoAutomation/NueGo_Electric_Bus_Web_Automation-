@@ -269,7 +269,7 @@ public class NuegoBookingTest extends BaseTest {
     public void sendReportEmail() {
         try {
             System.out.println("📧 Triggering report email after suite completion...");
-         //   SendReportEmail.main(null);
+            SendReportEmail.main(null);
             System.out.println("✅ Report email triggered successfully!");
         } catch (Exception e) {
             System.err.println("❌ Failed to send automation report email: " + e.getMessage());

@@ -1,4 +1,4 @@
-/*package nuego_automation_project;
+package nuego_automation_project;
 
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -16,7 +16,7 @@ public class SendReportEmail {
             String from = "sumedh.sonawane@sumasoft.net";
 
             // ⚠️ Gmail App Password (use valid app password)
-            String password = "wnxpqrmuirikqvtf";
+            String password = "jtkurhehuqlmmduo";
 
             // ✅ Get build number (from Jenkins or local)
             String buildNum = System.getProperty("buildNum", "local");
@@ -99,4 +99,4 @@ public class SendReportEmail {
             System.err.println("❌ Failed to send email: " + e.getMessage());
         }
     }
-} */
+} 
