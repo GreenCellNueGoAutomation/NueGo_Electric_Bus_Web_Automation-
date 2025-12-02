@@ -1,4 +1,4 @@
-package nuego_automation_project;
+/*package nuego_automation_project;
 
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -99,4 +99,4 @@ public class SendReportEmail {
             System.err.println("❌ Failed to send email: " + e.getMessage());
         }
     }
-}
+} */

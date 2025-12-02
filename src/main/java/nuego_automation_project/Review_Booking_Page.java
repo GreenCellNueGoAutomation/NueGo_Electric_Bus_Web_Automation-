@@ -104,7 +104,7 @@ public class Review_Booking_Page {
     }
 
     public By getDiscountAlertNoThanksButtonLocator() {
-        return By.xpath("//button[contains(text(),'No, Thanks')]");
+        return By.xpath("//button[contains(text(),'Yes, Switch')]");
     }
 
     public void handleDiscountPopup() {
@@ -116,7 +116,7 @@ public class Review_Booking_Page {
 
             if (popup.isDisplayed()) {
                 System.out.println("💡 Discount Alert popup detected!");
-                safeClick(getDiscountAlertNoThanksButtonLocator(), "Clicked 'No, Thanks' on Discount Alert popup");
+                safeClick(getDiscountAlertNoThanksButtonLocator(), "Clicked 'yes switch' on Discount Alert popup");
                 sleep(500);
             }
         } catch (TimeoutException te) {
