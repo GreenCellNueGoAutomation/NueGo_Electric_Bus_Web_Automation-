@@ -265,7 +265,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- EMAIL TRIGGER -----------------------------
-  /*  @AfterSuite(alwaysRun = true)
+   @AfterSuite(alwaysRun = true)
     public void sendReportEmail() {
         try {
             System.out.println("📧 Triggering report email after suite completion...");
@@ -274,7 +274,7 @@ public class NuegoBookingTest extends BaseTest {
         } catch (Exception e) {
             System.err.println("❌ Failed to send automation report email: " + e.getMessage());
             e.printStackTrace();
-        }*/
+        }
     }
 
-
+}

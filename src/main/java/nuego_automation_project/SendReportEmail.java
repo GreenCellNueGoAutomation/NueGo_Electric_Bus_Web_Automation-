@@ -16,7 +16,8 @@ public class SendReportEmail {
             String from = "sumedh.sonawane@sumasoft.net";
 
             // ⚠️ Gmail App Password (use valid app password)
-            String password = "jtkurhehuqlmmduo";
+            String password = "dgrozsnhifjnyxgc";
+        
 
             // ✅ Get build number (from Jenkins or local)
             String buildNum = System.getProperty("buildNum", "local");

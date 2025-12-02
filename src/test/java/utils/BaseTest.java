@@ -28,6 +28,7 @@ public class BaseTest {
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
                 "--remote-allow-origins=*"
+                
         );
 
         // Force desktop user-agent to avoid mobile layout issues
@@ -41,9 +42,11 @@ public class BaseTest {
         if (headless.equalsIgnoreCase("true")) {
             options.addArguments("--headless=new");
             options.addArguments("--window-size=1920,1080");
-            System.out.println("⚙️ Running in HEADLESS mode (Jenkins / CI)");
+            options.addArguments("--start-maximized");
+            options.addArguments("--force-device-scale-factor=1");
+            System.out.println("Running in HEADLESS mode (Jenkins / CI)");
         } else {
-            System.out.println("⚙️ Running in NORMAL mode (local execution)");
+            System.out.println("Running in NORMAL mode (local execution)");
         }
 
         driver = new ChromeDriver(options);
@@ -52,7 +55,7 @@ public class BaseTest {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
-        System.out.println("✅ Browser launched successfully");
+        System.out.println("Browser launched successfully");
     }
 
     // ---------------------- TEARDOWN -----------------------------
