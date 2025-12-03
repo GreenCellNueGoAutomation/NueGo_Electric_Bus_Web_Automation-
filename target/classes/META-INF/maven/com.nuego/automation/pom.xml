@@ -23,18 +23,11 @@
 
     <dependencies>
 
-        <!-- ✅ Selenium (Updated for Chrome 142 compatibility) -->
+        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.25.0</version>
-        </dependency>
-
-        <!-- ✅ DevTools for Chrome 142 (Correct + Exists in Maven Central) -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-devtools-v142</artifactId>
-            <version>4.25.0</version>
+            <version>4.21.0</version>
         </dependency>
 
         <!-- WebDriverManager -->
@@ -80,7 +73,7 @@
             <version>2.15.1</version>
         </dependency>
 
-        <!-- Logging -->
+        <!-- SLF4J simple logger -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -125,6 +118,7 @@
     <build>
         <plugins>
 
+            <!-- Surefire plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -140,6 +134,7 @@
                 </configuration>
             </plugin>
 
+            <!-- Allure Maven plugin -->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
@@ -155,6 +150,7 @@
                 </executions>
             </plugin>
 
+            <!-- Compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -165,6 +161,7 @@
                 </configuration>
             </plugin>
 
+            <!-- Clean plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
