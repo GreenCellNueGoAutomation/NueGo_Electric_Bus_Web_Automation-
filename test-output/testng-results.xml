@@ -2,68 +2,68 @@
 <testng-results ignored="0" total="11" passed="11" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-02T16:11:01 IST" name="Default suite" finished-at="2025-12-02T16:19:53 IST" duration-ms="532173">
+  <suite started-at="2025-12-03T10:49:05 IST" name="Default suite" finished-at="2025-12-03T10:57:48 IST" duration-ms="522252">
     <groups>
     </groups>
-    <test started-at="2025-12-02T16:11:01 IST" name="Default test" finished-at="2025-12-02T16:19:53 IST" duration-ms="532173">
+    <test started-at="2025-12-03T10:49:05 IST" name="Default test" finished-at="2025-12-03T10:57:48 IST" duration-ms="522252">
       <class name="nuego_automation_project.NuegoBookingTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:11:01 IST" name="setUp" finished-at="2025-12-02T16:11:05 IST" duration-ms="4825" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:49:06 IST" name="setUp" finished-at="2025-12-03T10:49:08 IST" duration-ms="2657" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="setUpTest()[pri:0, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:11:05 IST" name="setUpTest" finished-at="2025-12-02T16:11:06 IST" duration-ms="889" status="PASS">
+        <test-method is-config="true" signature="setUpTest()[pri:0, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:49:08 IST" name="setUpTest" finished-at="2025-12-03T10:49:11 IST" duration-ms="2378" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpTest -->
-        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:11:06 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-12-02T16:11:11 IST" duration-ms="4638" status="PASS">
+        <test-method signature="testLogin()[pri:1, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:49:11 IST" name="testLogin" description="Login to application using mobile and OTP" finished-at="2025-12-03T10:49:12 IST" duration-ms="1873" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLogin -->
-        <test-method signature="testAddMoneyToWallet()[pri:2, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:11:11 IST" name="testAddMoneyToWallet" description="Open wallet and add money" finished-at="2025-12-02T16:11:43 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="31933" status="PASS">
+        <test-method signature="testAddMoneyToWallet()[pri:2, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:49:13 IST" name="testAddMoneyToWallet" description="Open wallet and add money" finished-at="2025-12-03T10:49:40 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="27086" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddMoneyToWallet -->
-        <test-method signature="testHomePageActions()[pri:3, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:11:43 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-12-02T16:12:05 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="21879" status="PASS">
+        <test-method signature="testHomePageActions()[pri:4, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:49:40 IST" name="testHomePageActions" description="Handle homepage popups and search bus" finished-at="2025-12-03T10:50:01 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testLogin" duration-ms="21250" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testHomePageActions -->
-        <test-method signature="testFilters()[pri:4, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:12:05 IST" name="testFilters" description="Apply filters" finished-at="2025-12-02T16:12:17 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testHomePageActions" duration-ms="11756" status="PASS">
+        <test-method signature="testFilters()[pri:5, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:50:01 IST" name="testFilters" description="Apply filters" finished-at="2025-12-03T10:50:11 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testHomePageActions" duration-ms="10187" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFilters -->
-        <test-method signature="testBusBookingPageActions()[pri:5, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:12:17 IST" name="testBusBookingPageActions" description="Scroll and click seat on Bus Booking page" finished-at="2025-12-02T16:12:25 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testFilters" duration-ms="8243" status="PASS">
+        <test-method signature="testBusBookingPageActions()[pri:6, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:50:11 IST" name="testBusBookingPageActions" description="Scroll and click seat on Bus Booking page" finished-at="2025-12-03T10:50:19 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testFilters" duration-ms="8169" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testBusBookingPageActions -->
-        <test-method signature="testSelectSeatAndProceedToPay()[pri:6, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:12:25 IST" name="testSelectSeatAndProceedToPay" description="Select seat, pickup &amp; drop points and click Book &amp; Pay" finished-at="2025-12-02T16:12:53 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testBusBookingPageActions" duration-ms="27650" status="PASS">
+        <test-method signature="testSelectSeatAndProceedToPay()[pri:7, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:50:19 IST" name="testSelectSeatAndProceedToPay" description="Select seat, pickup &amp; drop points and click Book &amp; Pay" finished-at="2025-12-03T10:50:46 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testBusBookingPageActions" duration-ms="27129" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSelectSeatAndProceedToPay -->
-        <test-method signature="testReviewBookingFlow()[pri:7, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:12:53 IST" name="testReviewBookingFlow" description="Review Booking flow" finished-at="2025-12-02T16:16:35 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay" duration-ms="222630" status="PASS">
+        <test-method signature="testReviewBookingFlow()[pri:8, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:50:46 IST" name="testReviewBookingFlow" description="Review Booking flow" finished-at="2025-12-03T10:54:28 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testSelectSeatAndProceedToPay" duration-ms="221464" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testReviewBookingFlow -->
-        <test-method signature="testPaymentFlow()[pri:8, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:16:35 IST" name="testPaymentFlow" description="Payment flow using NetBanking - Axis Bank" finished-at="2025-12-02T16:16:49 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testReviewBookingFlow" duration-ms="13429" status="PASS">
+        <test-method signature="testPaymentFlow()[pri:9, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:54:28 IST" name="testPaymentFlow" description="Payment flow using NetBanking - Axis Bank" finished-at="2025-12-03T10:54:41 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testReviewBookingFlow" duration-ms="13183" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPaymentFlow -->
-        <test-method signature="testTicketConfirmationFlow()[pri:9, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:16:49 IST" name="testTicketConfirmationFlow" description="Ticket Confirmation flow" finished-at="2025-12-02T16:17:49 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testPaymentFlow" duration-ms="60147" status="PASS">
+        <test-method signature="testTicketConfirmationFlow()[pri:10, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:54:41 IST" name="testTicketConfirmationFlow" description="Ticket Confirmation flow" finished-at="2025-12-03T10:55:44 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testPaymentFlow" duration-ms="63110" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testTicketConfirmationFlow -->
-        <test-method signature="testRescheduleBookingFlow()[pri:10, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:17:49 IST" name="testRescheduleBookingFlow" description="Reschedule Booking flow" finished-at="2025-12-02T16:19:17 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testTicketConfirmationFlow" duration-ms="88150" status="PASS">
+        <test-method signature="testRescheduleBookingFlow()[pri:11, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:55:44 IST" name="testRescheduleBookingFlow" description="Reschedule Booking flow" finished-at="2025-12-03T10:57:12 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testTicketConfirmationFlow" duration-ms="87897" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRescheduleBookingFlow -->
-        <test-method signature="testCancelBookingFlow()[pri:11, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:19:17 IST" name="testCancelBookingFlow" description="Cancel Booking flow" finished-at="2025-12-02T16:19:52 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testRescheduleBookingFlow" duration-ms="35263" status="PASS">
+        <test-method signature="testCancelBookingFlow()[pri:12, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:57:12 IST" name="testCancelBookingFlow" description="Cancel Booking flow" finished-at="2025-12-03T10:57:47 IST" depends-on-methods="nuego_automation_project.NuegoBookingTest.testRescheduleBookingFlow" duration-ms="35317" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCancelBookingFlow -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:19:52 IST" name="tearDown" finished-at="2025-12-02T16:19:53 IST" duration-ms="480" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:57:47 IST" name="tearDown" finished-at="2025-12-03T10:57:48 IST" duration-ms="352" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="sendReportEmail()[pri:0, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-02T16:19:53 IST" name="sendReportEmail" finished-at="2025-12-02T16:19:57 IST" duration-ms="3707" status="PASS">
+        <test-method is-config="true" signature="sendReportEmail()[pri:0, instance:nuego_automation_project.NuegoBookingTest@6d9f7a80]" started-at="2025-12-03T10:57:48 IST" name="sendReportEmail" finished-at="2025-12-03T10:57:53 IST" duration-ms="4991" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- sendReportEmail -->

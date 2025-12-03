@@ -47,7 +47,8 @@ public class BaseTest {
     public void tearDown() {
         if (driver != null) {
             driver.quit();
-            System.out.println("🧹 Browser closed after test execution");
+            System.out.println("Congratulations! All tests passed. Browser closed after test execution.");
+
         }
     }
 
