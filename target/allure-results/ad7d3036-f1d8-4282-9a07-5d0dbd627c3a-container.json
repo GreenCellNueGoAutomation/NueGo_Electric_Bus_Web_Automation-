@@ -1,0 +1,1 @@
+{"uuid":"ad7d3036-f1d8-4282-9a07-5d0dbd627c3a","name":"NueGo Automation Suite","children":["8e59c282-f17a-40a0-8c68-a0476b63ba13"],"befores":[],"afters":[{"name":"sendReportEmail","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1764673119067,"stop":1764673123796}],"start":1764672559368,"stop":1764673123796}

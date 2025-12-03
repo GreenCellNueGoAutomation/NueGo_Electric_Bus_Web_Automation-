@@ -31,24 +31,8 @@ public class BaseTest {
                 
         );
 
-        // Force desktop user-agent to avoid mobile layout issues
-        options.addArguments(
-                "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
-                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
-        );
-
-        // HEADLESS mode (Enabled only when running in Jenkins)
-        String headless = System.getProperty("headless", "false");
-        if (headless.equalsIgnoreCase("true")) {
-            options.addArguments("--headless=new");
-            options.addArguments("--window-size=1920,1080");
-            options.addArguments("--start-maximized");
-            options.addArguments("--force-device-scale-factor=1");
-            System.out.println("Running in HEADLESS mode (Jenkins / CI)");
-        } else {
-            System.out.println("Running in NORMAL mode (local execution)");
-        }
-
+       
+       
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

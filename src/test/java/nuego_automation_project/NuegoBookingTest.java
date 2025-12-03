@@ -5,6 +5,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import io.qameta.allure.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -26,6 +27,7 @@ public class NuegoBookingTest extends BaseTest {
     // Page Objects
     private LoginPage loginPage;
     private Wallet walletpage;
+  //  private MyProfilePage myprofile;
     private HomePage homePage;
     private BusBookingPage bookingPage;
     private Filters filtersPage;
@@ -53,6 +55,7 @@ public class NuegoBookingTest extends BaseTest {
         rescheduleBookingPage = new Reschedule_Booking(driver);
         cancelBookingPage = new CancelBooking(driver);
         walletpage = new Wallet(driver);
+      //  myprofile=new MyProfilePage(driver);
 
         // Launch application URL
         driver.get(BASE_URL);
@@ -89,7 +92,25 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 3, dependsOnMethods = {"testLogin"}, description = "Handle homepage popups and search bus", retryAnalyzer = RetryAnalyzer.class)
+  /*  @Test(priority = 3, dependsOnMethods = {"testAddMoneyToWallet"}, description = "Update user profile using My Profile page", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("My Profile Update")
+    public void testUpdateMyProfile() {
+        test = extent.createTest("My Profile Update Test", "Update user name, age, GST, and add new entry");
+        try {
+            Actions actions = new Actions(driver);
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+
+            // Call reusable method from MyProfilePage
+            MyProfilePage.updateMyProfile(driver, wait, actions, js);
+
+            test.log(Status.PASS, "✅ My Profile updated successfully");
+        } catch (Exception e) {
+            handleFailure("My Profile update failed", e);
+        }
+    } */
+
+    @Test(priority = 4, dependsOnMethods = {"testLogin"}, description = "Handle homepage popups and search bus", retryAnalyzer = RetryAnalyzer.class)
     public void testHomePageActions() {
         test = extent.createTest("Home Page Test", "Handle popups and search buses");
         try {
@@ -102,7 +123,7 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 4, dependsOnMethods = {"testHomePageActions"}, description = "Apply filters", retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 5, dependsOnMethods = {"testHomePageActions"}, description = "Apply filters", retryAnalyzer = RetryAnalyzer.class)
     public void testFilters() {
         test = extent.createTest("Filter Test", "Apply filters and verify results");
         try {
@@ -117,7 +138,7 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 5, dependsOnMethods = {"testFilters"}, description = "Scroll and click seat on Bus Booking page", retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 6, dependsOnMethods = {"testFilters"}, description = "Scroll and click seat on Bus Booking page", retryAnalyzer = RetryAnalyzer.class)
     public void testBusBookingPageActions() {
         test = extent.createTest("Bus Booking Page Test", "Scroll and click on seat");
         try {
@@ -129,7 +150,7 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 6, dependsOnMethods = {"testBusBookingPageActions"}, description = "Select seat, pickup & drop points and click Book & Pay", retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 7, dependsOnMethods = {"testBusBookingPageActions"}, description = "Select seat, pickup & drop points and click Book & Pay", retryAnalyzer = RetryAnalyzer.class)
     public void testSelectSeatAndProceedToPay() {
         test = extent.createTest("Seat Selection Test", "Select seats and proceed to payment");
         try {
@@ -154,7 +175,7 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 7, dependsOnMethods = {"testSelectSeatAndProceedToPay"}, description = "Review Booking flow", retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 8, dependsOnMethods = {"testSelectSeatAndProceedToPay"}, description = "Review Booking flow", retryAnalyzer = RetryAnalyzer.class)
     public void testReviewBookingFlow() {
         test = extent.createTest("Review Booking Flow", "Handle discount popup, coupon, assurance/wallet/miles, GST, and proceed");
         try {
@@ -166,7 +187,7 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 8, dependsOnMethods = {"testReviewBookingFlow"}, description = "Payment flow using NetBanking - Axis Bank", retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 9, dependsOnMethods = {"testReviewBookingFlow"}, description = "Payment flow using NetBanking - Axis Bank", retryAnalyzer = RetryAnalyzer.class)
     public void testPaymentFlow() {
         test = extent.createTest("Payment Flow Test", "Complete payment using NetBanking (Axis Bank)");
         try {
@@ -180,7 +201,7 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 9, dependsOnMethods = {"testPaymentFlow"}, description = "Ticket Confirmation flow", retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 10, dependsOnMethods = {"testPaymentFlow"}, description = "Ticket Confirmation flow", retryAnalyzer = RetryAnalyzer.class)
     public void testTicketConfirmationFlow() {
         test = extent.createTest("Ticket Confirmation Test", "Verify confirmation page, Whatsapp, SMS, Fare details, E-ticket, Copy Link & Download");
         try {
@@ -198,7 +219,7 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 10, dependsOnMethods = {"testTicketConfirmationFlow"}, description = "Reschedule Booking flow", retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 11, dependsOnMethods = {"testTicketConfirmationFlow"}, description = "Reschedule Booking flow", retryAnalyzer = RetryAnalyzer.class)
     public void testRescheduleBookingFlow() {
         test = extent.createTest("Reschedule Booking Test", "Reschedule booking from confirmation page");
         try {
@@ -224,7 +245,7 @@ public class NuegoBookingTest extends BaseTest {
         }
     }
 
-    @Test(priority = 11, dependsOnMethods = {"testRescheduleBookingFlow"}, description = "Cancel Booking flow", retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 12, dependsOnMethods = {"testRescheduleBookingFlow"}, description = "Cancel Booking flow", retryAnalyzer = RetryAnalyzer.class)
     public void testCancelBookingFlow() {
         test = extent.createTest("Cancel Booking Flow", "Cancel booking and refund");
         try {
@@ -265,7 +286,7 @@ public class NuegoBookingTest extends BaseTest {
     }
 
     // ---------------------- EMAIL TRIGGER -----------------------------
-   @AfterSuite(alwaysRun = true)
+    @AfterSuite(alwaysRun = true)
     public void sendReportEmail() {
         try {
             System.out.println("📧 Triggering report email after suite completion...");
@@ -276,5 +297,4 @@ public class NuegoBookingTest extends BaseTest {
             e.printStackTrace();
         }
     }
-
 }
